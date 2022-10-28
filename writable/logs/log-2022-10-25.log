@@ -1,0 +1,333 @@
+CRITICAL - 2022-10-25 08:37:29 --> Invalid file: welcaome_message.php
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 33.
+ 1 SYSTEMPATH/View/View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile()
+ 2 SYSTEMPATH/Common.php(1142): CodeIgniter\View\View->render()
+ 3 APPPATH/Controllers/Home.php(9): view()
+ 4 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\Home->index()
+ 5 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+ 6 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-10-25 23:21:15 --> Undefined variable $slug
+in APPPATH/Controllers/News.php on line 13.
+ 1 APPPATH/Controllers/News.php(13): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\News->index()
+ 3 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-10-25 23:23:06 --> Undefined variable $slug
+in APPPATH/Controllers/News.php on line 13.
+ 1 APPPATH/Controllers/News.php(13): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\News->index()
+ 3 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-10-25 23:23:07 --> Undefined variable $slug
+in APPPATH/Controllers/News.php on line 13.
+ 1 APPPATH/Controllers/News.php(13): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\News->index()
+ 3 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-10-25 23:23:08 --> Undefined variable $slug
+in APPPATH/Controllers/News.php on line 13.
+ 1 APPPATH/Controllers/News.php(13): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\News->index()
+ 3 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-10-25 23:23:12 --> Undefined variable $slug
+in APPPATH/Controllers/News.php on line 13.
+ 1 APPPATH/Controllers/News.php(13): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\News->index()
+ 3 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-10-25 23:31:39 --> Undefined variable $slug
+in APPPATH/Controllers/News.php on line 13.
+ 1 APPPATH/Controllers/News.php(13): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\News->index()
+ 3 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 5 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-10-25 23:32:29 --> Invalid file: templates/header.php
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 33.
+ 1 SYSTEMPATH/View/View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile()
+ 2 SYSTEMPATH/Common.php(1142): CodeIgniter\View\View->render()
+ 3 APPPATH/Controllers/News.php(18): view()
+ 4 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\News->index()
+ 5 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+ 6 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-10-25 23:32:30 --> Invalid file: templates/header.php
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 33.
+ 1 SYSTEMPATH/View/View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile()
+ 2 SYSTEMPATH/Common.php(1142): CodeIgniter\View\View->render()
+ 3 APPPATH/Controllers/News.php(18): view()
+ 4 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\News->index()
+ 5 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+ 6 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-10-25 23:32:45 --> Invalid file: templates/header.php
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 33.
+ 1 SYSTEMPATH/View/View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile()
+ 2 SYSTEMPATH/Common.php(1142): CodeIgniter\View\View->render()
+ 3 APPPATH/Controllers/News.php(18): view()
+ 4 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\News->index()
+ 5 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+ 6 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-10-25 23:33:54 --> Invalid file: templates/header.php
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 33.
+ 1 SYSTEMPATH/View/View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile()
+ 2 SYSTEMPATH/Common.php(1142): CodeIgniter\View\View->render()
+ 3 APPPATH/Controllers/News.php(18): view()
+ 4 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\News->index()
+ 5 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+ 6 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-10-25 23:34:07 --> Invalid file: templates/header.php
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 33.
+ 1 SYSTEMPATH/View/View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile()
+ 2 SYSTEMPATH/Common.php(1142): CodeIgniter\View\View->render()
+ 3 APPPATH/Controllers/News.php(18): view()
+ 4 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\News->index()
+ 5 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+ 6 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-10-25 23:34:22 --> Invalid file: templates/header.php
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 33.
+ 1 SYSTEMPATH/View/View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile()
+ 2 SYSTEMPATH/Common.php(1142): CodeIgniter\View\View->render()
+ 3 APPPATH/Controllers/News.php(18): view()
+ 4 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\News->index()
+ 5 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+ 6 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-10-25 23:34:23 --> Invalid file: templates/header.php
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 33.
+ 1 SYSTEMPATH/View/View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile()
+ 2 SYSTEMPATH/Common.php(1142): CodeIgniter\View\View->render()
+ 3 APPPATH/Controllers/News.php(18): view()
+ 4 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\News->index()
+ 5 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+ 6 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-10-25 23:35:56 --> Invalid file: templates/header.php
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 33.
+ 1 SYSTEMPATH/View/View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile()
+ 2 SYSTEMPATH/Common.php(1142): CodeIgniter\View\View->render()
+ 3 APPPATH/Controllers/News.php(35): view()
+ 4 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\News->view()
+ 5 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+ 6 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2022-10-25 23:36:20 --> Error connecting to the database: mysqli_sql_exception: Unknown database 'ci4' in /codeigniter/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:171
+Stack trace:
+#0 /codeigniter/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(171): mysqli->real_connect()
+#1 /codeigniter/vendor/codeigniter4/framework/system/Database/BaseConnection.php(382): CodeIgniter\Database\MySQLi\Connection->connect()
+#2 /codeigniter/vendor/codeigniter4/framework/system/Database/BaseConnection.php(588): CodeIgniter\Database\BaseConnection->initialize()
+#3 /codeigniter/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query()
+#4 /codeigniter/vendor/codeigniter4/framework/system/Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+#5 /codeigniter/vendor/codeigniter4/framework/system/BaseModel.php(622): CodeIgniter\Model->doFirst()
+#6 /codeigniter/app/Models/NewsModel.php(17): CodeIgniter\BaseModel->first()
+#7 /codeigniter/app/Controllers/News.php(27): App\Models\NewsModel->getNews()
+#8 /codeigniter/vendor/codeigniter4/framework/system/CodeIgniter.php(902): App\Controllers\News->view()
+#9 /codeigniter/vendor/codeigniter4/framework/system/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+#10 /codeigniter/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#11 /codeigniter/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#12 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Unknown database 'ci4' in /codeigniter/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:215
+Stack trace:
+#0 /codeigniter/vendor/codeigniter4/framework/system/Database/BaseConnection.php(382): CodeIgniter\Database\MySQLi\Connection->connect()
+#1 /codeigniter/vendor/codeigniter4/framework/system/Database/BaseConnection.php(588): CodeIgniter\Database\BaseConnection->initialize()
+#2 /codeigniter/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query()
+#3 /codeigniter/vendor/codeigniter4/framework/system/Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+#4 /codeigniter/vendor/codeigniter4/framework/system/BaseModel.php(622): CodeIgniter\Model->doFirst()
+#5 /codeigniter/app/Models/NewsModel.php(17): CodeIgniter\BaseModel->first()
+#6 /codeigniter/app/Controllers/News.php(27): App\Models\NewsModel->getNews()
+#7 /codeigniter/vendor/codeigniter4/framework/system/CodeIgniter.php(902): App\Controllers\News->view()
+#8 /codeigniter/vendor/codeigniter4/framework/system/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+#9 /codeigniter/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#10 /codeigniter/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2022-10-25 23:36:20 --> Unable to connect to the database.
+Main connection [MySQLi]: Unknown database 'ci4'
+in SYSTEMPATH/Database/BaseConnection.php on line 418.
+ 1 SYSTEMPATH/Database/BaseConnection.php(588): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query()
+ 3 SYSTEMPATH/Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH/BaseModel.php(622): CodeIgniter\Model->doFirst()
+ 5 APPPATH/Models/NewsModel.php(17): CodeIgniter\BaseModel->first()
+ 6 APPPATH/Controllers/News.php(27): App\Models\NewsModel->getNews()
+ 7 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\News->view()
+ 8 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+10 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2022-10-25 23:36:20 --> Error connecting to the database: mysqli_sql_exception: Unknown database 'ci4' in /codeigniter/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:171
+Stack trace:
+#0 /codeigniter/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(171): mysqli->real_connect()
+#1 /codeigniter/vendor/codeigniter4/framework/system/Database/BaseConnection.php(382): CodeIgniter\Database\MySQLi\Connection->connect()
+#2 /codeigniter/vendor/codeigniter4/framework/system/Database/BaseConnection.php(588): CodeIgniter\Database\BaseConnection->initialize()
+#3 /codeigniter/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query()
+#4 /codeigniter/vendor/codeigniter4/framework/system/Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+#5 /codeigniter/vendor/codeigniter4/framework/system/BaseModel.php(622): CodeIgniter\Model->doFirst()
+#6 /codeigniter/app/Models/NewsModel.php(17): CodeIgniter\BaseModel->first()
+#7 /codeigniter/app/Controllers/News.php(27): App\Models\NewsModel->getNews()
+#8 /codeigniter/vendor/codeigniter4/framework/system/CodeIgniter.php(902): App\Controllers\News->view()
+#9 /codeigniter/vendor/codeigniter4/framework/system/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+#10 /codeigniter/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#11 /codeigniter/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#12 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Unknown database 'ci4' in /codeigniter/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:215
+Stack trace:
+#0 /codeigniter/vendor/codeigniter4/framework/system/Database/BaseConnection.php(382): CodeIgniter\Database\MySQLi\Connection->connect()
+#1 /codeigniter/vendor/codeigniter4/framework/system/Database/BaseConnection.php(588): CodeIgniter\Database\BaseConnection->initialize()
+#2 /codeigniter/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query()
+#3 /codeigniter/vendor/codeigniter4/framework/system/Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+#4 /codeigniter/vendor/codeigniter4/framework/system/BaseModel.php(622): CodeIgniter\Model->doFirst()
+#5 /codeigniter/app/Models/NewsModel.php(17): CodeIgniter\BaseModel->first()
+#6 /codeigniter/app/Controllers/News.php(27): App\Models\NewsModel->getNews()
+#7 /codeigniter/vendor/codeigniter4/framework/system/CodeIgniter.php(902): App\Controllers\News->view()
+#8 /codeigniter/vendor/codeigniter4/framework/system/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+#9 /codeigniter/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#10 /codeigniter/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2022-10-25 23:36:20 --> Unable to connect to the database.
+Main connection [MySQLi]: Unknown database 'ci4'
+in SYSTEMPATH/Database/BaseConnection.php on line 418.
+ 1 SYSTEMPATH/Database/BaseConnection.php(588): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query()
+ 3 SYSTEMPATH/Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH/BaseModel.php(622): CodeIgniter\Model->doFirst()
+ 5 APPPATH/Models/NewsModel.php(17): CodeIgniter\BaseModel->first()
+ 6 APPPATH/Controllers/News.php(27): App\Models\NewsModel->getNews()
+ 7 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\News->view()
+ 8 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+10 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2022-10-25 23:36:21 --> Error connecting to the database: mysqli_sql_exception: Unknown database 'ci4' in /codeigniter/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:171
+Stack trace:
+#0 /codeigniter/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php(171): mysqli->real_connect()
+#1 /codeigniter/vendor/codeigniter4/framework/system/Database/BaseConnection.php(382): CodeIgniter\Database\MySQLi\Connection->connect()
+#2 /codeigniter/vendor/codeigniter4/framework/system/Database/BaseConnection.php(588): CodeIgniter\Database\BaseConnection->initialize()
+#3 /codeigniter/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query()
+#4 /codeigniter/vendor/codeigniter4/framework/system/Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+#5 /codeigniter/vendor/codeigniter4/framework/system/BaseModel.php(622): CodeIgniter\Model->doFirst()
+#6 /codeigniter/app/Models/NewsModel.php(17): CodeIgniter\BaseModel->first()
+#7 /codeigniter/app/Controllers/News.php(27): App\Models\NewsModel->getNews()
+#8 /codeigniter/vendor/codeigniter4/framework/system/CodeIgniter.php(902): App\Controllers\News->view()
+#9 /codeigniter/vendor/codeigniter4/framework/system/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+#10 /codeigniter/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#11 /codeigniter/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#12 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Unknown database 'ci4' in /codeigniter/vendor/codeigniter4/framework/system/Database/MySQLi/Connection.php:215
+Stack trace:
+#0 /codeigniter/vendor/codeigniter4/framework/system/Database/BaseConnection.php(382): CodeIgniter\Database\MySQLi\Connection->connect()
+#1 /codeigniter/vendor/codeigniter4/framework/system/Database/BaseConnection.php(588): CodeIgniter\Database\BaseConnection->initialize()
+#2 /codeigniter/vendor/codeigniter4/framework/system/Database/BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query()
+#3 /codeigniter/vendor/codeigniter4/framework/system/Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+#4 /codeigniter/vendor/codeigniter4/framework/system/BaseModel.php(622): CodeIgniter\Model->doFirst()
+#5 /codeigniter/app/Models/NewsModel.php(17): CodeIgniter\BaseModel->first()
+#6 /codeigniter/app/Controllers/News.php(27): App\Models\NewsModel->getNews()
+#7 /codeigniter/vendor/codeigniter4/framework/system/CodeIgniter.php(902): App\Controllers\News->view()
+#8 /codeigniter/vendor/codeigniter4/framework/system/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+#9 /codeigniter/vendor/codeigniter4/framework/system/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+#10 /codeigniter/public/index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2022-10-25 23:36:21 --> Unable to connect to the database.
+Main connection [MySQLi]: Unknown database 'ci4'
+in SYSTEMPATH/Database/BaseConnection.php on line 418.
+ 1 SYSTEMPATH/Database/BaseConnection.php(588): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH/Database/BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query()
+ 3 SYSTEMPATH/Model.php(250): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH/BaseModel.php(622): CodeIgniter\Model->doFirst()
+ 5 APPPATH/Models/NewsModel.php(17): CodeIgniter\BaseModel->first()
+ 6 APPPATH/Controllers/News.php(27): App\Models\NewsModel->getNews()
+ 7 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\News->view()
+ 8 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+ 9 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+10 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-10-25 23:36:27 --> Invalid file: templates/header.php
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 33.
+ 1 SYSTEMPATH/View/View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile()
+ 2 SYSTEMPATH/Common.php(1142): CodeIgniter\View\View->render()
+ 3 APPPATH/Controllers/News.php(35): view()
+ 4 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\News->view()
+ 5 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+ 6 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-10-25 23:40:27 --> Invalid file: templates/header.php
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 33.
+ 1 SYSTEMPATH/View/View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile()
+ 2 SYSTEMPATH/Common.php(1142): CodeIgniter\View\View->render()
+ 3 APPPATH/Controllers/News.php(35): view()
+ 4 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\News->view()
+ 5 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+ 6 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-10-25 23:40:28 --> Invalid file: templates/header.php
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 33.
+ 1 SYSTEMPATH/View/View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile()
+ 2 SYSTEMPATH/Common.php(1142): CodeIgniter\View\View->render()
+ 3 APPPATH/Controllers/News.php(35): view()
+ 4 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\News->view()
+ 5 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+ 6 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-10-25 23:40:33 --> Invalid file: templates/header.php
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 33.
+ 1 SYSTEMPATH/View/View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile()
+ 2 SYSTEMPATH/Common.php(1142): CodeIgniter\View\View->render()
+ 3 APPPATH/Controllers/News.php(35): view()
+ 4 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\News->view()
+ 5 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+ 6 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-10-25 23:40:34 --> Invalid file: templates/header.php
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 33.
+ 1 SYSTEMPATH/View/View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile()
+ 2 SYSTEMPATH/Common.php(1142): CodeIgniter\View\View->render()
+ 3 APPPATH/Controllers/News.php(35): view()
+ 4 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\News->view()
+ 5 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+ 6 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-10-25 23:40:41 --> Invalid file: templates/header.php
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 33.
+ 1 SYSTEMPATH/View/View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile()
+ 2 SYSTEMPATH/Common.php(1142): CodeIgniter\View\View->render()
+ 3 APPPATH/Controllers/News.php(35): view()
+ 4 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\News->view()
+ 5 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+ 6 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-10-25 23:40:44 --> Invalid file: templates/header.php
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 33.
+ 1 SYSTEMPATH/View/View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile()
+ 2 SYSTEMPATH/Common.php(1142): CodeIgniter\View\View->render()
+ 3 APPPATH/Controllers/News.php(35): view()
+ 4 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\News->view()
+ 5 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+ 6 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-10-25 23:40:44 --> Invalid file: templates/header.php
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 33.
+ 1 SYSTEMPATH/View/View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile()
+ 2 SYSTEMPATH/Common.php(1142): CodeIgniter\View\View->render()
+ 3 APPPATH/Controllers/News.php(35): view()
+ 4 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\News->view()
+ 5 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+ 6 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-10-25 23:40:44 --> Invalid file: templates/header.php
+in SYSTEMPATH/Exceptions/FrameworkException.php on line 33.
+ 1 SYSTEMPATH/View/View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile()
+ 2 SYSTEMPATH/Common.php(1142): CodeIgniter\View\View->render()
+ 3 APPPATH/Controllers/News.php(35): view()
+ 4 SYSTEMPATH/CodeIgniter.php(902): App\Controllers\News->view()
+ 5 SYSTEMPATH/CodeIgniter.php(457): CodeIgniter\CodeIgniter->runController()
+ 6 SYSTEMPATH/CodeIgniter.php(340): CodeIgniter\CodeIgniter->handleRequest()
+ 7 FCPATH/index.php(67): CodeIgniter\CodeIgniter->run()
