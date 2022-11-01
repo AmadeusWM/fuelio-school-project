@@ -1,0 +1,10 @@
+:root {
+    /* #FF6148 */
+    --primary: 255, 97, 72 !important;  
+    /* #FFBC48 */
+    --secondary: 255, 188, 72 !important;
+    /* #FF488A */
+    --tertiary: 255, 72, 138 !important;
+    /* bootstrap overrides */
+    --bs-primary: #f09a38 !important;
+}
