@@ -1,0 +1,28 @@
+@import "../theme.css";
+
+.colored-back{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(var(--secondary), 0.1);
+    height: 35vh;
+    padding: 20px;
+    margin: 40px 0px;
+}
+
+#product-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    width: 200px;
+    height: 250px;
+    
+    margin: 20px;
+    padding: 10px;
+}
+
+#home-title{
+    font-size: 3rem;
+}

@@ -5,6 +5,48 @@
     --secondary: 255, 188, 72 !important;
     /* #FF488A */
     --tertiary: 255, 72, 138 !important;
+    /* shades of black */
+    --dp0: 3, 3, 3;
+    --dp1: 6, 6, 6;
+    --dp2: 6, 6, 6;
+    --dp3: 9, 9, 9;
+    --dp6: 18, 18, 18;
+    --dp12: 36, 36, 36;
+    --dp24: 72, 72, 72;
+    /* text */
+    --b0: var(--dp3);
+    --b1: var(--dp12);
+    --b2: var(--dp24);
+    /* border-radius */
+    --radius0: 4px;
+    --radius1: 8px;
+    --radius2: 16px;
+    --radius3: 32px;
     /* bootstrap overrides */
-    --bs-primary: #f09a38 !important;
+    --bs-primary: rgb(--var(--primary)) !important;
+
+}
+
+p{
+    color: var(--b1);
+}
+
+h1{
+    color: var(--b1);
+    font-size: 3rem;
+}
+
+h2{
+    color: var(--b1);
+    font-size: 2rem;
+}
+
+h3{
+    color: var(--b1);
+    font-size: 1.5rem;
+}
+
+.hover-box {
+    border-radius: var(--radius2);
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 }

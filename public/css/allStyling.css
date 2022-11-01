@@ -1,0 +1,15 @@
+/* 
+🔥🔥🔥
+This file speeds up the loading-time of your pages,
+because loading all the CSS files at once means less HTTP
+requests 
+from [here](https://stackoverflow.com/questions/2336302/single-huge-css-file-vs-multiple-smaller-specific-css-files)
+*/
+
+@import "reset.css";
+@import "theme.css";
+@import "bootstrap.css";
+@import "home/homepage.css";
+@import "templates/header.css";
+@import "templates/footer.css";
+@import "user/registration.css";

@@ -9,9 +9,8 @@
 
     <!-- from [here](https://icons.getbootstrap.com/#install) -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/reset.css">
-    <link rel="stylesheet" href="/css/header.css">
+    <!-- <link rel="stylesheet" href="/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="/css/allStyling.css">
 </head>
 
 <body>

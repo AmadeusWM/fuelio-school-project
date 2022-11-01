@@ -1,0 +1,18 @@
+@import "../theme.css";
+
+#registration-form-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#registration-form-container{
+    flex-direction: column;
+    width: 750px;
+    padding: 32px;
+    margin: 32px;
+}
+
+#registration-form-container > input {
+    margin: 8px;
+}

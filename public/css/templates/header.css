@@ -1,0 +1,78 @@
+@import "../theme.css";
+
+button{
+    all: unset;
+}
+
+#navbar-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 5px;
+
+    height: 100px;
+
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.05);
+}
+
+#logo-header {
+    font-size: 3rem;
+    color: rgb(var(--primary));
+}
+
+#navbar-header > ul{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+#navbar-header > form{
+    display: flex;
+    flex-direction: row;
+}
+
+.link {
+    text-decoration: none;
+    margin: 0px 15px;
+    padding: 2px 0px;
+    font-size: 1.4rem;
+    color: var(--b2);
+    overflow: hidden;
+
+    background: linear-gradient(to left, rgb(var(--primary)), rgb(var(--primary)));
+    background-size: 0 3px, 100% 3px;
+    background-position: 0 100%, 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 250ms, color 400ms, transform 500ms ease;
+}
+
+.link:hover{
+    color: rgb(var(--primary));
+    background-size: 100% 3px, 0 3px;
+}
+
+.header-icon {
+    font-size: 32px;
+    color: rgb(var(--primary));
+    margin: 0px 10px;
+}
+
+/* bootstrap overwrites */
+
+.btn-outline-primary {
+    margin: 5px;
+    color: rgb(var(--primary));
+    border-color: rgb(var(--primary));
+}
+
+.btn-outline-primary:hover {
+    background-color: rgb(var(--primary));
+    border-color: rgb(var(--primary));
+}
+
+.btn-outline-primary:active:focus {
+    background-color: rgb(var(--primary));
+    border-color: rgb(var(--primary));
+}
