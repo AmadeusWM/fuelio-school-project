@@ -21,8 +21,9 @@
     width: 100%;
 }
 
-.input-label{
-    color: gray;
+#errors-validation {
+    list-style: circle outside;
+    margin-left: 20px;
 }
 
 .registration-input{
