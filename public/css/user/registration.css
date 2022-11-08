@@ -1,18 +1,43 @@
 @import "../theme.css";
 
-#registration-form-container{
+#registration-container{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin: 32px;
+    padding: 32px;
+    width: 450px;
+}
+
+#registration-container > form > h1{
+    align-self: center;
+    margin-bottom: 15px;
 }
 
 #registration-form-container{
+    display: flex;
     flex-direction: column;
-    width: 750px;
-    padding: 32px;
-    margin: 32px;
+    width: 100%;
 }
 
-#registration-form-container > input {
-    margin: 8px;
+.input-label{
+    color: gray;
+}
+
+.registration-input{
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.registration-buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.registration-button{
+    margin: 0px 20px;
 }

@@ -1,8 +1,5 @@
 @import "../theme.css";
 
-button{
-    all: unset;
-}
 
 #navbar-header {
     display: flex;
@@ -57,22 +54,4 @@ button{
     font-size: 32px;
     color: rgb(var(--primary));
     margin: 0px 10px;
-}
-
-/* bootstrap overwrites */
-
-.btn-outline-primary {
-    margin: 5px;
-    color: rgb(var(--primary));
-    border-color: rgb(var(--primary));
-}
-
-.btn-outline-primary:hover {
-    background-color: rgb(var(--primary));
-    border-color: rgb(var(--primary));
-}
-
-.btn-outline-primary:active:focus {
-    background-color: rgb(var(--primary));
-    border-color: rgb(var(--primary));
 }

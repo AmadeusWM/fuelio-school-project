@@ -25,7 +25,8 @@ $routes->set404Override();
 // where controller filters or CSRF protection are bypassed.
 // If you don't want to define all routes, please use the Auto Routing (Improved).
 // Set `$autoRoutesImproved` to true in `app/Config/Feature.php` and set the following to true.
-// $routes->setAutoRoute(false);
+// thus we disable autorouting for safety [https://www.codeigniter.com/user_guide/incoming/routing.html#use-defined-routes-only]
+$routes->setAutoRoute(false);
 
 /*
  * --------------------------------------------------------------------
@@ -37,6 +38,8 @@ $routes->set404Override();
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 $routes->get('login', 'User\Registration::login');
+$routes->get('register', 'User\Registration::register');
+$routes->match(['get', 'post'], 'registration/register', 'User/Registration::register');
 
 /*
  * --------------------------------------------------------------------

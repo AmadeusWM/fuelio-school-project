@@ -6,9 +6,9 @@ requests
 from [here](https://stackoverflow.com/questions/2336302/single-huge-css-file-vs-multiple-smaller-specific-css-files)
 */
 
+@import "bootstrap/bootstrap.css";
 @import "reset.css";
 @import "theme.css";
-@import "bootstrap.css";
 @import "home/homepage.css";
 @import "templates/header.css";
 @import "templates/footer.css";

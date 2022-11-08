@@ -1,6 +1,8 @@
 :root {
     /* #FF6148 */
     --primary: 255, 97, 72 !important;  
+    --primary2: 255, 82, 72 !important;  
+    --primary3: 255, 77, 72 !important;  
     /* #FFBC48 */
     --secondary: 255, 188, 72 !important;
     /* #FF488A */
@@ -21,28 +23,70 @@
     --radius0: 4px;
     --radius1: 8px;
     --radius2: 16px;
-    --radius3: 32px;
+    --radius3: 32px !important;
     /* bootstrap overrides */
-    --bs-primary: rgb(--var(--primary)) !important;
+    --bs-primary: rgb(var(--primary)) !important;
+    --bs-primary-rgb: var(--primary) !important;
+}
 
+.btn-primary {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: rgb(var(--primary)) !important;
+    --bs-btn-border-color: rgb(var(--primary)) !important;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: rgb(var(--primary3)) !important;
+    --bs-btn-hover-border-color: rgb(var(--primary2)) !important;
+    --bs-btn-focus-shadow-rgb: 49, 132, 253;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: rgb(var(--primary2)) !important;
+    --bs-btn-active-border-color: rgb(var(--primary3)) !important;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: rgb(var(--primary)) !important;
+    --bs-btn-disabled-border-color: rgb(var(--primary)) !important
+}
+
+.btn-outline-primary {
+    --bs-btn-color: rgb(var(--primary)) !important;
+    --bs-btn-border-color: rgb(var(--primary)) !important;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: rgb(var(--primary)) !important;
+    --bs-btn-hover-border-color: rgb(var(--primary)) !important;
+    --bs-btn-focus-shadow-rgb: 13, 110, 253;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: rgb(var(--primary)) !important;
+    --bs-btn-active-border-color: rgb(var(--primary)) !important;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: rgb(var(--primary)) !important;
+    --bs-btn-disabled-bg: transparent;
+    --bs-btn-disabled-border-color: rgb(var(--primary)) !important;
+    --bs-gradient: none
+}
+
+.no-link-styling{
+    text-decoration: none;
+}
+
+button{
+    all: unset;
 }
 
 p{
-    color: var(--b1);
+    color: rgb(var(--b1));
 }
 
 h1{
-    color: var(--b1);
+    color: rgb(var(--b1));
     font-size: 3rem;
 }
 
 h2{
-    color: var(--b1);
+    color: rgb(var(--b1));
     font-size: 2rem;
 }
 
 h3{
-    color: var(--b1);
+    color: rgb(var(--b1));
     font-size: 1.5rem;
 }
 
