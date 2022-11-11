@@ -22,15 +22,31 @@
             <button class="btn btn-outline-primary" type="submit">Search</button>
         </form>
         <ul>
-            <a href="/login" class="link" >Login</a>
-            <a href="/account">
+            <!-- code when logged in -->
+            <?php
+            if(session()->get("isLoggedIn")){
+            ?>
+            <button id="account-overview-button">
                 <i class="bi bi-person header-icon" aria-label="Account" ></i>
-            </a>
+            </button>
+            <div id="account-overview-popup">
+                <a>Log out</a>
+            </div>
+            <button id="notifications-button">
+                <i class="bi bi-envelope header-icon" aria-label="Notifications" ></i>
+            </button>
+            <div id="notifications-popup">
+
+            </div>
+            <!-- code when logged out -->
+            <?php
+            }
+            else {
+            ?>
+            <a href="/login" class="link" >Login</a>
+            <?php } ?>
             <a href="/basket">
                 <i class="bi bi-bag header-icon" aria-label="Account" ></i>
             </a>
-            <button>
-                <i class="bi bi-envelope header-icon" aria-label="Notifications" ></i>
-            </button>
         </ul>
     </nav>

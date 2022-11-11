@@ -5,10 +5,10 @@ namespace App\Controllers\User;
 use App\Controllers\BaseController;
 use App\Models\UserModel;
 
-class Registration extends BaseController
+class SignUpController extends BaseController
 {
 
-    public function registerView()
+    public function index()
     {
         $data = [
             'title' => ucfirst("Register")
@@ -16,17 +16,6 @@ class Registration extends BaseController
 
         return view('templates/header', $data) .
             view('user/register') .
-            view('templates/footer');
-    }
-
-    public function loginView()
-    {
-        $data = [
-            'title' => ucfirst("Log in")
-        ];
-
-        return view('templates/header', $data) .
-            view('user/login') .
             view('templates/footer');
     }
 
@@ -63,36 +52,5 @@ class Registration extends BaseController
             $data['validation_errors'] = $this->validator->getErrors();
         }
         return $this->response->setJSON($data);
-    }
-
-    public function login()
-    {
-        $session = session();
-        $userModel = new UserModel();
-        $email = $this->request->getVar('email');
-        $password = $this->request->getVar('password');
-        
-        $data = $userModel->where('email', $email)->first();
-        
-        if($data){
-            $pass = $data['password'];
-            $authenticatePassword = password_verify($password, $pass);
-            if($authenticatePassword){
-                $ses_data = [
-                    'id' => $data['id'],
-                    'username' => $data['username'],
-                    'email' => $data['email'],
-                    'isLoggedIn' => TRUE
-                ];
-                $session->set($ses_data);
-                return redirect()->to('/profile');
-            }else{
-                $session->setFlashdata('msg', 'Password is incorrect.');
-                return redirect()->to('/signin');
-            }
-        }else{
-            $session->setFlashdata('msg', 'Email does not exist.');
-            return redirect()->to('/signin');
-        }
     }
 }

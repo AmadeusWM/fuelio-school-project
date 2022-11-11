@@ -1,15 +1,15 @@
 <div class="d-flex justify-content-center">
     <div id="registration-container" class="hover-box">
         <!-- report csrf protection errors -->
-        <?= session()->getFlashdata('error') ?>
+        <!-- <= session()->getFlashdata('error') ?> -->
         <!-- report validation errors -->
-        <?= service('validation')->listErrors() ?>
+        <!-- <= service('validation')->listErrors() ?> -->
 
 
+        <h1>Sign Up!</h1>
         <form id="registration-form-container">
             <!-- hidden csrf field to protect against common attacks (https://www.codeigniter.com/user_guide/tutorial/create_news_items.html)-->
             <?= csrf_field() ?>
-            <h1>Sign Up!</h1>
             <input id="input-email" type="email" name="email" class="form-control registration-input" placeholder="name@example.com">
             <input id="input-username" type="text" name="username" class="form-control registration-input" placeholder="Username">
             <input id="input-password" type="password" name="password" class="form-control registration-input" placeholder="Password">
@@ -28,7 +28,7 @@
     button.addEventListener('click', register, false);
 
     function register() {
-        fetch("<?= base_url('/registration/register') ?>", {
+        fetch("<?= base_url('/SignUpController/register') ?>", {
                 method: "post",
                 headers: {
                     "Content-Type": "application/json",

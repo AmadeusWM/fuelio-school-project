@@ -10,7 +10,7 @@
     width: 450px;
 }
 
-#registration-container > form > h1{
+#registration-container > h1{
     align-self: center;
     margin-bottom: 15px;
 }
