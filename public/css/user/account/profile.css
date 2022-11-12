@@ -1,0 +1,11 @@
+.profile-information-input {
+    margin: 8px;
+}
+
+.profile-image-preview {
+    width: 200px;
+    height: 200px;
+    margin: 5px;
+    object-fit: cover;
+    border-radius: var(--radius1);
+}

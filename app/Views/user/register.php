@@ -1,11 +1,5 @@
 <div class="d-flex justify-content-center">
     <div id="registration-container" class="hover-box">
-        <!-- report csrf protection errors -->
-        <!-- <= session()->getFlashdata('error') ?> -->
-        <!-- report validation errors -->
-        <!-- <= service('validation')->listErrors() ?> -->
-
-
         <h1>Sign Up!</h1>
         <form id="registration-form-container">
             <!-- hidden csrf field to protect against common attacks (https://www.codeigniter.com/user_guide/tutorial/create_news_items.html)-->

@@ -1,20 +1,20 @@
 <div id="account-overview-container">
     <nav>
         <ul id="account-left-sidebar" class="hover-box">
-            <li><button name="account" id="account-button-account" class="link account-tab-button active">My Account</button></li>
+            <li><button name="profile" id="account-button-profile" class="link account-tab-button active">My Profile</button></li>
             <li><button name="orders" id="account-button-orders" class="link account-tab-button">My Orders</button></li>
             <li><button name="products" id="account-button-products" class="link account-tab-button">My Products</button></li>
             <li><button name="analytics" id="account-button-analytics" class="link account-tab-button">Analytics</button></li>
         </ul>
     </nav>
     <div id="account-tab-container" class="hover-box">
-        <?= view($page) ?>
+        <?= $page ?>
     </div>
 </div>
 <script src="/javascript/ajaxRequests.js"></script>
 <script>
-    let button1 = document.getElementById("account-button-account");
-    button1.addEventListener('click', () => updateHTML("account"), false);
+    let button1 = document.getElementById("account-button-profile");
+    button1.addEventListener('click', () => updateHTML("profile"), false);
 
     let button2 = document.getElementById("account-button-orders");
     button2.addEventListener('click', () => updateHTML("orders"), false);

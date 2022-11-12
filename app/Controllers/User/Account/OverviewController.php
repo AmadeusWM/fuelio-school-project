@@ -17,8 +17,4 @@ class OverviewController extends BaseController
             view('user/account/overview', $data) .
             view('templates/footer');
     }
-
-    public function getTab($page = "account"){
-        return $this->response->setJSON(["view" => view("user/account/" . $page)]);
-    }
 }

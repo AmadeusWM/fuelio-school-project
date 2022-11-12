@@ -38,14 +38,26 @@ $routes->setAutoRoute(false);
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 
-$routes->get('account/overview', 'User\Account\OverviewController::index');
-$routes->get('account/(:any)', 'User\Account\OverviewController::getTab/$1');
+// groups prepend "account" before every route (https://codeigniter.com/user_guide/incoming/routing.html#redirecting-routes)
+$routes->group('account', static function ($routes) {
+    $routes->get('overview/profile', 'User\Account\ProfileController::index');
+    $routes->addRedirect('overview', 'account/overview/profile');
+    $routes->get('profile', 'User\Account\ProfileController::viewResponse');
+    $routes->get('orders', 'User\Account\OrdersController::viewResponse');
+    $routes->get('products', 'User\Account\ProductsController::viewResponse');
+    $routes->get('analytics', 'User\Account\AnalyticsController::viewResponse');
+
+    $routes->post('updateProfile', 'User\Account\ProfileController::updateProfile');
+});
 
 $routes->get('login', 'User\SignInController::index');
 $routes->get('register', 'User\SignUpController::index');
-$routes->post('SignInController/login', 'User\SignInController::login');
+
+$routes->group('SignInController', static function ($routes) {
+    $routes->post('login', 'User\SignInController::login');
+    $routes->get('logout', 'User\SignInController::logout');
+});
 $routes->post('SignUpController/register', 'User\SignUpController::register');
-$routes->get('SignInController/logout', 'User\SignInController::logout');
 
 /*
  * --------------------------------------------------------------------
