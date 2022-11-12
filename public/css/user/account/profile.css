@@ -2,10 +2,45 @@
     margin: 8px;
 }
 
-.profile-image-preview {
+#profile-images {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.profile-image-container {
+}
+
+.profile-image {
     width: 200px;
     height: 200px;
     margin: 5px;
     object-fit: cover;
     border-radius: var(--radius1);
+}
+
+.profile-trash-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    position: absolute;
+    
+    background-color: rgba(var(--dp0), 0.5);
+    width: 32px;
+    height: 32px;
+    margin-top: 12px;
+    margin-left: 12px;
+    padding: 5px;
+    border-radius: 20px;
+
+    transition: transform 0.1s ease;
+}
+.profile-trash-button:hover{
+    transform: scale(115%);
+}
+
+.profile-trash-icon{
+    color: rgb(var(--red));
+    font-size: 24px;
 }

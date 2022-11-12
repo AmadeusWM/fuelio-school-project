@@ -1,12 +1,15 @@
 :root {
     /* #FF6148 */
-    --primary: 255, 97, 72 !important;  
-    --primary2: 255, 82, 72 !important;  
-    --primary3: 255, 77, 72 !important;  
+    --primary: 255, 97, 72;  
+    --primary2: 255, 82, 72;  
+    --primary3: 255, 77, 72;  
     /* #FFBC48 */
-    --secondary: 255, 188, 72 !important;
+    --secondary: 255, 188, 72;
     /* #FF488A */
-    --tertiary: 255, 72, 138 !important;
+    --tertiary: 255, 72, 138;
+    /* standard colors */
+    /* #df3b59 */
+    --red: 223, 59, 89;
     /* shades of black */
     --dp0: 3, 3, 3;
     --dp1: 6, 6, 6;

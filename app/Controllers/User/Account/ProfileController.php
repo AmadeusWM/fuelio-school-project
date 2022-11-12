@@ -126,4 +126,10 @@ class ProfileController extends BaseController
             echo $this->index($data);
         }
     }
+
+    public function removeImage(){
+        helper(['filesystem']);
+        // if ()
+        delete_files('./path/to/directory/');
+    }
 }

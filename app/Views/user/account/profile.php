@@ -17,14 +17,29 @@
         <?= service('validation')->listErrors() ?>
         <button type="submit" class="btn btn-primary m-2">Update</button>
     </form>
+    <hr />
+    <h2 class="mb-3">Your Account Images</h2>
     <div id="profile-images">
-        <hr/>
-        <h2 class="mb-3">Your Account Images</h2>
         <?php
-            if ($images){
-                foreach ($images as $image) { ?>
-                    <img src="<?= $image['image_location'] ?>" class="profile-image-preview" />
+        if ($images) {
+            foreach ($images as $image) { ?>
+                <div id="<?=$image['id']?>" class="profile-image-container">
+                    <button name="image-remove-button" id="<?=$image['id']?>" class="profile-trash-button">
+                        <i class="bi bi-trash profile-trash-icon" aria-label="Remove Image"></i>
+                    </button>
+                    <img src="<?= $image['image_location'] ?>" class="profile-image" />
+                </div>
         <?php }
-            } ?>
+        } ?>
     </div>
 </div>
+<script>
+    let buttons = document.getElementsByName("image-remove-button");
+    for(button of buttons){
+        let imageId = button.getAttribute("id");
+        button.addEventListener('click', () => removeImage(imageId), false);
+    }
+
+    function removeImage(imageId){
+    }
+</script>

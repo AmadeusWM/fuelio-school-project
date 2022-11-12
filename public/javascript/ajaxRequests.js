@@ -30,7 +30,7 @@ function ajaxGet(url, callback) {
             "X-Requested-With": "XMLHttpRequest",
         },
     })
-        .then(response => response.json() )
+        .then(response => response.json())
         .then(data => { callback(data) })
 }
 
@@ -49,6 +49,25 @@ function ajaxGetView(url, callback) {
     })
         .then(response => response.json())
         .then(data => { callback(data["view"]) })
+}
+
+/**
+ * 
+ * @param {string} url 
+ * @param {object} body 
+ * @param {function} callback 
+ */
+function ajaxDelete(url, body, callback) {
+    fetch(url, {
+        method: "delete",
+        headers: {
+            "Content-Type": "application/json",
+            "X-Requested-With": "XMLHttpRequest",
+        },
+        body: JSON.stringify(body)
+    })
+        .then(response => response.json())
+        .then(data => { callback(data) })
 }
 
 /**
