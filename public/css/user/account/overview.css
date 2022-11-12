@@ -1,0 +1,28 @@
+#account-overview-container{
+    display: flex;
+    flex-direction: row;
+
+    padding: 32px;
+    width: 100%;
+}
+
+#account-left-sidebar{
+    padding: 16px;
+}
+
+.account-tab-button{
+    padding: 8px;
+    margin: 4px;
+}
+
+.account-tab-button.active{
+    background-color: rgba(var(--primary), 0.1);
+    border-radius: var(--radius1);
+}
+
+
+#account-tab-container {
+    padding: 16px;
+    margin-left: 32px;
+    flex: 1;
+}

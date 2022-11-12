@@ -9,7 +9,8 @@ from [here](https://stackoverflow.com/questions/2336302/single-huge-css-file-vs-
 @import "bootstrap/bootstrap.css";
 @import "reset.css";
 @import "theme.css";
-@import "home/homepage.css";
+@import "home/home.css";
 @import "templates/header.css";
 @import "templates/footer.css";
 @import "user/registration.css";
+@import "user/account/overview.css";

@@ -16,37 +16,78 @@
 
 <body>
     <nav id="navbar-header">
-        <a class="no-link-styling" href="/"><h1 id="logo-header">Fuelio</h1></a>
+        <a class="no-link-styling" href="/">
+            <h1 id="logo-header">Fuelio</h1>
+        </a>
         <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-primary" type="submit">Search</button>
         </form>
-        <ul>
+        <div>
             <!-- code when logged in -->
             <?php
-            if(session()->get("isLoggedIn")){
+            if (session("isLoggedIn") == true) {
             ?>
-            <button id="account-overview-button">
-                <i class="bi bi-person header-icon" aria-label="Account" ></i>
-            </button>
-            <div id="account-overview-popup">
-                <a>Log out</a>
-            </div>
-            <button id="notifications-button">
-                <i class="bi bi-envelope header-icon" aria-label="Notifications" ></i>
-            </button>
-            <div id="notifications-popup">
-
-            </div>
-            <!-- code when logged out -->
+                <button id="account-overview-button">
+                    <i class="bi bi-person header-icon" aria-label="Account"></i>
+                </button>
+                <div id="account-overview-popup" class="header-popup">
+                    <a href="/account/overview" class="link">My Account</a>
+                    <a href="/SignInController/logout" class="link">Log out</a>
+                </div>
+                <button id="notifications-button">
+                    <i class="bi bi-envelope header-icon" aria-label="Notifications"></i>
+                </button>
+                <ul id="notifications-popup" class="header-popup">
+                    <li>
+                        <p>Later this will</p>
+                    </li>
+                    <li>
+                        <p>be a list of your</p>
+                    </li>
+                    <li>
+                        <p>notifications</p>
+                    </li>
+                </ul>
+                <!-- code when logged out -->
             <?php
-            }
-            else {
+            } else {
             ?>
-            <a href="/login" class="link" >Login</a>
+                <a href="/login" class="link">Login</a>
             <?php } ?>
             <a href="/basket">
-                <i class="bi bi-bag header-icon" aria-label="Account" ></i>
+                <i class="bi bi-bag header-icon" aria-label="Account"></i>
             </a>
-        </ul>
+        </div>
     </nav>
+    <script>
+        <?php
+        if (session("isLoggedIn") == true) {
+        ?>
+            let buttonOverview = document.getElementById("account-overview-button");
+            buttonOverview.addEventListener('click', () => togglePopup("account-overview-popup"), false);
+
+            let buttonNotifications = document.getElementById("notifications-button");
+            buttonNotifications.addEventListener('click', () => togglePopup("notifications-popup"), false);
+        <?php } ?>
+
+        function togglePopup(id) {
+            let popup = document.getElementById(id);
+
+            let popupActive = "header-popup header-popup-active"
+            let popupInActive = "header-popup"
+
+            if (popup.getAttribute("class") == popupInActive) {
+                closeAllPopups();
+                popup.setAttribute("class", popupActive)
+            } else
+                popup.setAttribute("class", popupInActive)
+        }
+
+        function closeAllPopups() {
+            let popups = document.getElementsByClassName("header-popup");
+            for (let popup of popups) {
+                popup.setAttribute("class", "header-popup")
+            }
+        }
+    </script>

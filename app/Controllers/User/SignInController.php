@@ -53,8 +53,19 @@ class SignInController extends BaseController
         $data['csrf_value'] = csrf_hash();
         $data['csrf_token'] = csrf_token();
 
+        // return response for ajax
         $data["session"] = $session->get();
         $data["session-flash-data"] = $session->getFlashdata();
         return $this->response->setJSON($data);
+    }
+
+    public function logout()
+    {
+        $session = session();
+        
+        $session->set('isLoggeIn', false);
+        session_destroy();
+
+        return redirect()->to(base_url("/"));
     }
 }
