@@ -41,5 +41,6 @@
     }
 
     function removeImage(imageId){
+        
     }
 </script>
