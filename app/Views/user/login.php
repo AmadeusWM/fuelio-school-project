@@ -7,7 +7,7 @@
             <input id="input-email" type="email" name="email" class="form-control registration-input" placeholder="name@example.com">
             <input id="input-password" type="password" class="form-control registration-input" placeholder="Password">
         </form>
-        <ul id="errors-validation"></ul>
+        <ul id="errors-validation" class="errors-validation" ></ul>
         <div class="registration-buttons">
             <button onclick="location.href='/register'" class="btn btn-outline-primary w-100 registration-button">Sign Up</button>
             <button id="sign-in-button" class="btn btn-primary w-100 registration-button" type="submit">Log In</button>
@@ -55,7 +55,7 @@
             
             let msg = sessionFlashData["msg"]
             
-            let html = "<li class='link-danger m-2'>" + msg + "</li>"
+            let html = "<li class='error-field'>" + msg + "</li>"
             
             document.getElementById("errors-validation").innerHTML = html;
         }

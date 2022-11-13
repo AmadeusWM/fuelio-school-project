@@ -11,10 +11,12 @@
         <input id="input-website" type="text" name="website" value="<?= $website ?>" class="form-control profile-information-input" placeholder="Your Website">
         <textarea id="input-other" type="text" name="other" class="form-control profile-information-input" placeholder="Other Information"><?= $other ?></textarea>
         <input multiple type="file" name="img_files[]" size="20" class="form-control profile-information-input" />
-        <!-- report csrf protection errors -->
-        <?= session()->getFlashdata('error') ?>
-        <!-- report validation errors -->
-        <?= service('validation')->listErrors() ?>
+        <ul class="errors-validation">
+            <!-- report csrf protection errors -->
+            <?= session()->getFlashdata('error') ?>
+            <!-- report validation errors -->
+            <?= service('validation')->listErrors() ?>
+        </ul>
         <button type="submit" class="btn btn-primary m-2">Update</button>
     </form>
     <hr />
@@ -23,8 +25,8 @@
         <?php
         if ($images) {
             foreach ($images as $image) { ?>
-                <div id="<?=$image['id']?>" class="profile-image-container">
-                    <button name="image-remove-button" id="<?=$image['id']?>" class="profile-trash-button">
+                <div id="container-<?= $image['id'] ?>" class="profile-image-container">
+                    <button name="image-remove-button" id="<?= $image['id'] ?>" class="profile-trash-button">
                         <i class="bi bi-trash profile-trash-icon" aria-label="Remove Image"></i>
                     </button>
                     <img src="<?= $image['image_location'] ?>" class="profile-image" />
@@ -33,14 +35,36 @@
         } ?>
     </div>
 </div>
+<script src="/javascript/ajaxRequests.js"></script>
 <script>
     let buttons = document.getElementsByName("image-remove-button");
-    for(button of buttons){
+    for (button of buttons) {
         let imageId = button.getAttribute("id");
         button.addEventListener('click', () => removeImage(imageId), false);
     }
 
-    function removeImage(imageId){
+    function removeImage(imageId) {
+        console.log(imageId)
+        ajaxPost("<?= base_url('/account/removeImage') ?>", imageBody(imageId), handleResponse)
+    }
+
+    function imageBody(imageId){
+        let body = {
+            "imageId": imageId,
+            ...getCSRFHiddenFieldValue("<?= csrf_token() ?>")
+        }
+        return body;
+    }
+
+
+    function handleResponse(data){
+        console.log(data);
         
+        if (data["success"]){
+            let removedImageId = data["imageId"];
+            let imageContainer = document.getElementById("container-" + removedImageId);
+            imageContainer.remove();
+        }
+        updateCSRF(data);
     }
 </script>

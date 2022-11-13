@@ -59,7 +59,7 @@ function ajaxGetView(url, callback) {
  */
 function ajaxDelete(url, body, callback) {
     fetch(url, {
-        method: "delete",
+        method: "post",
         headers: {
             "Content-Type": "application/json",
             "X-Requested-With": "XMLHttpRequest",
@@ -86,7 +86,7 @@ function updateCSRF(data) {
 /**
  * 
  * @param {*} csrf_token : the name of the hidden field
- * @returns the CSRF hidden field key-value
+ * @returns the CSRF hidden field key-value, use ... to unpack it
  */
 function getCSRFHiddenFieldValue(csrf_token) {
     let hiddenField = document.getElementsByName(csrf_token)[0];
@@ -98,4 +98,3 @@ function getCSRFHiddenFieldValue(csrf_token) {
 
     return returnValue;
 }
-

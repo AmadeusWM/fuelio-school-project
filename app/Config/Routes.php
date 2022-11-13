@@ -42,12 +42,12 @@ $routes->get('/', 'Home::index');
 $routes->group('account', static function ($routes) {
     $routes->get('overview/profile', 'User\Account\ProfileController::index');
     $routes->addRedirect('overview', 'account/overview/profile');
-    $routes->get('profile', 'User\Account\ProfileController::viewResponse');
-    $routes->get('orders', 'User\Account\OrdersController::viewResponse');
-    $routes->get('products', 'User\Account\ProductsController::viewResponse');
-    $routes->get('analytics', 'User\Account\AnalyticsController::viewResponse');
+    $routes->get('overview/orders', 'User\Account\OrdersController::index');
+    $routes->get('overview/products', 'User\Account\ProductsController::index');
+    $routes->get('overview/analytics', 'User\Account\AnalyticsController::index');
 
     $routes->post('updateProfile', 'User\Account\ProfileController::updateProfile');
+    $routes->post('removeImage', 'User\Account\ProfileController::removeImage');
 });
 
 $routes->get('login', 'User\SignInController::index');

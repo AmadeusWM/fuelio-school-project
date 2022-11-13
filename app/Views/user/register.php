@@ -9,7 +9,7 @@
             <input id="input-password" type="password" name="password" class="form-control registration-input" placeholder="Password">
             <input id="input-confirmpassword" type="password" name="confirmpassword" class="form-control registration-input" placeholder="Confirm Password">
         </form>
-        <ul id="errors-validation"></ul>
+        <ul id="errors-validation" class="errors-validation"></ul>
         <div class="registration-buttons">
             <button onclick="location.href='/login'" class="btn btn-outline-primary w-100 registration-button">Log In</button>
             <button id="sign-up-button" class="btn btn-primary w-100 registration-button" type="submit">Sign Up</button>

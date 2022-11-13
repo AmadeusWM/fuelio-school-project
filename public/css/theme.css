@@ -121,3 +121,16 @@ h3{
     background-size: 100% 3px, 0 3px;
     cursor: pointer;
 }
+
+.errors-validation {
+    list-style: circle outside;
+    margin-left: 20px;
+}
+.errors-validation>* {
+    color: rgb(var(--red));
+    margin: 10px;
+}
+.error-field {
+    color: rgb(var(--red));
+    margin: 10px;
+}

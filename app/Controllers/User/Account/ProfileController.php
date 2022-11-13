@@ -81,15 +81,19 @@ class ProfileController extends BaseController
         // rules for all the images
         // source: https://codeigniter4.github.io/CodeIgniter4/libraries/uploaded_files.html
         if ($images = $this->request->getFiles()) {
-            for ($i = 0; $i < count($images['img_files']); $i++) {
-                // add a rule for every uploaded image... ($i because: img_files.0, img_files.1, img_files.2,... is how the individual files are selected)
-                $rules['img_files.' . $i] = [
-                    'label' => 'Image File ' . $i,
-                    'rules' => 'uploaded[img_files.' . $i . ']'
-                        . '|is_image[img_files.' . $i . ']'
-                        . '|mime_in[img_files.' . $i . ',image/jpg,image/jpeg,image/gif,image/png,image/webp]'
-                        . '|max_size[img_files.' . $i . ',10000]' // 10mb files 
-                ];
+            $i = 0;
+            foreach ($images['img_files'] as $img) {
+                if ($img->isValid() && !$img->hasMoved()) {
+                    // add a rule for every uploaded image... ($i because: img_files.0, img_files.1, img_files.2,... is how the individual files are selected)
+                    $rules['img_files.' . $i] = [
+                        'label' => 'Image File ' . $i,
+                        'rules' => 'uploaded[img_files.' . $i . ']'
+                            . '|is_image[img_files.' . $i . ']'
+                            . '|mime_in[img_files.' . $i . ',image/jpg,image/jpeg,image/gif,image/png,image/webp]'
+                            . '|max_size[img_files.' . $i . ',10000]' // 10mb files 
+                    ];
+                    $i++;
+                }
             }
         }
 
@@ -110,13 +114,15 @@ class ProfileController extends BaseController
             // add images
             if ($images = $this->request->getFiles()) {
                 foreach ($images['img_files'] as $image) {
-                    $nameImg = $image->getRandomName();
-                    $imgFolder = ROOTPATH . 'public/userImages/';
-                    $image->move($imgFolder, $nameImg);
-                    $userImageModel->save([
-                        "image_location" => '/userImages/' . $nameImg,
-                        "user_id" => $user["id"]
-                    ]);
+                    if ($img->isValid() && !$img->hasMoved()) {
+                        $nameImg = $image->getRandomName();
+                        $imgFolder = ROOTPATH . 'public/userImages/';
+                        $image->move($imgFolder, $nameImg);
+                        $userImageModel->save([
+                            "image_location" => '/userImages/' . $nameImg,
+                            "user_id" => $user["id"]
+                        ]);
+                    }
                 }
             }
 
@@ -127,9 +133,28 @@ class ProfileController extends BaseController
         }
     }
 
-    public function removeImage(){
+    public function removeImage()
+    {
         helper(['filesystem']);
-        // if ()
-        delete_files('./path/to/directory/');
+        $userImageModel = new UserImageModel();
+        
+        $imageId = $this->request->getVar('imageId');
+        $image = $userImageModel->where('id', $imageId)->first();
+
+        $data['csrf_value'] = csrf_hash();
+        $data['csrf_token'] = csrf_token();
+        $data['success'] = false;
+        $data['imageId'] = $imageId;
+        
+        if ($image){
+            $image_location = ROOTPATH . 'public' . $image["image_location"];
+            // unlink returns TRUE if removing file succeeded
+            if (unlink($image_location)){
+                $userImageModel->delete($imageId); //delete from database as well
+                $data['success'] = true;
+                return $this->response->setJSON($data);
+            }
+        }
+        return $this->response->setJSON($data);
     }
 }

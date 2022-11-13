@@ -21,10 +21,6 @@
     width: 100%;
 }
 
-#errors-validation {
-    list-style: circle outside;
-    margin-left: 20px;
-}
 
 .registration-input{
     margin-bottom: 10px;
