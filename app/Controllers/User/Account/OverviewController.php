@@ -6,13 +6,13 @@ use App\Controllers\BaseController;
 
 class OverviewController extends BaseController
 {
-    public function index()
+    /**
+     * data needs a key
+     *  'page' => (view to show)
+     *  'title' => (page title)
+     */
+    public function index($data)
     {
-        $data = [
-            'title' => ucfirst("Your Account"),
-            'page' => "user/account/account"
-        ];
-
         return view('templates/header', $data) .
             view('user/account/overview', $data) .
             view('templates/footer');

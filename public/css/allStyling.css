@@ -14,3 +14,4 @@ from [here](https://stackoverflow.com/questions/2336302/single-huge-css-file-vs-
 @import "templates/footer.css";
 @import "user/registration.css";
 @import "user/account/overview.css";
+@import "product/addProduct.css";

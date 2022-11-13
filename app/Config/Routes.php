@@ -45,9 +45,12 @@ $routes->group('account', static function ($routes) {
     $routes->get('overview/orders', 'User\Account\OrdersController::index');
     $routes->get('overview/products', 'User\Account\ProductsController::index');
     $routes->get('overview/analytics', 'User\Account\AnalyticsController::index');
+    $routes->get('overview/products/addProduct', 'User\Account\ProductsController::addProductPage');
 
-    $routes->post('updateProfile', 'User\Account\ProfileController::updateProfile');
-    $routes->post('removeImage', 'User\Account\ProfileController::removeImage');
+    $routes->post('ProfileController/updateProfile', 'User\Account\ProfileController::updateProfile');
+    $routes->post('ProfileController/removeImage', 'User\Account\ProfileController::removeImage');
+
+    $routes->post('ProductController/addProduct', 'User\Account\ProductsController::addProduct');
 });
 
 $routes->get('login', 'User\SignInController::index');
@@ -57,6 +60,7 @@ $routes->group('SignInController', static function ($routes) {
     $routes->post('login', 'User\SignInController::login');
     $routes->get('logout', 'User\SignInController::logout');
 });
+
 $routes->post('SignUpController/register', 'User\SignUpController::register');
 
 /*

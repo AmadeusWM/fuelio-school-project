@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\AssetModels;
 
 use CodeIgniter\Model;
 
@@ -11,7 +11,7 @@ class UserImageModel extends Model
     protected $allowedFields = [
         'id',
         'user_id',
-        'image_location'
+        'image_name'
     ];
 
     protected $primaryKey = 'id';

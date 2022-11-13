@@ -1,7 +1,7 @@
 <div>
-    <h2 class="m-1">Your Profile</h2>
-    <?= form_open_multipart('/account/updateProfile') ?>
-    <form method="post" action="<?php echo base_url(); ?>/account/updateProfile">
+    <h2 class="m-2"><?= $title ?></h2>
+    <?= form_open_multipart('/account/ProfileController/updateProfile') ?>
+    <form method="post" action="<?php echo base_url("/account"); ?>/ProfileController/updateProfile">
         <?= csrf_field() ?>
         <input id="input-webshop-name" type="text" name="webshop_name" value="<?= $webshop_name ?>" class="form-control profile-information-input" placeholder="Webshop Name">
         <textarea id="input-description" type="textarea" name="description" class="form-control profile-information-input" placeholder="Your Description"><?= $description ?></textarea>
@@ -11,12 +11,10 @@
         <input id="input-website" type="text" name="website" value="<?= $website ?>" class="form-control profile-information-input" placeholder="Your Website">
         <textarea id="input-other" type="text" name="other" class="form-control profile-information-input" placeholder="Other Information"><?= $other ?></textarea>
         <input multiple type="file" name="img_files[]" size="20" class="form-control profile-information-input" />
-        <ul class="errors-validation">
-            <!-- report csrf protection errors -->
-            <?= session()->getFlashdata('error') ?>
-            <!-- report validation errors -->
-            <?= service('validation')->listErrors() ?>
-        </ul>
+        <!-- report csrf protection errors -->
+        <?=$errors = session()->getFlashdata("errors");?>
+        <!-- report validation errors -->
+        <?= service('validation')->listErrors() ?>
         <button type="submit" class="btn btn-primary m-2">Update</button>
     </form>
     <hr />
@@ -29,7 +27,7 @@
                     <button name="image-remove-button" id="<?= $image['id'] ?>" class="profile-trash-button">
                         <i class="bi bi-trash profile-trash-icon" aria-label="Remove Image"></i>
                     </button>
-                    <img src="<?= $image['image_location'] ?>" class="profile-image" />
+                    <img src="/UploadedFiles/userImages/<?= $image['image_name'] ?>" class="profile-image" />
                 </div>
         <?php }
         } ?>
@@ -44,11 +42,10 @@
     }
 
     function removeImage(imageId) {
-        console.log(imageId)
-        ajaxPost("<?= base_url('/account/removeImage') ?>", imageBody(imageId), handleResponse)
+        ajaxPost("<?= base_url('/account/ProfileController/removeImage') ?>", imageBody(imageId), handleResponse)
     }
 
-    function imageBody(imageId){
+    function imageBody(imageId) {
         let body = {
             "imageId": imageId,
             ...getCSRFHiddenFieldValue("<?= csrf_token() ?>")
@@ -57,10 +54,8 @@
     }
 
 
-    function handleResponse(data){
-        console.log(data);
-        
-        if (data["success"]){
+    function handleResponse(data) {
+        if (data["success"]) {
             let removedImageId = data["imageId"];
             let imageContainer = document.getElementById("container-" + removedImageId);
             imageContainer.remove();

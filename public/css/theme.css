@@ -122,11 +122,11 @@ h3{
     cursor: pointer;
 }
 
-.errors-validation {
-    list-style: circle outside;
+.errors {
     margin-left: 20px;
 }
-.errors-validation>* {
+.errors>ul>li {
+    list-style: circle outside;
     color: rgb(var(--red));
     margin: 10px;
 }

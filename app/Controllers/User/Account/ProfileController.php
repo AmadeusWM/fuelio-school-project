@@ -3,28 +3,23 @@
 namespace App\Controllers\User\Account;
 
 use App\Controllers\BaseController;
+use App\Controllers\User\Account\OverviewController;
 use App\Models\UserModel;
-use App\Models\UserImageModel;
+use App\Models\AssetModels\UserImageModel;
 
 class ProfileController extends BaseController
 {
     public function index($data = [])
     {
+        $overviewController = new OverviewController();
 
-        $data['title'] = ucfirst("Your Account");
-        $data['page'] = $this->view();
+        $data['title'] = ucfirst("profile");
+        $data['page'] = $this->view($data);
 
-        return view('templates/header', $data) .
-            view('user/account/overview', $data) .
-            view('templates/footer');
+        return $overviewController->index($data);
     }
 
-    public function viewResponse()
-    {
-        return $this->response->setJSON(["view" => $this->view()]);
-    }
-
-    private function view()
+    private function view($data = [])
     {
         helper(['form']);
         $session = session(); // access and initialize session (https://www.codeigniter.com/user_guide/libraries/sessions.html#initializing-a-session)
@@ -35,7 +30,7 @@ class ProfileController extends BaseController
 
         $images = $userImageModel->where('user_id', $user['id'])->get()->getResultArray();
 
-        $data = [
+        $data = $data + [
             'webshop_name'     => $user['webshop_name'],
             'description'      => $user['description'],
             'business_email'   => $user['business_email'],
@@ -79,22 +74,17 @@ class ProfileController extends BaseController
         }
 
         // rules for all the images
-        // source: https://codeigniter4.github.io/CodeIgniter4/libraries/uploaded_files.html
-        if ($images = $this->request->getFiles()) {
-            $i = 0;
-            foreach ($images['img_files'] as $img) {
-                if ($img->isValid() && !$img->hasMoved()) {
-                    // add a rule for every uploaded image... ($i because: img_files.0, img_files.1, img_files.2,... is how the individual files are selected)
-                    $rules['img_files.' . $i] = [
-                        'label' => 'Image File ' . $i,
-                        'rules' => 'uploaded[img_files.' . $i . ']'
-                            . '|is_image[img_files.' . $i . ']'
-                            . '|mime_in[img_files.' . $i . ',image/jpg,image/jpeg,image/gif,image/png,image/webp]'
-                            . '|max_size[img_files.' . $i . ',10000]' // 10mb files 
-                    ];
-                    $i++;
-                }
-            }
+        $files = $this->request->getFiles();
+        $images = $files["img_files"];
+        // use isValid() to check if a file has been uploaded at all.
+        if ($images && array_values($images)[0]->isValid()) {
+            $rules['img_files'] = [
+                'label' => 'Image File',
+                'rules' => 'uploaded[img_files]'
+                    . '|is_image[img_files]'
+                    . '|mime_in[img_files,image/jpg,image/jpeg,image/gif,image/png,image/webp]'
+                    . '|max_size[img_files,10000]' // 10mb files 
+            ];
         }
 
         if ($this->validate($rules)) {
@@ -112,14 +102,14 @@ class ProfileController extends BaseController
             $userModel->save($data);
 
             // add images
-            if ($images = $this->request->getFiles()) {
-                foreach ($images['img_files'] as $image) {
-                    if ($img->isValid() && !$img->hasMoved()) {
+            if ($images) {
+                foreach ($images as $image) {
+                    if ($image->isValid() && !$image->hasMoved()) {
                         $nameImg = $image->getRandomName();
-                        $imgFolder = ROOTPATH . 'public/userImages/';
+                        $imgFolder = ROOTPATH . 'public/UploadedFiles/userImages/';
                         $image->move($imgFolder, $nameImg);
                         $userImageModel->save([
-                            "image_location" => '/userImages/' . $nameImg,
+                            "image_name" => $nameImg,
                             "user_id" => $user["id"]
                         ]);
                     }
@@ -129,7 +119,7 @@ class ProfileController extends BaseController
             return redirect()->to(base_url('/account/overview/profile'));
         } else { // something went wrong, send back validation errors
             $data['validation'] = $this->validator;
-            echo $this->index($data);
+            return $this->index($data);
         }
     }
 
@@ -137,19 +127,24 @@ class ProfileController extends BaseController
     {
         helper(['filesystem']);
         $userImageModel = new UserImageModel();
-        
-        $imageId = $this->request->getVar('imageId');
-        $image = $userImageModel->where('id', $imageId)->first();
 
         $data['csrf_value'] = csrf_hash();
         $data['csrf_token'] = csrf_token();
         $data['success'] = false;
+
+        $imageId = $this->request->getVar('imageId');
+        if (!$imageId) {
+            return $this->response->setJSON($data);
+        }
+
         $data['imageId'] = $imageId;
-        
-        if ($image){
-            $image_location = ROOTPATH . 'public' . $image["image_location"];
-            // unlink returns TRUE if removing file succeeded
-            if (unlink($image_location)){
+
+        $image = $userImageModel->where('id', $imageId)->first();
+
+        if ($image) {
+            $image_location = ROOTPATH . 'public/UploadedFiles/userImages/' . $image["image_name"];
+            // unlink returns TRUE if removing file succeeded (source: https://www.php.net/unlink)
+            if (unlink($image_location)) {
                 $userImageModel->delete($imageId); //delete from database as well
                 $data['success'] = true;
                 return $this->response->setJSON($data);
