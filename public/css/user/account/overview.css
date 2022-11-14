@@ -1,4 +1,5 @@
 @import "profile.css";
+@import "products.css";
 
 #account-overview-container{
     display: flex;

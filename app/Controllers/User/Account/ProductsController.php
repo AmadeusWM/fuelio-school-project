@@ -40,14 +40,21 @@ class ProductsController extends BaseController
             $images = $productImageModel->where('product_id', $product['id'])->get()->getResultArray();
             $productCategory = $productCategoryModel->find($product['product_category_id']);
             
+            $toImageName = function($n) {
+                return $n['image_name'];
+            };
+            
+            $imageNames = array_map($toImageName, $images);
+            
             array_push($productsData, [
+                'id'                  => $product['id'],
                 'name'                  => $product['name'],
                 'price'                 => $product['price'],
                 'description'           => $product['description'],
                 'origin'                => $product['origin'],
                 'quantity'              => $product['quantity'],
                 'product_category'      => $productCategory['name'],
-                'images'                => array_values($images)
+                'images'                => array_values($imageNames)
             ]);
         }
 
@@ -117,7 +124,7 @@ class ProductsController extends BaseController
                 'product_category_id' => $productCategoryId,
             ];
 
-            $productModel->save($data);
+            $productId = $productModel->insert($data, true); // true => returns insert id
 
             // add images
             if ($images) {
@@ -128,7 +135,7 @@ class ProductsController extends BaseController
                         $image->move($imgFolder, $nameImg);
                         $productImageModel->save([
                             "image_name" => $nameImg,
-                            "user_id" => $user["id"]
+                            "product_id" => $productId
                         ]);
                     }
                 }

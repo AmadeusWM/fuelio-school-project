@@ -9,7 +9,7 @@
 
     <!-- dns-prefetch opens connection with domain before fetching (performance) from [here](https://developer.mozilla.org/en-US/docs/Web/Performance/dns-prefetch) -->
     <link rel="dns-prefetch" href="https://cdn.jsdelivr.net/">
-    <!-- from [here](https://icons.getbootstrap.com/#install) -->
+    <!-- from [here](https://icons.getbootstrap.com) -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="/css/allStyling.css">
 </head>

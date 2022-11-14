@@ -1,8 +1,8 @@
 :root {
     /* #FF6148 */
-    --primary: 255, 97, 72;  
-    --primary2: 255, 82, 72;  
-    --primary3: 255, 77, 72;  
+    --primary: 255, 97, 72;
+    --primary2: 255, 82, 72;
+    --primary3: 255, 77, 72;
     /* #FFBC48 */
     --secondary: 255, 188, 72;
     /* #FF488A */
@@ -23,7 +23,7 @@
     --b1: var(--dp12);
     --b2: var(--dp24);
     /* background */
-    --bg0: 255, 255, 255;  
+    --bg0: 255, 255, 255;
     /* border-radius */
     --radius0: 4px;
     --radius1: 8px;
@@ -68,30 +68,30 @@
     --bs-gradient: none
 }
 
-.no-link-styling{
+.no-link-styling {
     text-decoration: none;
 }
 
-button{
+button {
     all: unset;
 }
 
-p{
+p {
     color: rgb(var(--b1));
     font-size: 1rem;
 }
 
-h1{
+h1 {
     color: rgb(var(--b1));
     font-size: 3rem;
 }
 
-h2{
+h2 {
     color: rgb(var(--b1));
     font-size: 2rem;
 }
 
-h3{
+h3 {
     color: rgb(var(--b1));
     font-size: 1.5rem;
 }
@@ -125,12 +125,31 @@ h3{
 .errors {
     margin-left: 20px;
 }
+
 .errors>ul>li {
     list-style: circle outside;
     color: rgb(var(--red));
     margin: 10px;
 }
+
 .error-field {
     color: rgb(var(--red));
     margin: 10px;
+}
+
+.red {
+    color: rgb(var(--red));
+}
+
+.icon-button {
+    font-size: 1.5rem;
+}
+
+.scaling-button {
+    transition: transform 0.1s ease;
+}
+
+.scaling-button:hover {
+    cursor: pointer;
+    transform: scale(115%);
 }

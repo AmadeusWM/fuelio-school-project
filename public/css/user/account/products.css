@@ -1,6 +1,6 @@
-#account-products {
+#inventory-products {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     width: 100%;
 }
 
@@ -10,4 +10,46 @@
     margin: 5px;
     object-fit: cover;
     border-radius: var(--radius1);
+}
+
+.inventory-product-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.inventory-product-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    overflow: hidden;
+    background-color: rgba(var(--dp6), 0.04);
+    margin: 12px;
+    border-radius: 12px;
+    flex:1;
+}
+
+.inventory-product-content>ul {
+    margin: 16px;
+}
+
+.inventory-product-content>ul>li {
+    margin: 8px;
+    margin-left: 16px;
+}
+
+.inventory-icon {
+    margin-right: 8px;
+    font-size: 1rem;
+    color: rgb(var(--tertiary));
+}
+
+.inventory-image {
+    width: 150px;
+    object-fit: cover;
+}
+
+.inventory-product-buttons {
+}
+.inventory-product-button {
+    margin: 16px;
 }
