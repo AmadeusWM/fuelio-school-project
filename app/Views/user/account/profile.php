@@ -12,7 +12,7 @@
         <textarea id="input-other" type="text" name="other" class="form-control profile-information-input" placeholder="Other Information"><?= $other ?></textarea>
         <input multiple type="file" name="img_files[]" size="20" class="form-control profile-information-input" />
         <!-- report csrf protection errors -->
-        <?=$errors = session()->getFlashdata("errors");?>
+        <?= session()->getFlashdata("errors");?>
         <!-- report validation errors -->
         <?= service('validation')->listErrors() ?>
         <button type="submit" class="btn btn-primary m-2">Update</button>

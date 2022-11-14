@@ -7,10 +7,12 @@
         if ($products) {
             foreach ($products as $product) { ?>
                 <div class="account-product">
-                    <p><?= $product["name"] ?></p>
-                    <p><?= $product["price"] ?></p>
-                    <p><?= $product["quantity"] ?></p>
-                    <p><?= $product["product_category"] ?></p>
+                    <h3><?= $product["name"] ?></h3>
+                        <ul>
+                            <li><?= $product["price"] ?></li>
+                            <li><?= $product["quantity"] ?></li>
+                            <li><?= $product["product_category"] ?></li>
+                        </ul>
                 </div>
         <?php }
         } ?>
