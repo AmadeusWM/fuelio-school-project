@@ -104,15 +104,7 @@ class ProfileController extends BaseController
             // add images
             if ($images) {
                 foreach ($images as $image) {
-                    if ($image->isValid() && !$image->hasMoved()) {
-                        $nameImg = $image->getRandomName();
-                        $imgFolder = ROOTPATH . 'public/UploadedFiles/userImages/';
-                        $image->move($imgFolder, $nameImg);
-                        $userImageModel->save([
-                            "image_name" => $nameImg,
-                            "user_id" => $user["id"]
-                        ]);
-                    }
+                    $userImageModel->saveSystemAndDB($image, $user['id']);
                 }
             }
 
@@ -139,16 +131,11 @@ class ProfileController extends BaseController
 
         $data['imageId'] = $imageId;
 
-        $image = $userImageModel->where('id', $imageId)->first();
+        $image = $userImageModel->find($imageId);
 
-        if ($image) {
-            $image_location = ROOTPATH . 'public/UploadedFiles/userImages/' . $image["image_name"];
-            // unlink returns TRUE if removing file succeeded (source: https://www.php.net/unlink)
-            if (unlink($image_location)) {
-                $userImageModel->delete($imageId); //delete from database as well
+        if($image && $userImageModel->removeSystemAndDB($image)){
                 $data['success'] = true;
                 return $this->response->setJSON($data);
-            }
         }
         return $this->response->setJSON($data);
     }

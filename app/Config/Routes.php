@@ -46,11 +46,13 @@ $routes->group('account', static function ($routes) {
     $routes->get('overview/products', 'User\Account\ProductsController::index');
     $routes->get('overview/analytics', 'User\Account\AnalyticsController::index');
     $routes->get('overview/products/addProduct', 'User\Account\ProductsController::addProductPage');
+    $routes->get('overview/products/editProduct/(:num)', 'User\Account\ProductsController::editProductPage/$1');
 
     $routes->post('ProfileController/updateProfile', 'User\Account\ProfileController::updateProfile');
     $routes->post('ProfileController/removeImage', 'User\Account\ProfileController::removeImage');
 
-    $routes->post('ProductController/addProduct', 'User\Account\ProductsController::addProduct');
+    $routes->post('ProductsController/addProduct', 'User\Account\ProductsController::addProduct');
+    $routes->post('ProductsController/removeProduct', 'User\Account\ProductsController::removeProduct');
 });
 
 $routes->get('login', 'User\SignInController::index');

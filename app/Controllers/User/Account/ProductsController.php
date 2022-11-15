@@ -11,6 +11,29 @@ use App\Models\ProductModel;
 
 class ProductsController extends BaseController
 {
+    private function productInputRules()
+    {
+        return [
+            'name'                  => 'required|min_length[1]|max_length[50]',
+            'price'                 => 'required|numeric|min_length[1]|max_length[50]',
+            'description'           => 'required|min_length[1]|max_length[50]',
+            'origin'                => 'required|min_length[1]|max_length[50]',
+            'quantity'              => 'required|numeric|min_length[1]|max_length[50]',
+            'product_category'      => 'required|min_length[1]|max_length[50]',
+        ];
+    }
+
+    private function imageInputRules()
+    {
+        return [
+            'label' => 'Image File',
+            'rules' => 'uploaded[img_files]'
+                . '|is_image[img_files]'
+                . '|mime_in[img_files,image/jpg,image/jpeg,image/gif,image/png,image/webp]'
+                . '|max_size[img_files,10000]' // 10mb files 
+        ];
+    }
+
     public function index($data = [])
     {
         $overviewController = new OverviewController();
@@ -26,39 +49,11 @@ class ProductsController extends BaseController
         $session = session(); // access and initialize session (https://www.codeigniter.com/user_guide/libraries/sessions.html#initializing-a-session)
         $userModel = new UserModel();
         $productModel = new ProductModel();
-        $productCategoryModel = new ProductCategoryModel();
-        $productImageModel = new ProductImageModel();
 
         $user = $userModel->find($session->get('id'));
 
-        $products = $productModel->where("user_id", $user['id'])->get()->getResultArray();;
 
-
-        $productsData = array();
-
-        foreach ($products as $product) {
-            $images = $productImageModel->where('product_id', $product['id'])->get()->getResultArray();
-            $productCategory = $productCategoryModel->find($product['product_category_id']);
-            
-            $toImageName = function($n) {
-                return $n['image_name'];
-            };
-            
-            $imageNames = array_map($toImageName, $images);
-            
-            array_push($productsData, [
-                'id'                  => $product['id'],
-                'name'                  => $product['name'],
-                'price'                 => $product['price'],
-                'description'           => $product['description'],
-                'origin'                => $product['origin'],
-                'quantity'              => $product['quantity'],
-                'product_category'      => $productCategory['name'],
-                'images'                => array_values($imageNames)
-            ]);
-        }
-
-        $data["products"] = $productsData;
+        $data["products"] = $productModel->getProductsFromUser($user['id']);
 
 
         return view("user/account/products", $data);
@@ -74,6 +69,21 @@ class ProductsController extends BaseController
             view('templates/footer');
     }
 
+    public function editProductPage($productId)
+    {
+        $productModel = new ProductModel();
+        helper(['form']);
+
+        $data = $productModel->getProductDataById($productId);
+
+        // TODO check if userid of product is id of session
+
+        return view('templates/header', ['title' => ucfirst("Edit Product")]) .
+            view('product/productEdit', $data) .
+            view('templates/footer');
+    }
+
+
     public function addProduct()
     {
         $userModel = new UserModel();
@@ -86,34 +96,25 @@ class ProductsController extends BaseController
         $user = $userModel->find($session->get('id'));
 
         // set rules for input
-        $rules = [
-            'name'                  => 'min_length[0]|max_length[50]',
-            'price'                 => 'numeric|min_length[0]|max_length[50]',
-            'description'           => 'min_length[0]|max_length[50]',
-            'origin'                => 'min_length[0]|max_length[50]',
-            'quantity'              => 'numeric|min_length[0]|max_length[50]',
-            'product_category'      => 'min_length[0]|max_length[50]',
-        ];
-
+        $rules = $this->productInputRules();
         // rules for all the images
         $files = $this->request->getFiles();
         $images = $files["img_files"];
         // use isValid() to check if a file has been uploaded at all.
         if ($images && array_values($images)[0]->isValid()) {
-            $rules['img_files'] = [
-                'label' => 'Image File',
-                'rules' => 'uploaded[img_files]'
-                    . '|is_image[img_files]'
-                    . '|mime_in[img_files,image/jpg,image/jpeg,image/gif,image/png,image/webp]'
-                    . '|max_size[img_files,10000]' // 10mb files 
-            ];
+            $rules['img_files'] = $this->imageInputRules();
         }
 
-        // find category id
-        $categoryName = $this->request->getVar('product_category');
-        $productCategoryId = $productCategoryModel->where("name", $categoryName)->first()['id'];
 
-        if ($this->validate($rules) && $user && $productCategoryId) {
+        if ($this->validate($rules) && $user) {
+            // find category id
+            $categoryName = $this->request->getVar('product_category');
+            $productCategory = $productCategoryModel->where("name", $categoryName)->first();
+            // return error when 
+            if (!$productCategory) { // TODO show proper error
+                $data['validation'] = $this->validator;
+                return $this->addProductPage($data);
+            }
             $data = [
                 'user_id' => $user['id'],
                 'name'      => $this->request->getVar('name'),
@@ -121,30 +122,98 @@ class ProductsController extends BaseController
                 'description'    => $this->request->getVar('description'),
                 'origin'         => $this->request->getVar('origin'),
                 'quantity'            => $this->request->getVar('quantity'),
-                'product_category_id' => $productCategoryId,
+                'product_category_id' => $productCategory['id'],
             ];
 
-            $productId = $productModel->insert($data, true); // true => returns insert id
+            $productId = 0;
+
+            if ($this->request->getPost('productId')) {
+                $data['id'] = $this->request->getPost('productId');
+                $productModel->save($data);
+                $productId = $data['id'];
+            } else {
+                $productId = $productModel->insert($data, true); // true => returns insert id
+            }
+
 
             // add images
             if ($images) {
                 foreach ($images as $image) {
-                    if ($image->isValid() && !$image->hasMoved()) {
-                        $nameImg = $image->getRandomName();
-                        $imgFolder = ROOTPATH . 'public/UploadedFiles/productImage/';
-                        $image->move($imgFolder, $nameImg);
-                        $productImageModel->save([
-                            "image_name" => $nameImg,
-                            "product_id" => $productId
-                        ]);
-                    }
+                    $productImageModel->saveSystemAndDB($image, $productId);
                 }
             }
 
             return redirect()->to(base_url('/account/overview/products'));
         } else { // something went wrong, send back validation errors
             $data['validation'] = $this->validator;
-            return $this->index($data);
+            return $this->addProductPage($data);
         }
+    }
+
+    public function removeProduct()
+    {
+        $userModel = new UserModel();
+        $productModel = new ProductModel();
+        $productCategoryModel = new ProductCategoryModel();
+        $productImageModel = new ProductImageModel();
+
+        // to update csrf data
+        $data['csrf_value'] = csrf_hash();
+        $data['csrf_token'] = csrf_token();
+
+        // find current logged in user
+        $session = session();
+        $user = $userModel->find($session->get('id'));
+
+        $productId = $this->request->getVar('productId');
+        $data['productId'] = $productId; // return id of removed product in response
+
+        $product = $productModel->find($productId);
+
+        $data['success'] = false;
+
+        // check if product of logged in user
+        if ($product['user_id'] != $user['id']) {
+            return $this->response->setJSON($data);
+        }
+
+        $images = $productImageModel->where('product_id', $product['id'])->get()->getResultArray();
+
+        foreach ($images as $image) {
+            if (!$productImageModel->removeSystemAndDB($image)) {
+                return $this->response->setJSON($data);
+            }
+        }
+
+        // product can be removed from model if all the previous tasks were executed successfully
+        if ($productModel->delete($product['id'])) {
+            $data['success'] = true;
+        }
+        return $this->response->setJSON($data);
+    }
+
+    public function removeImage()
+    {
+        helper(['filesystem']);
+        $productImageModel = new ProductImageModel();
+
+        $data['csrf_value'] = csrf_hash();
+        $data['csrf_token'] = csrf_token();
+        $data['success'] = false;
+
+        $imageId = $this->request->getVar('imageId');
+        if (!$imageId) {
+            return $this->response->setJSON($data);
+        }
+
+        $data['imageId'] = $imageId;
+
+        $image = $productImageModel->find($imageId);
+
+        if ($image && $productImageModel->removeSystemAndDB($image)) {
+            $data['success'] = true;
+            return $this->response->setJSON($data);
+        }
+        return $this->response->setJSON($data);
     }
 }
