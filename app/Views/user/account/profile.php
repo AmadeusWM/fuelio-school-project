@@ -53,7 +53,6 @@
         return body;
     }
 
-
     function handleResponse(data) {
         if (data["success"]) {
             let removedImageId = data["imageId"];

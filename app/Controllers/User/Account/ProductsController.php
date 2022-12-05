@@ -61,8 +61,14 @@ class ProductsController extends BaseController
 
     public function addProductPage()
     {
+        $productCategoryModel = new ProductCategoryModel();
         helper(['form']);
+
+        $product_categories = $productCategoryModel->findAll();
+
         $data['title'] = ucfirst("Add Product");
+        $data['product_categories'] = $product_categories;
+
 
         return view('templates/header', $data) .
             view('product/productAdd') .
@@ -72,9 +78,13 @@ class ProductsController extends BaseController
     public function editProductPage($productId)
     {
         $productModel = new ProductModel();
+        $productCategoryModel = new ProductCategoryModel();
         helper(['form']);
 
         $data = $productModel->getProductDataById($productId);
+        
+        $product_categories = $productCategoryModel->findAll();
+        $data['product_categories'] = $product_categories;
 
         // TODO check if userid of product is id of session
 
@@ -86,6 +96,9 @@ class ProductsController extends BaseController
 
     public function addProduct()
     {
+        // TODO: if productId parameter set: check if 
+        // the session user has the same id as the product
+
         $userModel = new UserModel();
         $productModel = new ProductModel();
         $productCategoryModel = new ProductCategoryModel();

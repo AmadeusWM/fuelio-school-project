@@ -1,13 +1,18 @@
 <?php
 
 namespace App\Controllers;
+use App\Models\ProductModel;
 
 class Home extends BaseController
 {
     public function index()
     {
+        $productModel = new ProductModel();
+
         $data['title'] = ucfirst('Home');
-        // add to data a list with the css file locations, such that the header can import the right css files
+
+        $data['products'] = $productModel->findAll();
+
         return view('templates/header', $data).
             view('home/home') .
             view('templates/footer');

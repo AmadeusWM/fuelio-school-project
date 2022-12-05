@@ -36,6 +36,7 @@ class ProductModel extends Model
 
     public function getProductDataById($id){
         $product = $this->find($id);
+        
         return $this->getProductData($product);
     }
 

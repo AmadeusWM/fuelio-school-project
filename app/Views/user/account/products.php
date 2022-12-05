@@ -24,11 +24,11 @@
                     <ul class="inventory-product-buttons">
                         <li class="inventory-product-button">
                             <button name="product-remove-button" id="<?= $product['id'] ?>" class="scaling-button">
-                                <i class="bi bi-trash  icon-button red"></i>
+                                <i class="bi bi-trash icon-button red"></i>
                             </button>
                         </li>
                         <li class="inventory-product-button scaling-button">
-                            <a href="<?= base_url("account/overview/products/editProduct") . "/" . $product['id'] ?>" class="scaling-button">
+                            <a class="href-button" href="<?= base_url("account/overview/products/editProduct") . "/" . $product['id'] ?>" class="scaling-button">
                                 <i class="bi bi-pencil icon-button"></i>
                             </a>
                         </li>
