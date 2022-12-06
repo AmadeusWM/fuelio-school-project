@@ -17,7 +17,7 @@
                 <?php } ?>
             </select>
             <!-- TODO: https://mdbootstrap.com/docs/b4/jquery/forms/multiselect/ -->
-            <input multiple type="file" name="img_files[]" size="20" class="form-control mb-2" />
+            <input multiple type="file" name="files[]" size="20" class="form-control mb-2" />
             <ul class="errors-validation">
                 <!-- report csrf protection errors -->
                 <?= session()->getFlashdata('error') ?>

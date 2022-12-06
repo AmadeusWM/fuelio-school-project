@@ -11,7 +11,7 @@ class Home extends BaseController
 
         $data['title'] = ucfirst('Home');
 
-        $data['products'] = $productModel->findAll();
+        $data['products'] = $productModel->getProducts(0);
 
         return view('templates/header', $data).
             view('home/home') .

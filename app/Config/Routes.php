@@ -53,6 +53,7 @@ $routes->group('account', static function ($routes) {
 
     $routes->post('ProductsController/addProduct', 'User\Account\ProductsController::addProduct');
     $routes->post('ProductsController/removeProduct', 'User\Account\ProductsController::removeProduct');
+    $routes->post('ProductsController/removeFile', 'User\Account\ProductsController::removeFile');
 });
 
 $routes->get('login', 'User\SignInController::index');

@@ -25,7 +25,7 @@
             foreach ($images as $image) { ?>
                 <div id="container-<?= $image['id'] ?>" class="profile-image-container">
                     <button name="image-remove-button" id="<?= $image['id'] ?>" class="profile-trash-button">
-                        <i class="bi bi-trash profile-trash-icon" aria-label="Remove Image"></i>
+                        <i class="bi bi-trash files-trash-icon" aria-label="Remove Image"></i>
                     </button>
                     <img src="/UploadedFiles/userImages/<?= $image['image_name'] ?>" class="profile-image" />
                 </div>

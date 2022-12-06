@@ -145,6 +145,17 @@ h3 {
     color: rgb(var(--b2));
 }
 
+.gray {
+    color: rgba(var(--dp24), 0.7);
+}
+
+.tx-xl {
+    font-size: 3rem;
+}
+
+.tx-l {
+    font-size: 2rem;
+}
 .icon-button {
     font-size: 1.5rem;
 }
@@ -156,4 +167,9 @@ h3 {
 .scaling-button:hover {
     cursor: pointer;
     transform: scale(115%);
+}
+
+.files-trash-icon{
+    color: rgb(var(--red));
+    font-size: 24px;
 }

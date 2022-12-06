@@ -4,7 +4,7 @@ namespace App\Controllers\User\Account;
 
 use App\Controllers\BaseController;
 use App\Controllers\User\Account\OverviewController;
-use App\Models\AssetModels\ProductImageModel;
+use App\Models\AssetModels\ProductFileModel;
 use App\Models\UserModel;
 use App\Models\ProductCategoryModel;
 use App\Models\ProductModel;
@@ -23,14 +23,13 @@ class ProductsController extends BaseController
         ];
     }
 
-    private function imageInputRules()
+    private function fileInputRules()
     {
         return [
-            'label' => 'Image File',
-            'rules' => 'uploaded[img_files]'
-                . '|is_image[img_files]'
-                . '|mime_in[img_files,image/jpg,image/jpeg,image/gif,image/png,image/webp]'
-                . '|max_size[img_files,10000]' // 10mb files 
+            'label' => 'File',
+            'rules' => 'uploaded[files]'
+                . '|mime_in[files,image/jpg,image/jpeg,image/gif,image/png,image/webp,video/mp4]'
+                . '|max_size[files,10000]' // 10mb files 
         ];
     }
 
@@ -102,7 +101,7 @@ class ProductsController extends BaseController
         $userModel = new UserModel();
         $productModel = new ProductModel();
         $productCategoryModel = new ProductCategoryModel();
-        $productImageModel = new ProductImageModel();
+        $ProductFileModel = new ProductFileModel();
 
         // find current logged in user
         $session = session();
@@ -110,12 +109,12 @@ class ProductsController extends BaseController
 
         // set rules for input
         $rules = $this->productInputRules();
-        // rules for all the images
+        // rules for all the files
         $files = $this->request->getFiles();
-        $images = $files["img_files"];
+        $files = $files["files"];
         // use isValid() to check if a file has been uploaded at all.
-        if ($images && array_values($images)[0]->isValid()) {
-            $rules['img_files'] = $this->imageInputRules();
+        if ($files && array_values($files)[0]->isValid()) {
+            $rules['files'] = $this->fileInputRules();
         }
 
 
@@ -149,10 +148,10 @@ class ProductsController extends BaseController
             }
 
 
-            // add images
-            if ($images) {
-                foreach ($images as $image) {
-                    $productImageModel->saveSystemAndDB($image, $productId);
+            // add files to database
+            if ($files) {
+                foreach ($files as $file) {
+                    $ProductFileModel->saveSystemAndDB($file, $productId);
                 }
             }
 
@@ -168,7 +167,7 @@ class ProductsController extends BaseController
         $userModel = new UserModel();
         $productModel = new ProductModel();
         $productCategoryModel = new ProductCategoryModel();
-        $productImageModel = new ProductImageModel();
+        $productFileModel = new ProductFileModel();
 
         // to update csrf data
         $data['csrf_value'] = csrf_hash();
@@ -190,10 +189,10 @@ class ProductsController extends BaseController
             return $this->response->setJSON($data);
         }
 
-        $images = $productImageModel->where('product_id', $product['id'])->get()->getResultArray();
+        $files = $productFileModel->where('product_id', $product['id'])->get()->getResultArray();
 
-        foreach ($images as $image) {
-            if (!$productImageModel->removeSystemAndDB($image)) {
+        foreach ($files as $file) {
+            if (!$productFileModel->removeSystemAndDB($file)) {
                 return $this->response->setJSON($data);
             }
         }
@@ -205,25 +204,25 @@ class ProductsController extends BaseController
         return $this->response->setJSON($data);
     }
 
-    public function removeImage()
+    public function removeFile()
     {
         helper(['filesystem']);
-        $productImageModel = new ProductImageModel();
+        $productFileModel = new ProductFileModel();
 
         $data['csrf_value'] = csrf_hash();
         $data['csrf_token'] = csrf_token();
         $data['success'] = false;
 
-        $imageId = $this->request->getVar('imageId');
-        if (!$imageId) {
+        $fileId = $this->request->getVar('fileId');
+        if (!$fileId) {
             return $this->response->setJSON($data);
         }
 
-        $data['imageId'] = $imageId;
+        $data['fileId'] = $fileId;
 
-        $image = $productImageModel->find($imageId);
+        $file = $productFileModel->find($fileId);
 
-        if ($image && $productImageModel->removeSystemAndDB($image)) {
+        if ($file && $productFileModel->removeSystemAndDB($file)) {
             $data['success'] = true;
             return $this->response->setJSON($data);
         }

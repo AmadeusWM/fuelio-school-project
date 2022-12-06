@@ -49,7 +49,14 @@
 }
 
 .inventory-product-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: var(--radius1);
+    margin: 12px 0px;
+    background-color: rgba(var(--dp6), 0.04);
 }
+
 .inventory-product-button {
     margin: 16px;
 }

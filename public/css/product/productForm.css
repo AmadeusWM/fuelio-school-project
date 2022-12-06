@@ -1,4 +1,4 @@
-#product-form-container{
+#product-form-container {
     display: flex;
     flex-direction: column;
     padding: 10px;
@@ -6,10 +6,45 @@
     width: 800px;
 }
 
-.href-button{
+.href-button {
     color: rgb(var(--b2));
 }
 
-.href-button:hover{
+.href-button:hover {
     color: rgb(var(--b3));
+}
+
+#product-files {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.product-file {
+    width: 200px;
+    height: 200px;
+    margin: 5px;
+    object-fit: cover;
+    border-radius: var(--radius1);
+}
+
+.product-trash-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    position: absolute;
+    
+    background-color: rgba(var(--dp0), 0.5);
+    width: 32px;
+    height: 32px;
+    margin-top: 12px;
+    margin-left: 12px;
+    padding: 5px;
+    border-radius: 20px;
+
+    transition: transform 0.1s ease;
+}
+.trash-button:hover{
+    transform: scale(115%);
 }

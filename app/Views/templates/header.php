@@ -20,8 +20,8 @@
             <h1 id="logo-header">Fuelio</h1>
         </a>
         <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-primary" type="submit">Search</button>
+            <input class="form-control m-1" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-primary m-1" type="submit">Search</button>
         </form>
         <div>
             <!-- code when logged in -->

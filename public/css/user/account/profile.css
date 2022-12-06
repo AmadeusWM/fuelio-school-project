@@ -8,9 +8,6 @@
     width: 100%;
 }
 
-.profile-image-container {
-}
-
 .profile-image {
     width: 200px;
     height: 200px;
@@ -38,9 +35,4 @@
 }
 .profile-trash-button:hover{
     transform: scale(115%);
-}
-
-.profile-trash-icon{
-    color: rgb(var(--red));
-    font-size: 24px;
 }

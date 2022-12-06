@@ -18,14 +18,64 @@
                 <?php } ?>
             </select>
             <!-- TODO: https://mdbootstrap.com/docs/b4/jquery/forms/multiselect/ -->
-            <input multiple type="file" name="img_files[]" size="20" class="form-control mb-2" />
+            <input multiple type="file" name="files[]" size="20" class="form-control mb-2" />
             <ul class="errors-validation">
                 <!-- report csrf protection errors -->
                 <?= session()->getFlashdata('error') ?>
                 <!-- report validation errors 🤌 -->
                 <?= service('validation')->listErrors() ?>
             </ul>
-            <button type="submit" class="btn btn-primary m-2">Add Product</button>
+            <button type="submit" class="btn btn-primary m-2">Update Product</button>
         </form>
+        <div id="product-files">
+            <?php
+            if ($files) {
+                foreach ($files as $file) { ?>
+                    <div id="container-<?= $file['id'] ?>" class="product-file-container">
+                        <button name="file-remove-button" id="<?= $file['id'] ?>" class="product-trash-button">
+                            <i class="bi bi-trash files-trash-icon" aria-label="Remove File"></i>
+                        </button>
+                        <?php if ($file['file_type'] == 'image') { ?>
+                            <img src="/UploadedFiles/products/<?= $file['file_name'] ?>" class="product-file" />
+                        <?php } else { ?>
+                            <video class="product-file" controls>
+                                <source src="/UploadedFiles/products/<?= $file['file_name'] ?>" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        <?php } ?>
+                    </div>
+            <?php }
+            } ?>
+        </div>
     </div>
 </div>
+
+<script src="/javascript/ajaxRequests.js"></script>
+<script>
+    let buttons = document.getElementsByName("file-remove-button");
+    for (button of buttons) {
+        let fileId = button.getAttribute("id");
+        button.addEventListener('click', () => removeFile(fileId), false);
+    }
+
+    function removeFile(fileId) {
+        ajaxPost("<?= base_url('/account/ProductsController/removeFile') ?>", fileBody(fileId), handleResponse)
+    }
+
+    function fileBody(fileId) {
+        let body = {
+            "fileId": fileId,
+            ...getCSRFHiddenFieldValue("<?= csrf_token() ?>")
+        }
+        return body;
+    }
+
+    function handleResponse(data) {
+        if (data["success"]) {
+            let removedFileId = data["fileId"];
+            let fileContainer = document.getElementById("container-" + removedFileId);
+            fileContainer.remove();
+        }
+        updateCSRF(data);
+    }
+</script>
