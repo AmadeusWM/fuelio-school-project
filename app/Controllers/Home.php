@@ -1,20 +1,16 @@
 <?php
 
 namespace App\Controllers;
+
+use App\Controllers\Store\ProductSearchController;
 use App\Models\ProductModel;
+use App\Models\ProductCategoryModel;
 
 class Home extends BaseController
 {
     public function index()
     {
-        $productModel = new ProductModel();
-
-        $data['title'] = ucfirst('Home');
-
-        $data['products'] = $productModel->getProducts(0);
-
-        return view('templates/header', $data).
-            view('home/home') .
-            view('templates/footer');
+        $productSearchController = new ProductSearchController();
+        return $productSearchController->index();
     }
 }

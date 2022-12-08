@@ -5,7 +5,7 @@
         <form method="post" action="<?php echo base_url("/account/ProductsController"); ?>/addProduct">
             <?= csrf_field() ?>
             <input type="text" name="name" class="form-control mb-2" placeholder="Product Name" required>
-            <input type="number" name="price" class="form-control mb-2" placeholder="Price" required>
+            <input type="number" name="price" class="form-control mb-2" placeholder="Price" min="1" step="any" required>
             <textarea type="text" name="description" class="form-control mb-2" placeholder="Description" required></textarea>
             <input type="text" name="origin" class="form-control mb-2" placeholder="Origin" required>
             <input type="number" name="quantity" class="form-control mb-2" placeholder="Quantity" required>

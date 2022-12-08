@@ -122,7 +122,7 @@ class ProductsController extends BaseController
             // find category id
             $categoryName = $this->request->getVar('product_category');
             $productCategory = $productCategoryModel->where("name", $categoryName)->first();
-            // return error when 
+            // return error when product category doesn't exist
             if (!$productCategory) { // TODO show proper error
                 $data['validation'] = $this->validator;
                 return $this->addProductPage($data);

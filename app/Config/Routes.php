@@ -56,6 +56,8 @@ $routes->group('account', static function ($routes) {
     $routes->post('ProductsController/removeFile', 'User\Account\ProductsController::removeFile');
 });
 
+$routes->get('ProductSearchController/search', 'Store\ProductSearchController::search');
+
 $routes->get('login', 'User\SignInController::index');
 $routes->get('register', 'User\SignUpController::index');
 

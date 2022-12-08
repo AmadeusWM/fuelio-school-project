@@ -6,7 +6,7 @@
             <?= csrf_field() ?>
             <input hidden type="text" name="productId" value="<?= $id ?>">
             <input type="text" name="name" value="<?= $name ?>" class="form-control mb-2" placeholder="Product Name" required>
-            <input type="number" name="price" value="<?= $price ?>" class="form-control mb-2" placeholder="Price" required>
+            <input type="number" name="price" value="<?= $price ?>" class="form-control mb-2" placeholder="Price" min="1" step="any" required >
             <textarea type="text" name="description" class="form-control mb-2" placeholder="Description" required><?= $description ?></textarea>
             <input type="text" name="origin" value="<?= $origin ?>" class="form-control mb-2" placeholder="Origin" required>
             <input type="number" name="quantity" value="<?= $quantity ?>" class="form-control mb-2" placeholder="Quantity" required>

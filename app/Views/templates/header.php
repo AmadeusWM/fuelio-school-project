@@ -17,7 +17,7 @@
 <body>
     <nav id="navbar-header">
         <a class="no-link-styling" href="/">
-            <h1 id="logo-header">Fuelio</h1>
+            <h1 id="logo-header">FUELIO</h1>
         </a>
         <form class="form-inline my-2 my-lg-0">
             <input class="form-control m-1" type="search" placeholder="Search" aria-label="Search">

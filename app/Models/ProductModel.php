@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\AssetModels\ProductFileModel;
+use App\Models\UserModel;
 use CodeIgniter\Model;
 
 class ProductModel extends Model
@@ -49,6 +50,36 @@ class ProductModel extends Model
     }
 
 
+    public function getProductsFiltered($filter, $offset, $fetch_amount = 100)
+    {
+        $productCategoryModel = new ProductCategoryModel();
+
+        if ($fetch_amount > 100)
+            $fetch_amount = 100;
+
+            
+        $category_id = null;
+        if ($filter["category"] != "All")
+            $category_id = $productCategoryModel->where('name', $filter["category"])->first()['id'];
+        
+        $query = $this;
+
+        if ($filter['search_terms'])
+            $query = $query->like('name', $filter['search_terms']);
+        if ($filter['max_price'])
+            $query = $query->where('price <', $filter['max_price']);
+        if ($category_id)
+            $query = $query->where('product_category_id', $category_id);
+                            
+        $query = $query->limit($fetch_amount, $fetch_amount * $offset);
+
+        $products = $query->get()->getResultArray();
+
+        $products = $this->insertAllDataIntoProducts($products);
+
+        return $products;
+    }
+
     public function getProductDataById($id)
     {
         $product = $this->find($id);
@@ -71,9 +102,12 @@ class ProductModel extends Model
     private function getProductData($product)
     {
         $productCategoryModel = new ProductCategoryModel();
+        $userModel = new UserModel();
         $productFileModel = new ProductFileModel();
         $files = $productFileModel->where("product_id", $product["id"])->get()->getResultArray();
         $productCategory = $productCategoryModel->find($product["product_category_id"]);
+
+        $seller = $userModel->find($product["user_id"]);
         
         $productData = [
             "id"                  => $product["id"],
@@ -83,7 +117,9 @@ class ProductModel extends Model
             "origin"                => $product["origin"],
             "quantity"              => $product["quantity"],
             "product_category"      => $productCategory["name"],
-            "files"                => array_values($files)
+            "webshop_name"           => $seller["webshop_name"],
+            "id_seller"             => $seller["id"],
+            "files"                 => array_values($files)
         ];
         return $productData;
     }
