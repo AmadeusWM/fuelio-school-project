@@ -59,16 +59,16 @@ class ProductModel extends Model
 
             
         $category_id = null;
-        if ($filter["category"] != "All")
+        if (isset($filter["category"]) && $filter["category"] != "All")
             $category_id = $productCategoryModel->where('name', $filter["category"])->first()['id'];
         
         $query = $this;
 
-        if ($filter['search_terms'])
+        if (isset($filter['search_terms']))
             $query = $query->like('name', $filter['search_terms']);
-        if ($filter['max_price'])
-            $query = $query->where('price <', $filter['max_price']);
-        if ($category_id)
+        if (isset($filter['max_price']))
+            $query = $query->where('price <=', $filter['max_price']);
+        if (isset($category_id))
             $query = $query->where('product_category_id', $category_id);
                             
         $query = $query->limit($fetch_amount, $fetch_amount * $offset);

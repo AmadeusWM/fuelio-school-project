@@ -11,7 +11,7 @@
     <link rel="dns-prefetch" href="https://cdn.jsdelivr.net/">
     <!-- from [here](https://icons.getbootstrap.com) -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="/css/allStyling.css">
+    <link rel="stylesheet" href="/css/styling.css">
 </head>
 
 <body>
@@ -19,8 +19,8 @@
         <a class="no-link-styling" href="/">
             <h1 id="logo-header">FUELIO</h1>
         </a>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control m-1" type="search" placeholder="Search" aria-label="Search">
+        <form class="form-inline my-2 my-lg-0" action="<?= base_url("/ProductSearchController/search")?>">
+            <input class="form-control m-1" name="search_terms" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-primary m-1" type="submit">Search</button>
         </form>
         <div>

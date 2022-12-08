@@ -37,18 +37,17 @@ class ProductSearchController extends BaseController
         
         $filter = $this->request->getGET();
         
-        $data["title"] = ucfirst("Home");
-
         $products = $productModel->getProductsFiltered($filter, 0);
-
+        
         $productCategories = $productCategoryModel->findAll();
+        $productsListData = ["products" => $products];
+        
+        $productsList = view("product/productsList", $productsListData);
 
-        $data["product_categories"] = $productCategories;
-
-        $data["products"] = $products;
-
-        $productsList = view("product/productsList", $data);
+        $data["title"] = ucfirst("Home");
         $data["products_list"] = $productsList;
+        $data["product_categories"] = $productCategories;
+        $data["filter"] = $filter;
         
         return view("templates/header", $data) .
             view("product/productSearch") .

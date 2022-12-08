@@ -1,0 +1,18 @@
+/* 
+🔥🔥🔥
+This file speeds up the loading-time of your pages,
+because loading all the CSS files at once means less HTTP
+requests 
+from [here](https://stackoverflow.com/questions/2336302/single-huge-css-file-vs-multiple-smaller-specific-css-files)
+*/
+
+@import "bootstrap/bootstrap.scss";
+@import "general/reset.scss";
+@import "general/theme.scss";
+@import "home/home.scss";
+@import "templates/header.scss";
+@import "templates/footer.scss";
+@import "user/registration.scss";
+@import "user/account/overview.scss";
+@import "product/productForm.scss";
+@import "product/productSearch.scss";
