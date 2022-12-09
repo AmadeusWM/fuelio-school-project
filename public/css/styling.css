@@ -12137,6 +12137,8 @@ h3 {
   flex-direction: column;
   flex: 1;
   justify-content: center;
+  height: 200px;
+  text-align: center;
 }
 #search-page #results-container #result-container .product-title {
   font-size: 1.5rem;
@@ -12245,7 +12247,7 @@ h3 {
   display: flex;
   flex-direction: column;
   align-self: flex-end;
-  margin-bottom: 60px;
+  margin-bottom: 40px;
   margin-left: 20px;
   width: 500px;
 }
@@ -12264,14 +12266,15 @@ h3 {
   text-decoration: underline;
 }
 #product-page #page-content #product-overall #product-right hr {
+  margin-top: 0px;
   margin-bottom: 20px;
 }
-#product-page #page-content #product-overall #product-right .price {
+#product-page #page-content #product-overall #product-right #price {
   font-size: 2rem;
   margin-bottom: 10px;
   font-weight: bold;
 }
-#product-page #page-content #product-overall #product-right .price sup {
+#product-page #page-content #product-overall #product-right #price sup {
   font-size: 1.1rem;
 }
 #product-page #page-content #product-overall #product-right .product-availability {

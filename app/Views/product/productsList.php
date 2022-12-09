@@ -18,7 +18,7 @@
                 <?php } ?>
             </a>
             <a class="product-title" href='<?= base_url("/Store/ProductController/product" . "/" . $product["id"]) ?>'> <?= $product["name"] ?></a>
-            <a class="webshop-name"><?= $product["webshop_name"] ?></a>
+            <a class="webshop-name" href="<?=base_url("/Store/WebshopController") . "/" . $product["webshop_id"]?>"><?= $product["webshop_name"] ?></a>
             <hr style="margin: 5px 0px" />
             <div class="product-content-container">
                 <p class="product-category"><?= $product["product_category"] ?></p>

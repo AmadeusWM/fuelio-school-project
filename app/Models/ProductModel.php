@@ -118,7 +118,7 @@ class ProductModel extends Model
             "quantity"              => $product["quantity"],
             "product_category"      => $productCategory["name"],
             "webshop_name"           => $seller["webshop_name"],
-            "id_seller"             => $seller["id"],
+            "webshop_id"             => $seller["id"],
             "files"                 => array_values($files)
         ];
         return $productData;

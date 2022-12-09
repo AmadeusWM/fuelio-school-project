@@ -59,6 +59,7 @@ $routes->group('account', static function ($routes) {
 $routes->group("Store", static function ($routes) {
     $routes->get('ProductSearchController/search', 'Store\ProductSearchController::search');
     $routes->get('ProductController/product/(:num)', 'Store\ProductController::index/$1');
+    $routes->get('WebshopController/(:num)', 'Store\WebshopController::index/$1');
 });
 
 $routes->get('login', 'User\SignInController::index');

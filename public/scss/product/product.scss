@@ -87,7 +87,7 @@ $slide-button-size: 40px;
                 display: flex;
                 flex-direction: column;
                 align-self: flex-end;
-                margin-bottom: $slide-button-size + 20px;
+                margin-bottom: $slide-button-size;
                 margin-left: 20px;
                 width: 500px;
 
@@ -109,10 +109,11 @@ $slide-button-size: 40px;
                 }
 
                 hr {
+                    margin-top: 0px;
                     margin-bottom: 20px;
                 }
 
-                .price {
+                #price {
                     font-size: 2rem;
                     margin-bottom: 10px;
                     font-weight: bold;
