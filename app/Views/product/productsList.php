@@ -1,23 +1,23 @@
 <div id="results-container">
     <?php foreach ($products as $product) { ?>
         <div id="result-container" class="hover-box">
-            <?php
-            $files = $product["files"];
-            $file = null;
-            if ($files)
-                $file = $product["files"][0];
-            if ($file && $file["file_type"] == "image") {
-            ?>
-            <a>
-                <img class="product-entry-image" src="/UploadedFiles/products/<?= $file["file_name"] ?>">
+            <a href='<?=base_url("/Store/ProductController/product" . "/" . $product["id"])?>'>
+                <?php
+                $files = $product["files"];
+                $file = null;
+                if ($files)
+                    $file = $product["files"][0];
+                if ($file && $file["file_type"] == "image") {
+                ?>
+                    <img class="product-entry-image" src="/UploadedFiles/products/<?= $file["file_name"] ?>">
+                <?php } else { ?>
+                    <div class="image-placeholder">
+                        <i class="bi-card-image gray tx-xl"></i>
+                        <p class="gray tx-l">No image available</p>
+                    </div>
+                <?php } ?>
             </a>
-            <?php } else { ?>
-                <div class="image-placeholder">
-                    <i class="bi-card-image gray tx-xl"></i>
-                    <p class="gray tx-l">No image found</p>
-                </div>
-            <?php } ?>
-            <a class="product-title"><?= $product["name"] ?></a>
+            <a class="product-title" href='<?= base_url("/Store/ProductController/product" . "/" . $product["id"]) ?>'> <?= $product["name"] ?></a>
             <a class="webshop-name"><?= $product["webshop_name"] ?></a>
             <hr style="margin: 5px 0px" />
             <div class="product-content-container">

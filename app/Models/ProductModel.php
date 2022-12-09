@@ -66,7 +66,7 @@ class ProductModel extends Model
 
         if (isset($filter['search_terms']))
             $query = $query->like('name', $filter['search_terms']);
-        if (isset($filter['max_price']))
+        if (isset($filter['max_price']) && $filter['max_price'] > 0)
             $query = $query->where('price <=', $filter['max_price']);
         if (isset($category_id))
             $query = $query->where('product_category_id', $category_id);

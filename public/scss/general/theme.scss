@@ -35,6 +35,7 @@
     /* bootstrap overrides */
     --bs-primary: rgb(var(--primary)) !important;
     --bs-primary-rgb: var(--primary) !important;
+    --shadow0: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
 }
 
 .btn-primary {

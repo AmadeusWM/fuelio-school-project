@@ -19,7 +19,7 @@
         <a class="no-link-styling" href="/">
             <h1 id="logo-header">FUELIO</h1>
         </a>
-        <form class="form-inline my-2 my-lg-0" action="<?= base_url("/ProductSearchController/search")?>">
+        <form class="form-inline my-2 my-lg-0" action="<?= base_url("/Store/ProductSearchController/search")?>">
             <input class="form-control m-1" name="search_terms" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-primary m-1" type="submit">Search</button>
         </form>

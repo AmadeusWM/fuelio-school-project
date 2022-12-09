@@ -16,7 +16,7 @@ class ProductsController extends BaseController
         return [
             'name'                  => 'required|min_length[1]|max_length[50]',
             'price'                 => 'required|numeric|min_length[1]|max_length[50]',
-            'description'           => 'required|min_length[1]|max_length[50]',
+            'description'           => 'required|min_length[1]|max_length[500]',
             'origin'                => 'required|min_length[1]|max_length[50]',
             'quantity'              => 'required|numeric|min_length[1]|max_length[50]',
             'product_category'      => 'required|min_length[1]|max_length[50]',
