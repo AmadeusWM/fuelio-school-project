@@ -14,6 +14,8 @@ from [here](https://stackoverflow.com/questions/2336302/single-huge-css-file-vs-
 @import "templates/footer.scss";
 @import "user/registration.scss";
 @import "user/account/overview.scss";
+@import "cart/cart.scss";
+@import "cart/checkout.scss";
 @import "product/productForm.scss";
 @import "product/productSearch.scss";
 @import "product/product.scss";

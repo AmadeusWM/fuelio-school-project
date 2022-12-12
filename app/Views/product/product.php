@@ -19,7 +19,7 @@
                             ?>
                                     <img onclick="currentSlide(<?= $index ?>)" class="product-file-slider" src="/UploadedFiles/products/<?= $file["file_name"] ?>">
                                 <?php } else { ?>
-                                    <video class="product-file-slider" controls>
+                                    <video onclick="currentSlide(<?= $index ?>)" class="product-file-slider">
                                         <source src="/UploadedFiles/products/<?= $file['file_name'] ?>" type="video/mp4">
                                         Your browser does not support the video tag.
                                     </video>
@@ -41,7 +41,7 @@
                     ?>
                             <img onclick="currentSlide(<?= $index ?>)" class="product-file-thumbnail" src="/UploadedFiles/products/<?= $file["file_name"] ?>">
                         <?php } else { ?>
-                            <video class="product-file-thumbnail">
+                            <video class="product-file-thumbnail" controls>
                                 <source src="/UploadedFiles/products/<?= $file['file_name'] ?>" type="video/mp4">
                                 Your browser does not support the video tag.
                             </video>
@@ -51,7 +51,7 @@
                 </div>
             </div>
             <div id="product-right">
-                <a id="webshop_name" href="<?= base_url("/Store/WebshopController") . "/" . $product["webshop_id"] ?>"><?= $product["webshop_name"] ?></a>
+                <a id="webshop_name" href="<?= base_url("/store/webshop") . "/" . $product["webshop_id"] ?>"><?= $product["webshop_name"] ?></a>
                 <p id="origin">Origin: <?= $product["origin"] ?></p>
                 <h1 class="product-title"><?= $title ?></h1>
                 <hr />
@@ -68,10 +68,11 @@
                         Unavailable
                     </p>
                 <?php } ?>
-                <form class="info-row">
-                    <input type="number" name="quantity" class="form-control quantity" min="1" max="<?= $product["quantity"] ?>" value="1" onchange="updatePrice(this.value)" />
-                    <button class="btn btn-primary">Add To Shopping Cart</button>
-                </form>
+                <div class="info-row">
+                    <?= csrf_field() ?>
+                    <input type="number" id="quantity" name="quantity" class="form-control" min="1" max="<?= $product["quantity"] ?>" value="1" onchange="updatePrice(this.value)" />
+                    <button id="add-cart-button" class="btn btn-primary" <?= $product['quantity'] == 0 ? 'disabled' : '' ?>>Add To Shopping Cart</button>
+                </div>
             </div>
         </div>
         <div id="product-details">
@@ -84,14 +85,47 @@
         </div>
     </div>
 </div>
+<script src="/javascript/AjaxHandler.js"></script>
 <script>
+    AjaxHandler.setToken("<?= csrf_token() ?>");
+
+    // handle adding to cart
+    let button = document.getElementById("add-cart-button");
+    button.addEventListener('click', () => addToCart("<?= $product["id"] ?>"), false);
+
+    function addToCart(productId) {
+        let quantity = document.getElementById("quantity")
+        button.classList.add("loading-button");
+        button.innerHTML = "<div class='spinner-grow spinner-grow-sm' role='status' style='padding: 0.375rem 0.675rem'>";
+
+        AjaxHandler.ajaxPost("<?= base_url('/cart/addProductToCart') ?>", {
+                quantity: quantity.value,
+                id: productId
+            },
+            (data) => {
+                handleResponse(data)
+            });
+    }
+
+    function handleResponse(data) {
+        button.classList.remove("loading-button");
+        button.classList.remove("failed-button");
+        if (data["success"] == true) {
+            button.classList.add("activated-button");
+            button.innerHTML = "Added to Cart!";
+        } else {
+            button.classList.add("failed-button");
+            button.innerHTML = "Not Enough In Stock";
+        }
+    }
+
+    // update price when quantity is changed
     let priceElem = document.getElementById("price");
 
     updatePrice(1);
 
     function updatePrice(value) {
-        price="" + (<?=$product["price"]?> * value).toFixed(2);
-        console.log("updating price", price);
+        price = "" + (<?= $product["price"] ?> * value).toFixed(2);
         priceSplit = price.split(".");
         priceBase = priceSplit[0];
         priceCents = priceSplit[1];
@@ -114,7 +148,6 @@
     }
 
     function showSlides(n) {
-        console.log("Yes");
         let i;
         let sliderImages = document.getElementsByClassName("product-file-slider");
         let thumbnailImages = document.getElementsByClassName("product-file-thumbnail");

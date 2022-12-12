@@ -17,13 +17,15 @@
     </div>
 </div>
 
-<script src="/javascript/ajaxRequests.js"></script>
+<script src="/javascript/AjaxHandler.js"></script>
 <script>
+    AjaxHandler.setToken("<?= csrf_token() ?>");
+
     let button = document.getElementById("sign-up-button");
     button.addEventListener('click', register, false);
 
     function register() {
-        ajaxPost("<?= base_url('/SignUpController/register') ?>",
+        AjaxHandler.ajaxPost("<?= base_url('/SignUpController/register') ?>",
             getJSONInput(),
             handleResponse)
     }
@@ -42,7 +44,6 @@
             username: inputUsername.value,
             password: inputPassword.value,
             confirmpassword: inputConfirmpassword.value,
-            ...getCSRFHiddenFieldValue("<?= csrf_token() ?>")
         }
 
         return input;
@@ -68,6 +69,5 @@
 
             document.getElementById("errors-validation").innerHTML = html;
         }
-        updateCSRF(data)
     }
 </script>

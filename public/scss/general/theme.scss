@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@600&display=swap');
+
 :root {
     /* Catpuccin color scheme (https://github.com/catppuccin/catppuccin#-palettes) */
     /* #FF6148 */
@@ -168,6 +170,7 @@ h3 {
 .tx-l {
     font-size: 2rem;
 }
+
 .icon-button {
     font-size: 1.5rem;
 }
@@ -181,7 +184,37 @@ h3 {
     transform: scale(115%);
 }
 
-.files-trash-icon{
+.files-trash-icon {
     color: rgb(var(--red));
     font-size: 24px;
+}
+
+.loading-button {
+    border-color: rgb(var(--primary2));
+    background-color: rgb(var(--primary2));
+}
+
+.loading-button:hover {
+    border-color: rgb(var(--primary2));
+    background-color: rgb(var(--primary2));
+}
+
+.activated-button {
+    border-color: rgb(var(--secondary));
+    background-color: rgb(var(--secondary));
+}
+
+.activated-button:hover {
+    border-color: rgb(var(--secondary));
+    background-color: rgb(var(--secondary));
+}
+
+.failed-button {
+    border-color: rgb(var(--red));
+    background-color: rgb(var(--red));
+}
+
+.failed-button:hover {
+    border-color: rgb(var(--red));
+    background-color: rgb(var(--red));
 }

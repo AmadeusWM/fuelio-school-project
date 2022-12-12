@@ -50,8 +50,10 @@
     </div>
 </div>
 
-<script src="/javascript/ajaxRequests.js"></script>
+<script src="/javascript/AjaxHandler.js"></script>
 <script>
+    AjaxHandler.setToken("<?= csrf_token() ?>");
+
     let buttons = document.getElementsByName("file-remove-button");
     for (button of buttons) {
         let fileId = button.getAttribute("id");
@@ -59,13 +61,12 @@
     }
 
     function removeFile(fileId) {
-        ajaxPost("<?= base_url('/account/ProductsController/removeFile') ?>", fileBody(fileId), handleResponse)
+        AjaxHandler.ajaxPost("<?= base_url('/account/ProductsController/removeFile') ?>", fileBody(fileId), handleResponse)
     }
 
     function fileBody(fileId) {
         let body = {
             "fileId": fileId,
-            ...getCSRFHiddenFieldValue("<?= csrf_token() ?>")
         }
         return body;
     }
@@ -76,6 +77,5 @@
             let fileContainer = document.getElementById("container-" + removedFileId);
             fileContainer.remove();
         }
-        updateCSRF(data);
     }
 </script>

@@ -1,5 +1,6 @@
 <div id="search-page">
-    <form name="filter-form" id="filter-container" class="hover-box" action="<?= base_url("/Store/ProductSearchController/search") ?>">
+    <?= csrf_field() ?>
+    <form name="filter-form" id="filter-container" class="hover-box" action="<?= base_url("/store/search") ?>">
         <div class="input-wrapper">
             <!-- <label for="search_terms" class="form-label">Search Terms</label> -->
             <input type="text" id="search_terms" name="search_terms" class="form-control" value="<?= isset($filter["search_terms"]) ? $filter["search_terms"] : "" ?>" placeholder="Search Terms">
@@ -27,8 +28,8 @@
         <div class="input-wrapper">
             <!-- <label for="max_price" class="form-label">Max Price</label> -->
             <div class="max-price-input-wrapper">
-                <input type="range" id="max-price-range" step="5" min="0" max="9999" value="<?= isset($filter["max_price"]) ? $filter["max_price"] : "0" ?>" class="form-range" onchange="updateMaxPrice(this.value, 'max-price-input')">
                 <input type="number" id="max-price-input" step="5" min="0" name="max_price" class="form-control" value="<?= isset($filter["max_price"]) ? $filter["max_price"] : "0" ?>" onchange="updateMaxPrice(this.value, 'max-price-range')" />
+                <input type="range" id="max-price-range" step="5" min="0" max="9999" value="<?= isset($filter["max_price"]) ? $filter["max_price"] : "0" ?>" class="form-range" onchange="updateMaxPrice(this.value, 'max-price-input')">
             </div>
 
         </div>
@@ -38,9 +39,48 @@
         <?php echo $products_list ?>
     </div>
 </div>
+<script src="/javascript/AjaxHandler.js"></script>
 <script>
+    // init ajaxhandler
+    AjaxHandler.setToken("<?= csrf_token() ?>");
+
     function updateMaxPrice(value, id) {
         let maxPriceSpan = document.getElementById(id);
         maxPriceSpan.value = value;
+    }
+
+    let addProductButtons = document.querySelectorAll(".add-product-button");
+
+    if (addProductButtons) {
+        addProductButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                addToCart(button);
+            }, false);
+        })
+    }
+
+    function addToCart(button) {
+        let id = button.getAttribute("data-product-id");
+        button.classList.add("loading-button");
+        button.innerHTML = "<div class='spinner-grow spinner-grow-sm' role='status' style='margin: auto 3px;' >";
+        AjaxHandler.ajaxPost("<?= base_url('/cart/addProductToCart') ?>", {
+                quantity: 1,
+                id: id
+            },
+            (data) => {
+                handleResponse(data, button)
+            })
+    }
+
+    function handleResponse(data, button) {
+        button.classList.remove("loading-button");
+        button.classList.remove("failed-button");
+        if (data["success"] == true) {
+            button.classList.add("activated-button");
+            button.innerHTML = "<i class='bi bi-cart-check'></i>";
+        } else {
+            button.classList.add("failed-button");
+            button.innerHTML = "<i class='bi bi-x'></i>";
+        }
     }
 </script>

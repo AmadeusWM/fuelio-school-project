@@ -114,8 +114,12 @@
                 }
 
                 .product-availability {
-                    text-align: right;
-                    font-size: 0.8rem;
+                    font-size: 1rem;
+                    align-self: center;
+                }
+                .add-product-button{
+                    font-size: 24px;
+                    padding-bottom: 4px;
                 }
             }
         }

@@ -33,8 +33,10 @@
         } ?>
     </div>
 </div>
-<script src="/javascript/ajaxRequests.js"></script>
+<script src="/javascript/AjaxHandler.js"></script>
 <script>
+    AjaxHandler.setToken("<?= csrf_token() ?>");
+
     let buttons = document.getElementsByName("image-remove-button");
     for (button of buttons) {
         let imageId = button.getAttribute("id");
@@ -42,13 +44,12 @@
     }
 
     function removeImage(imageId) {
-        ajaxPost("<?= base_url('/account/ProfileController/removeImage') ?>", imageBody(imageId), handleResponse)
+        AjaxHandler.ajaxPost("<?= base_url('/account/ProfileController/removeImage') ?>", imageBody(imageId), handleResponse)
     }
 
     function imageBody(imageId) {
         let body = {
             "imageId": imageId,
-            ...getCSRFHiddenFieldValue("<?= csrf_token() ?>")
         }
         return body;
     }
@@ -59,6 +60,5 @@
             let imageContainer = document.getElementById("container-" + removedImageId);
             imageContainer.remove();
         }
-        updateCSRF(data);
     }
 </script>

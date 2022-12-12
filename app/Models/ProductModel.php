@@ -87,6 +87,17 @@ class ProductModel extends Model
         return $this->getProductData($product);
     }
 
+    public function getProductsByIds($idList)
+    {
+        if (empty($idList)){
+            return [];
+        }
+        
+        $products = $this->whereIn('id', $idList)->get()->getResultArray();
+
+        return $this->insertAllDataIntoProducts($products);
+    }
+
     /**
      * @param $products the list of products which will be filled with all products information available
      * @return products a list of products with all attributes set (files, product_category)

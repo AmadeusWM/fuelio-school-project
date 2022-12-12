@@ -38,11 +38,10 @@
         } ?>
     </div>
 </div>
-<script src="/javascript/ajaxRequests.js"></script>
+<script src="/javascript/AjaxHandler.js"></script>
 <script>
     // == csrf properties ==
-    csrf_token = "<?= csrf_token(); ?>";
-    csrf_value = "<?= csrf_hash(); ?>";
+    AjaxHandler.setToken("<?= csrf_token() ?>");
     // ===
     let buttons = document.getElementsByName("product-remove-button");
     for (button of buttons) {
@@ -51,27 +50,22 @@
     }
 
     function removeProduct(productId) {
-        ajaxPost("<?= base_url("/account/ProductsController/removeProduct") ?>", productBody(productId), handleResponse)
+        AjaxHandler.ajaxPost("<?= base_url("/account/ProductsController/removeProduct") ?>", productBody(productId), handleResponse)
     }
 
     function productBody(productId) {
         let body = {
             "productId": productId,
         }
-        body[csrf_token] = csrf_value;
         return body;
     }
 
 
     function handleResponse(data) {
-        console.log(data)
         if (data["success"]) {
-            console.log("succes")
             let removedProductId = data["productId"];
             let productContainer = document.getElementById("container-" + removedProductId);
             productContainer.remove();
         }
-        csrf_token = data["csrf_token"]
-        csrf_value = data["csrf_value"]
     }
 </script>

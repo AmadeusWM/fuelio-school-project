@@ -56,12 +56,17 @@ $routes->group('account', static function ($routes) {
     $routes->post('ProductsController/removeFile', 'User\Account\ProductsController::removeFile');
 });
 
-$routes->group("Store", static function ($routes) {
-    $routes->get('ProductSearchController/search', 'Store\ProductSearchController::search');
-    $routes->get('ProductController/product/(:num)', 'Store\ProductController::index/$1');
-    $routes->get('WebshopController/(:num)', 'Store\WebshopController::index/$1');
+$routes->group("store", static function ($routes) {
+    $routes->get('search', 'Store\ProductSearchController::search');
+    $routes->get('product/(:num)', 'Store\ProductController::index/$1');
+    $routes->get('webshop/(:num)', 'Store\WebshopController::index/$1');
 });
-
+$routes->group("cart", static function ($routes) {
+    $routes->post('addProductToCart', 'Cart\OrderController::addProductToCart');
+    $routes->post('removeProductFromCart', 'Cart\OrderController::removeProductFromCart');
+    $routes->get('cart', 'Cart\OrderController::cartPage');
+    $routes->get('checkout', 'Cart\OrderController::checkoutPage');
+});
 $routes->get('login', 'User\SignInController::index');
 $routes->get('register', 'User\SignUpController::index');
 

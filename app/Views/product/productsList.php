@@ -1,7 +1,7 @@
 <div id="results-container">
     <?php foreach ($products as $product) { ?>
         <div id="result-container" class="hover-box">
-            <a href='<?=base_url("/Store/ProductController/product" . "/" . $product["id"])?>'>
+            <a href='<?= base_url("/store/product" . "/" . $product["id"]) ?>'>
                 <?php
                 $files = $product["files"];
                 $file = null;
@@ -17,14 +17,13 @@
                     </div>
                 <?php } ?>
             </a>
-            <a class="product-title" href='<?= base_url("/Store/ProductController/product" . "/" . $product["id"]) ?>'> <?= $product["name"] ?></a>
-            <a class="webshop-name" href="<?=base_url("/Store/WebshopController") . "/" . $product["webshop_id"]?>"><?= $product["webshop_name"] ?></a>
+            <a class="product-title" href='<?= base_url("/store/product" . "/" . $product["id"]) ?>'> <?= $product["name"] ?></a>
+            <a class="webshop-name" href="<?= base_url("/store/webshop") . "/" . $product["webshop_id"] ?>"><?= $product["webshop_name"] ?></a>
             <hr style="margin: 5px 0px" />
             <div class="product-content-container">
                 <p class="product-category"><?= $product["product_category"] ?></p>
                 <p class="product-price">€<?= $product["price"] ?></p>
             </div>
-            <button class="btn btn-primary m-2">Add To Cart</button>
             <div class="product-content-container">
                 <?php if ($product["quantity"] > 0) { ?>
                     <p class="product-availability green">
@@ -37,6 +36,9 @@
                         Unavailable
                     </p>
                 <?php } ?>
+                <button data-product-id="<?= $product["id"] ?>" class="btn btn-primary add-product-button" <?= $product['quantity'] == 0 ? 'disabled' : '' ?>>
+                    <i class="bi bi-cart-plus"></i>
+                </button>
             </div>
         </div>
     <?php } ?>

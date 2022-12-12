@@ -1,0 +1,99 @@
+#cart-page {
+    h1 {
+        margin: 15px;
+    }
+
+    #container-page-content {
+        display: flex;
+        flex-direction: row;
+
+        #container-products {
+            flex: 1;
+            margin: 15px;
+            overflow: hidden;
+
+            .product-container {
+                display: flex;
+                padding: 10px;
+
+                .thumbnail {
+                    object-fit: cover;
+                    width: 120px;
+                    height: 120px;
+                    border-radius: var(--radius1);
+                }
+
+                .content {
+                    width: 100%;
+
+                    .product-details {
+                        display: flex;
+                        justify-content: space-between;
+                        margin: 10px;
+
+                        .left {
+                            display: flex;
+                            flex-direction: column;
+
+                            .webshop {
+                                color: rgb(var(--b2));
+                                font-size: 1rem;
+                                text-decoration: none;
+                            }
+
+                            .product-name {
+                                color: rgb(var(--b1));
+                                font-size: 1.2rem;
+                                font-weight: bold;
+                                text-decoration: none;
+                            }
+                        }
+
+                        .right {}
+                    }
+
+                    .button-row {
+                        display: flex;
+                        align-items: center;
+                        margin: 10px;
+
+                        .quantity {
+                            width: 100px;
+                        }
+
+                        .bi-trash {
+                            margin: 0px 10px;
+                        }
+                    }
+                }
+            }
+        }
+
+        #container-overview {
+            display: flex;
+            flex-direction: column;
+            margin: 15px;
+            padding: 15px;
+            width: 400px;
+            height: fit-content;
+
+            #overview-header {
+                margin-bottom: 20px;
+            }
+
+            .overview-row {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+
+                #total {
+                    font-weight: bold;
+                }
+
+                ;
+            }
+
+            .order-button {}
+        }
+    }
+}
