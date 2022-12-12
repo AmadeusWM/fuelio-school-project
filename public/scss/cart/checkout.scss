@@ -1,3 +1,44 @@
-#checkout-page{
+#checkout-page {
+    width: 100%;
+
+    #title{
+        margin: 15px 15px 0px 15px;
+    }
     
+    #page-content {
+        display: flex;
+
+        #left {
+            margin: 15px;
+            flex: 1;
+            padding: 5px 15px 15px;
+            h2{
+                margin: 10px 0px;
+            }
+            input{
+                margin: 10px 0px;
+            }
+        }
+
+        #right {
+            display: flex;
+            flex-direction: column;
+            margin: 15px;
+            padding: 15px;
+            height: fit-content;
+            width: 400px;
+            h2{
+                margin: 0px 0px 10px;
+            }
+            .overview-row {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+
+                #total {
+                    font-weight: bold;
+                }
+            }
+        }
+    }
 }

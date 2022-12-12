@@ -38,8 +38,7 @@ class OrderController extends BaseController
         if ($product["quantity"] < $quantity) { // fails when quantity more than in stock
             $data["success"] = false;
             return $this->response->setJSON($data);
-        } 
-        else {
+        } else {
             $cart[$id] = $quantity;
         }
         $session->set("cart", $cart);
@@ -61,9 +60,8 @@ class OrderController extends BaseController
             unset($cart[$id]);
             $session->set("cart", $cart);
             $data["success"] = true;
-        }
-        else{
-            $data["cart"] = $cart ;
+        } else {
+            $data["cart"] = $cart;
             $data["success"] = false;
         }
         return $this->response->setJSON($data);
@@ -71,9 +69,43 @@ class OrderController extends BaseController
 
     public function cartPage()
     {
-        $productModel = new ProductModel();
-
         $data["title"] = "Your Shopping Cart";
+
+        $data["products"] = $this->getProductsWithQuantity();
+
+        return view("templates/header", $data) .
+            view("cart/cart") .
+            view("templates/footer");
+    }
+
+    public function checkoutPage()
+    {
+        $data["title"] = ucfirst("checkout");
+
+        $products = $this->getProductsWithQuantity();
+
+        $pricesLambda = function ($a) {
+            return $a["price"] * $a["orderQuantity"];
+        };
+        
+        $data["totalPrice"] = array_sum(array_map($pricesLambda, $products));
+
+        return view("templates/header", $data) .
+            view("cart/checkout") .
+            view("templates/footer");
+    }
+
+    private function getCart()
+    {
+        $session = session();
+        if (!$session->has("cart")) {
+            $session->set("cart", []);
+        }
+        return $session->get("cart");
+    }
+
+    private function getProductsWithQuantity(){
+        $productModel = new ProductModel();
 
         $cartProducts = $this->getCart();
 
@@ -87,26 +119,6 @@ class OrderController extends BaseController
             $products[$id] = $product;
         }
 
-        $data["products"] = $products;
-
-        return view("templates/header", $data) .
-            view("cart/cart") .
-            view("templates/footer");
-    }
-
-    public function checkoutPage(){
-        $data["title"] = ucfirst("checkout");
-        return view("templates/header", $data) .
-            view("cart/checkout") .
-            view("templates/footer");
-    }
-
-    private function getCart()
-    {
-        $session = session();
-        if (!$session->has("cart")) {
-            $session->set("cart", []);
-        }
-        return $session->get("cart");
+        return $products;
     }
 }

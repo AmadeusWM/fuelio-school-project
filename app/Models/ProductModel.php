@@ -57,20 +57,22 @@ class ProductModel extends Model
         if ($fetch_amount > 100)
             $fetch_amount = 100;
 
-            
+
         $category_id = null;
         if (isset($filter["category"]) && $filter["category"] != "All")
             $category_id = $productCategoryModel->where('name', $filter["category"])->first()['id'];
-        
+
         $query = $this;
 
         if (isset($filter['search_terms']))
             $query = $query->like('name', $filter['search_terms']);
+        if (isset($filter['origin']))
+            $query = $query->like('origin', $filter['origin']);
         if (isset($filter['max_price']) && $filter['max_price'] > 0)
             $query = $query->where('price <=', $filter['max_price']);
         if (isset($category_id))
             $query = $query->where('product_category_id', $category_id);
-                            
+
         $query = $query->limit($fetch_amount, $fetch_amount * $offset);
 
         $products = $query->get()->getResultArray();
@@ -89,10 +91,10 @@ class ProductModel extends Model
 
     public function getProductsByIds($idList)
     {
-        if (empty($idList)){
+        if (empty($idList)) {
             return [];
         }
-        
+
         $products = $this->whereIn('id', $idList)->get()->getResultArray();
 
         return $this->insertAllDataIntoProducts($products);
@@ -102,14 +104,15 @@ class ProductModel extends Model
      * @param $products the list of products which will be filled with all products information available
      * @return products a list of products with all attributes set (files, product_category)
      */
-    private function insertAllDataIntoProducts($products){
+    private function insertAllDataIntoProducts($products)
+    {
         $productsData = array();
         foreach ($products as $product) {
             array_push($productsData, $this->getProductData($product));
         }
         return $productsData;
     }
-    
+
     private function getProductData($product)
     {
         $productCategoryModel = new ProductCategoryModel();
@@ -119,7 +122,7 @@ class ProductModel extends Model
         $productCategory = $productCategoryModel->find($product["product_category_id"]);
 
         $seller = $userModel->find($product["user_id"]);
-        
+
         $productData = [
             "id"                  => $product["id"],
             "name"                  => $product["name"],

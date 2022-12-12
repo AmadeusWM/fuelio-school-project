@@ -54,7 +54,7 @@
                 <p id="total">€<?= number_format($totalPrice, 2) ?></p>
             </div>
             <hr />
-            <a class="btn btn-primary order-button" href="<?= base_url("/cart/checkout") ?>">Checkout</a>
+            <a class="btn btn-primary order-button" href="<?= base_url("/cart/checkout") ?>">Go to Checkout</a>
         </div>
     </div>
 </div>

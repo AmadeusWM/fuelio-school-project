@@ -66,6 +66,7 @@ $routes->group("cart", static function ($routes) {
     $routes->post('removeProductFromCart', 'Cart\OrderController::removeProductFromCart');
     $routes->get('cart', 'Cart\OrderController::cartPage');
     $routes->get('checkout', 'Cart\OrderController::checkoutPage');
+    $routes->get('placeOrder', 'Cart\OrderController::placeOrder');
 });
 $routes->get('login', 'User\SignInController::index');
 $routes->get('register', 'User\SignUpController::index');

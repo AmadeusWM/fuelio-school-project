@@ -12080,7 +12080,7 @@ h3 {
 }
 
 #cart-page h1 {
-  margin: 15px;
+  margin: 15px 15px 0px 15px;
 }
 #cart-page #container-page-content {
   display: flex;
@@ -12154,6 +12154,46 @@ h3 {
 #cart-page #container-page-content #container-overview .overview-row #total {
   font-weight: bold;
 }
+#checkout-page {
+  width: 100%;
+}
+#checkout-page #title {
+  margin: 15px 15px 0px 15px;
+}
+#checkout-page #page-content {
+  display: flex;
+}
+#checkout-page #page-content #left {
+  margin: 15px;
+  flex: 1;
+  padding: 5px 15px 15px;
+}
+#checkout-page #page-content #left h2 {
+  margin: 10px 0px;
+}
+#checkout-page #page-content #left input {
+  margin: 10px 0px;
+}
+#checkout-page #page-content #right {
+  display: flex;
+  flex-direction: column;
+  margin: 15px;
+  padding: 15px;
+  height: fit-content;
+  width: 400px;
+}
+#checkout-page #page-content #right h2 {
+  margin: 0px 0px 10px;
+}
+#checkout-page #page-content #right .overview-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+#checkout-page #page-content #right .overview-row #total {
+  font-weight: bold;
+}
+
 #product-form-container {
   display: flex;
   flex-direction: column;
