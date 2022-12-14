@@ -1,0 +1,101 @@
+#orders-page {
+    #orders-container {
+        flex: 1;
+        margin: 15px;
+        overflow: hidden;
+        height: fit-content;
+
+        .order-container {
+            border: 1px rgba(var(--dp24), 0.1) solid;
+            border-radius: var(--radius1);
+
+            .order-product-container {
+                display: flex;
+                padding: 10px;
+
+                .thumbnail {
+                    object-fit: cover;
+                    width: 120px;
+                    height: 120px;
+                    border-radius: var(--radius1);
+                }
+
+                .content {
+                    width: 100%;
+                    padding: 10px;
+
+                    .product-details {
+                        display: flex;
+                        justify-content: space-between;
+                        height: 100%;
+
+                        .left {
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: space-between;
+
+                            .top-wrapper {
+                                display: flex;
+                                flex-direction: column;
+
+                                .webshop {
+                                    color: rgb(var(--b2));
+                                    font-size: 1rem;
+                                    text-decoration: none;
+                                }
+
+                                .product-name {
+                                    color: rgb(var(--b1));
+                                    font-size: 1.2rem;
+                                    font-weight: bold;
+                                    text-decoration: none;
+                                }
+                            }
+
+                            .bottom-wrapper {
+                                p {
+                                    color: rgb(var(--b3));
+                                }
+                            }
+                        }
+
+                        .right {}
+                    }
+                }
+            }
+
+            .bottom-order {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                margin: 10px;
+                b{
+                    margin-top: 5px;
+                    font-weight: bold;
+                }
+                p{
+                    margin: 5px;
+                }
+
+                .container-info {
+                    display: flex;
+                    justify-content: flex-start;
+                    width: 100%;
+                    margin: 10px 0px;
+
+                    #total {
+                        font-weight: bold;
+                    }
+                }
+                .container-delivery{
+                }
+                .button-row{
+                    align-self: center;
+                    .btn{
+                        width: 200px;
+                    }
+                }
+            }
+        }
+    }
+}

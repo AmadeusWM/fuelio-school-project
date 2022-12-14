@@ -5,6 +5,7 @@ namespace App\Controllers\User\Account;
 use App\Controllers\BaseController;
 use App\Controllers\User\Account\OverviewController;
 use App\Models\UserModel;
+use App\Models\Orders\OrderModel;
 
 class OrdersController extends BaseController
 {
@@ -20,6 +21,15 @@ class OrdersController extends BaseController
 
     private function view($data = [])
     {
+        $orderModel = new OrderModel();
+        
+        $userId = session()->get("id");
+        
+        if (isset($userId)){
+            $orders = $orderModel->getOrdersByUser($userId);
+            $data["orders"] = $orders;
+        }
+        
         return view("user/account/orders", $data);
     }
 }

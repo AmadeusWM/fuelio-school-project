@@ -67,6 +67,7 @@ $routes->group("cart", static function ($routes) {
     $routes->get('cart', 'Cart\OrderController::cartPage');
     $routes->get('checkout', 'Cart\OrderController::checkoutPage');
     $routes->get('placeOrder', 'Cart\OrderController::placeOrder');
+    $routes->get('success', 'Cart\OrderController::successPage');
 });
 $routes->get('login', 'User\SignInController::index');
 $routes->get('register', 'User\SignUpController::index');

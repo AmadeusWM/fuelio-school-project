@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\AssetModels\ProductFileModel;
 use App\Models\UserModel;
 use CodeIgniter\Model;
+use Exception;
 
 class ProductModel extends Model
 {
@@ -101,10 +102,28 @@ class ProductModel extends Model
     }
 
     /**
+     * Decrements the quantity of a product
+     */
+    public function decrementQuantity($id, $quantity)
+    {
+        try {
+            $product = $this->find($id);
+            if (isset($product) && $product["quantity"] >= $quantity) {
+                $product["quantity"] -= $quantity;
+                $this->save($product);
+            } else {;
+                throw new Exception("Invalid quantity or product id");
+            }
+        } catch (Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
      * @param $products the list of products which will be filled with all products information available
      * @return products a list of products with all attributes set (files, product_category)
      */
-    private function insertAllDataIntoProducts($products)
+    public function insertAllDataIntoProducts($products)
     {
         $productsData = array();
         foreach ($products as $product) {
@@ -123,18 +142,10 @@ class ProductModel extends Model
 
         $seller = $userModel->find($product["user_id"]);
 
-        $productData = [
-            "id"                  => $product["id"],
-            "name"                  => $product["name"],
-            "price"                 => $product["price"],
-            "description"           => $product["description"],
-            "origin"                => $product["origin"],
-            "quantity"              => $product["quantity"],
-            "product_category"      => $productCategory["name"],
-            "webshop_name"           => $seller["webshop_name"],
-            "webshop_id"             => $seller["id"],
-            "files"                 => array_values($files)
-        ];
-        return $productData;
+        $product["product_category"]      = $productCategory["name"];
+        $product["webshop_name"]           = $seller["webshop_name"];
+        $product["webshop_id"]             = $seller["id"];
+        $product["files"]                 = array_values($files);
+        return $product;
     }
 }

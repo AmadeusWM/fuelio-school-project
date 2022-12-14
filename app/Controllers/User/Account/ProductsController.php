@@ -97,6 +97,7 @@ class ProductsController extends BaseController
     {
         // TODO: if productId parameter set: check if 
         // the session user has the same id as the product
+        $data = [];
 
         $userModel = new UserModel();
         $productModel = new ProductModel();
@@ -157,7 +158,6 @@ class ProductsController extends BaseController
 
             return redirect()->to(base_url('/account/overview/products'));
         } else { // something went wrong, send back validation errors
-            $data['validation'] = $this->validator;
             return $this->addProductPage($data);
         }
     }

@@ -1,7 +1,7 @@
 <div id="results-container">
     <?php foreach ($products as $product) { ?>
         <div id="result-container" class="hover-box">
-            <a href='<?= base_url("/store/product" . "/" . $product["id"]) ?>'>
+            <a class="image-container" href='<?= base_url("/store/product" . "/" . $product["id"]) ?>'>
                 <?php
                 $files = $product["files"];
                 $file = null;

@@ -1,10 +1,10 @@
 #checkout-page {
     width: 100%;
 
-    #title{
+    #title {
         margin: 15px 15px 0px 15px;
     }
-    
+
     #page-content {
         display: flex;
 
@@ -12,11 +12,17 @@
             margin: 15px;
             flex: 1;
             padding: 5px 15px 15px;
-            h2{
+
+            h2 {
                 margin: 10px 0px;
             }
-            input{
+
+            input {
                 margin: 10px 0px;
+            }
+
+            .inactive {
+                display: none;
             }
         }
 
@@ -27,9 +33,11 @@
             padding: 15px;
             height: fit-content;
             width: 400px;
-            h2{
+
+            h2 {
                 margin: 0px 0px 10px;
             }
+
             .overview-row {
                 display: flex;
                 flex-direction: row;

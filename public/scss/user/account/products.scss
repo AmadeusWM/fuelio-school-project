@@ -2,61 +2,62 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-}
 
-.product-image {
-    width: 200px;
-    height: 200px;
-    margin: 5px;
-    object-fit: cover;
-    border-radius: var(--radius1);
-}
+    .product-image {
+        width: 200px;
+        height: 200px;
+        margin: 5px;
+        object-fit: cover;
+        border-radius: var(--radius1);
+    }
 
-.inventory-product-container {
-    display: flex;
-    flex-direction: row;
-}
+    .inventory-product-container {
+        display: flex;
+        flex-direction: row;
 
-.inventory-product-content {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    overflow: hidden;
-    background-color: rgba(var(--dp6), 0.04);
-    margin: 12px;
-    border-radius: 12px;
-    flex:1;
-}
+        .inventory-product-content {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            overflow: hidden;
+            background-color: rgba(var(--dp6), 0.04);
+            margin: 12px;
+            border-radius: 12px;
+            flex: 1;
 
-.inventory-product-content>ul {
-    margin: 16px;
-}
+            ul {
+                margin: 16px;
+            }
 
-.inventory-product-content>ul>li {
-    margin: 8px;
-    margin-left: 16px;
-}
+            ul>li {
+                margin: 8px;
+                margin-left: 16px;
+            }
 
-.inventory-icon {
-    margin-right: 8px;
-    font-size: 1rem;
-    color: rgb(var(--tertiary));
-}
+            .inventory-icon {
+                margin-right: 8px;
+                font-size: 1rem;
+                color: rgb(var(--tertiary));
+            }
+    
+            .inventory-image {
+                width: 150px;
+                object-fit: cover;
+                max-height: 100%;
+            }
+    
+        }
+        .inventory-product-buttons {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-radius: var(--radius1);
+            margin: 12px 0px;
+            background-color: rgba(var(--dp6), 0.04);
 
-.inventory-image {
-    width: 150px;
-    object-fit: cover;
-}
-
-.inventory-product-buttons {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border-radius: var(--radius1);
-    margin: 12px 0px;
-    background-color: rgba(var(--dp6), 0.04);
-}
-
-.inventory-product-button {
-    margin: 16px;
+            .inventory-product-button {
+                margin: 16px;
+            }
+        }
+    }
 }

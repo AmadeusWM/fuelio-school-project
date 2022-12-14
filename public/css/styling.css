@@ -31,10 +31,12 @@ from [here](https://stackoverflow.com/questions/2336302/single-huge-css-file-vs-
   --dp6: 18, 18, 18;
   --dp12: 36, 36, 36;
   --dp24: 72, 72, 72;
+  --dp36: 128, 128, 128;
   /* text */
   --b0: var(--dp3);
   --b1: var(--dp12);
   --b2: var(--dp24);
+  --b3: var(--dp36);
   /* background */
   --bg0: 255, 255, 255;
   /* border-radius */
@@ -116,7 +118,7 @@ h3 {
 
 .hover-box {
   border-radius: var(--radius2);
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
 }
 
 .link {
@@ -11643,10 +11645,12 @@ table {
   --dp6: 18, 18, 18;
   --dp12: 36, 36, 36;
   --dp24: 72, 72, 72;
+  --dp36: 128, 128, 128;
   /* text */
   --b0: var(--dp3);
   --b1: var(--dp12);
   --b2: var(--dp24);
+  --b3: var(--dp36);
   /* background */
   --bg0: 255, 255, 255;
   /* border-radius */
@@ -11728,7 +11732,7 @@ h3 {
 
 .hover-box {
   border-radius: var(--radius2);
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
 }
 
 .link {
@@ -11990,21 +11994,18 @@ h3 {
   flex-direction: column;
   width: 100%;
 }
-
-.product-image {
+#inventory-products .product-image {
   width: 200px;
   height: 200px;
   margin: 5px;
   object-fit: cover;
   border-radius: var(--radius1);
 }
-
-.inventory-product-container {
+#inventory-products .inventory-product-container {
   display: flex;
   flex-direction: row;
 }
-
-.inventory-product-content {
+#inventory-products .inventory-product-container .inventory-product-content {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -12014,28 +12015,24 @@ h3 {
   border-radius: 12px;
   flex: 1;
 }
-
-.inventory-product-content > ul {
+#inventory-products .inventory-product-container .inventory-product-content ul {
   margin: 16px;
 }
-
-.inventory-product-content > ul > li {
+#inventory-products .inventory-product-container .inventory-product-content ul > li {
   margin: 8px;
   margin-left: 16px;
 }
-
-.inventory-icon {
+#inventory-products .inventory-product-container .inventory-product-content .inventory-icon {
   margin-right: 8px;
   font-size: 1rem;
   color: rgb(var(--tertiary));
 }
-
-.inventory-image {
+#inventory-products .inventory-product-container .inventory-product-content .inventory-image {
   width: 150px;
   object-fit: cover;
+  max-height: 100%;
 }
-
-.inventory-product-buttons {
+#inventory-products .inventory-product-container .inventory-product-buttons {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -12043,8 +12040,7 @@ h3 {
   margin: 12px 0px;
   background-color: rgba(var(--dp6), 0.04);
 }
-
-.inventory-product-button {
+#inventory-products .inventory-product-container .inventory-product-buttons .inventory-product-button {
   margin: 16px;
 }
 
@@ -12079,6 +12075,87 @@ h3 {
   flex: 1;
 }
 
+#orders-page #orders-container {
+  flex: 1;
+  margin: 15px;
+  overflow: hidden;
+  height: fit-content;
+}
+#orders-page #orders-container .order-container {
+  border: 1px rgba(var(--dp24), 0.1) solid;
+  border-radius: var(--radius1);
+}
+#orders-page #orders-container .order-container .order-product-container {
+  display: flex;
+  padding: 10px;
+}
+#orders-page #orders-container .order-container .order-product-container .thumbnail {
+  object-fit: cover;
+  width: 120px;
+  height: 120px;
+  border-radius: var(--radius1);
+}
+#orders-page #orders-container .order-container .order-product-container .content {
+  width: 100%;
+  padding: 10px;
+}
+#orders-page #orders-container .order-container .order-product-container .content .product-details {
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+}
+#orders-page #orders-container .order-container .order-product-container .content .product-details .left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+#orders-page #orders-container .order-container .order-product-container .content .product-details .left .top-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+#orders-page #orders-container .order-container .order-product-container .content .product-details .left .top-wrapper .webshop {
+  color: rgb(var(--b2));
+  font-size: 1rem;
+  text-decoration: none;
+}
+#orders-page #orders-container .order-container .order-product-container .content .product-details .left .top-wrapper .product-name {
+  color: rgb(var(--b1));
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-decoration: none;
+}
+#orders-page #orders-container .order-container .order-product-container .content .product-details .left .bottom-wrapper p {
+  color: rgb(var(--b3));
+}
+#orders-page #orders-container .order-container .bottom-order {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 10px;
+}
+#orders-page #orders-container .order-container .bottom-order b {
+  margin-top: 5px;
+  font-weight: bold;
+}
+#orders-page #orders-container .order-container .bottom-order p {
+  margin: 5px;
+}
+#orders-page #orders-container .order-container .bottom-order .container-info {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  margin: 10px 0px;
+}
+#orders-page #orders-container .order-container .bottom-order .container-info #total {
+  font-weight: bold;
+}
+#orders-page #orders-container .order-container .bottom-order .button-row {
+  align-self: center;
+}
+#orders-page #orders-container .order-container .bottom-order .button-row .btn {
+  width: 200px;
+}
+
 #cart-page h1 {
   margin: 15px 15px 0px 15px;
 }
@@ -12090,6 +12167,10 @@ h3 {
   flex: 1;
   margin: 15px;
   overflow: hidden;
+  min-height: 140px;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
 }
 #cart-page #container-page-content #container-products .product-container {
   display: flex;
@@ -12135,6 +12216,16 @@ h3 {
 #cart-page #container-page-content #container-products .product-container .content .button-row .bi-trash {
   margin: 0px 10px;
 }
+#cart-page #container-page-content #container-products .empty-cart {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+#cart-page #container-page-content #container-products .empty-cart h3 {
+  color: rgba(var(--b2), 0.7);
+}
 #cart-page #container-page-content #container-overview {
   display: flex;
   flex-direction: column;
@@ -12173,6 +12264,9 @@ h3 {
 }
 #checkout-page #page-content #left input {
   margin: 10px 0px;
+}
+#checkout-page #page-content #left .inactive {
+  display: none;
 }
 #checkout-page #page-content #right {
   display: flex;
@@ -12291,18 +12385,25 @@ h3 {
   max-width: 300px;
   min-height: 350px;
   margin: 10px;
+  padding: 15px;
   overflow: hidden;
   border-radius: var(--radius1);
 }
-#search-page #results-container #result-container a {
+#search-page #results-container #result-container .image-container {
   text-decoration: none;
-}
-#search-page #results-container #result-container a .product-entry-image {
+  display: flex;
   width: 100%;
   height: 200px;
-  object-fit: cover;
+  justify-content: center;
+  align-items: center;
 }
-#search-page #results-container #result-container a .image-placeholder {
+#search-page #results-container #result-container .image-container .product-entry-image {
+  border-radius: var(--radius1);
+  max-height: 200px;
+  max-width: 100%;
+  object-fit: contain;
+}
+#search-page #results-container #result-container .image-container .image-placeholder {
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -12313,7 +12414,7 @@ h3 {
 }
 #search-page #results-container #result-container .product-title {
   font-size: 1.5rem;
-  margin: 10px 10px 2px 10px;
+  margin: 10px 0px 2px 0px;
   color: rgb(var(--b2));
   text-decoration: none;
 }
@@ -12326,7 +12427,7 @@ h3 {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 6px 10px;
+  padding: 6px 0px;
 }
 #search-page #results-container #result-container .product-content-container p {
   font-size: 1rem;
@@ -12488,4 +12589,17 @@ h3 {
   font-size: 2.5rem;
   font-weight: bold;
   margin-bottom: 10px;
+}
+
+.validation-page {
+  padding: 100px 0px;
+}
+.validation-page .message-container {
+  padding: 50px;
+}
+.validation-page .failure {
+  background-color: rgba(var(--red), 0.1);
+}
+.validation-page .success {
+  background-color: rgba(var(--green), 0.1);
 }

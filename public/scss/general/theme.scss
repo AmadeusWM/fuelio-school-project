@@ -23,10 +23,12 @@
     --dp6: 18, 18, 18;
     --dp12: 36, 36, 36;
     --dp24: 72, 72, 72;
+    --dp36: 128, 128, 128;
     /* text */
     --b0: var(--dp3);
     --b1: var(--dp12);
     --b2: var(--dp24);
+    --b3: var(--dp36);
     /* background */
     --bg0: 255, 255, 255;
     /* border-radius */
@@ -108,7 +110,7 @@ h3 {
 
 .hover-box {
     border-radius: var(--radius2);
-    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.1);
 }
 
 .link {

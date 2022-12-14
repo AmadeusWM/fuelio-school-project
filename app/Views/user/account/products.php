@@ -1,4 +1,5 @@
 <div>
+    <?= csrf_field() ?>
     <h2 class="m-2">Your <?= $title ?></h2>
     <a href="<?= base_url("account/overview/products") ?>/addProduct" class="btn btn-primary m-2">Add Product</a>
 
