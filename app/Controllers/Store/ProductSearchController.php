@@ -8,7 +8,9 @@ use App\Models\ProductCategoryModel;
 
 class ProductSearchController extends BaseController
 {
-    public function index()
+    private $fetch_amount = 20;
+    
+    public function index($page = 0)
     {
         $productModel = new ProductModel();
         $productCategoryModel = new ProductCategoryModel();
@@ -16,7 +18,9 @@ class ProductSearchController extends BaseController
         helper(["form"]);
 
         $data["title"] = ucfirst("Home");
-        $data["products"] = $productModel->getProducts(0);
+        $data["page"] = $page;
+        $data["amountPages"] = $productModel->countAmountPagesAll($this->fetch_amount);
+        $data["products"] = $productModel->getProducts($page, $this->fetch_amount);
 
         $productCategories = $productCategoryModel->findAll();
 
@@ -24,31 +28,34 @@ class ProductSearchController extends BaseController
 
         $productsList = view("product/productsList", $data);
         $data["products_list"] = $productsList;
-        
+
         return view("templates/header", $data) .
             view("home/home") .
             view("product/productSearch") .
             view("templates/footer");
     }
 
-    public function search(){
+    public function search($page = 0)
+    {
         $productModel = new ProductModel();
         $productCategoryModel = new ProductCategoryModel();
-        
+
         $filter = $this->request->getGET();
-        
-        $products = $productModel->getProductsFiltered($filter, 0);
-        
+
+        $products = $productModel->getProductsFiltered($filter, $page, $this->fetch_amount);
+
         $productCategories = $productCategoryModel->findAll();
-        $productsListData = ["products" => $products];
-        
+        $productsListData["products"] = $products;
+        $productsListData["page"] = $page;
+        $productsListData["amountPages"] = $productModel->countAmountPages($filter, $this->fetch_amount);
+
         $productsList = view("product/productsList", $productsListData);
 
         $data["title"] = ucfirst("Home");
         $data["products_list"] = $productsList;
         $data["product_categories"] = $productCategories;
         $data["filter"] = $filter;
-        
+
         return view("templates/header", $data) .
             view("product/productSearch") .
             view("templates/footer");

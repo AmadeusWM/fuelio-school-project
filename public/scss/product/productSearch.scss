@@ -100,11 +100,13 @@
                 margin: 10px 0px 2px 0px;
                 color: rgb(var(--b2));
                 text-decoration: none;
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap;
             }
 
             .webshop-name {
                 font-size: 1rem;
-                margin: 0px 10px;
                 color: rgba(var(--dp24), 0.8);
             }
 
@@ -117,7 +119,6 @@
                 p {
                     font-size: 1rem;
                     flex: 1;
-                    overflow: hidden;
                 }
 
                 .product-category {

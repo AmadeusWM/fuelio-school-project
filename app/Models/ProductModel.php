@@ -24,6 +24,8 @@ class ProductModel extends Model
 
     protected $primaryKey = "id";
 
+    private $fetch_amount = 100;
+
     public function getProductsFromUser($userId)
     {
         $products = $this->where("user_id", $userId)->get()->getResultArray();
@@ -37,12 +39,20 @@ class ProductModel extends Model
         return $productsData;
     }
 
+    public function countAmountPagesAll($fetch_amount = 100)
+    {
+        $filteredProducts = $this->findAll();
+        return ceil(count($filteredProducts) / $fetch_amount);
+    }
 
+    public function countAmountPages($filter, $fetch_amount = 100)
+    {
+        $filteredProducts = $this->getProductsFiltered($filter, 0, 0);
+        return ceil(count($filteredProducts) / $fetch_amount);
+    }
 
     public function getProducts($offset, $fetch_amount = 100)
     {
-        if ($fetch_amount > 100)
-            $fetch_amount = 100;
         $products = $this->limit($fetch_amount, $fetch_amount * $offset)->get()->getResultArray();
 
         $products = $this->insertAllDataIntoProducts($products);
@@ -54,10 +64,6 @@ class ProductModel extends Model
     public function getProductsFiltered($filter, $offset, $fetch_amount = 100)
     {
         $productCategoryModel = new ProductCategoryModel();
-
-        if ($fetch_amount > 100)
-            $fetch_amount = 100;
-
 
         $category_id = null;
         if (isset($filter["category"]) && $filter["category"] != "All")
@@ -87,7 +93,11 @@ class ProductModel extends Model
     {
         $product = $this->find($id);
 
-        return $this->getProductData($product);
+        if (isset($product))
+            return $this->getProductData($product);
+        else {
+            return null;
+        }
     }
 
     public function getProductsByIds($idList)
@@ -121,7 +131,7 @@ class ProductModel extends Model
 
     /**
      * @param $products the list of products which will be filled with all products information available
-     * @return products a list of products with all attributes set (files, product_category)
+     * @return array a list of products with all attributes set (files, product_category)
      */
     public function insertAllDataIntoProducts($products)
     {

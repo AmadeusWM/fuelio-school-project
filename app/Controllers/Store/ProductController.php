@@ -12,10 +12,16 @@ class ProductController extends BaseController
     {
         $productModel = new ProductModel();
         $product = $productModel->getProductDataById($id);
-        $data["product"] = $product;
-        $data["title"] = $product["name"];
-        return view("templates/header", $data) .
-            view("product/product") .
-            view("templates/footer");
+        if (isset($product)) {
+            $data["product"] = $product;
+            $data["title"] = $product["name"];
+            return view("templates/header", $data) .
+                view("product/product") .
+                view("templates/footer");
+        }
+        else{
+            session()->setFlashdata("errors", "<ul><li>Product cannot be found.</ul></li>");
+            return redirect()->to(base_url("/failure"));
+        }
     }
 }

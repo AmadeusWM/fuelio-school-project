@@ -8,16 +8,22 @@
         .order-container {
             border: 1px rgba(var(--dp24), 0.1) solid;
             border-radius: var(--radius1);
+            margin: 10px 0px;
 
             .order-product-container {
                 display: flex;
                 padding: 10px;
 
-                .thumbnail {
-                    object-fit: cover;
+                .thumbnail-container {
                     width: 120px;
                     height: 120px;
-                    border-radius: var(--radius1);
+
+                    .thumbnail {
+                        object-fit: cover;
+                        border-radius: var(--radius1);
+                        width: 100%;
+                        height: 100%;
+                    }
                 }
 
                 .content {
@@ -69,11 +75,13 @@
                 flex-direction: column;
                 justify-content: space-between;
                 margin: 10px;
-                b{
+
+                b {
                     margin-top: 5px;
                     font-weight: bold;
                 }
-                p{
+
+                p {
                     margin: 5px;
                 }
 
@@ -81,18 +89,21 @@
                     display: flex;
                     justify-content: flex-start;
                     width: 100%;
-                    margin: 10px 0px;
 
                     #total {
                         font-weight: bold;
                     }
                 }
-                .container-delivery{
-                }
-                .button-row{
+
+                .container-delivery {}
+
+                .button-row {
+                    display: flex;
                     align-self: center;
-                    .btn{
+                    
+                    form > .btn {
                         width: 200px;
+                        margin: 0px 5px;
                     }
                 }
             }

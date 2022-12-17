@@ -1,0 +1,19 @@
+.feedback-page {
+    padding: 100px 0px;
+    .message-container {
+        padding: 50px;
+
+        .message{
+            color: rgb(var(--b1));
+            margin: 10px 0px;
+        }
+    }
+
+    .failure {
+        background-color: rgba(var(--red), 0.1);
+    }
+
+    .success {
+        background-color: rgba(var(--green), 0.1);
+    }
+}

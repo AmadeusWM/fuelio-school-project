@@ -3,7 +3,7 @@
 namespace App\Models\Orders;
 
 use App\Models\UserModel;
-use App\Models\ProductModel;
+use App\Models\AssetModels\ProductFileModel;
 use CodeIgniter\Model;
 use Exception;
 
@@ -77,15 +77,44 @@ class OrderModel extends Model
 
     private function getOrderProducts($order){
         $orderProductModel = new OrderProductModel();
-        $productModel = new ProductModel();
+        $productFileModel = new ProductFileModel();
 
-        $query = $orderProductModel->where("order_id", $order["id"]);
-        $query = $query->select("order_product.*, product.*, order_product.quantity AS order_quantity")
-            ->join("product", "order_product.product_id = product.id", "left");
+        $query = $orderProductModel->where("order_id", $order["id"])
+            ->select("order_product.*, user.webshop_name")
+            ->join("user", "order_product.seller_id = user.id", "left");
+        // $query = $query->select("order_product.*, product.*, order_product.quantity AS order_quantity")
+        // $orderProducts = $query->get()->getResultArray();
+
         $orderProducts = $query->get()->getResultArray();
 
-        $orderProducts = $productModel->insertAllDataIntoProducts($orderProducts);
+        foreach ($orderProducts as $key => $order_product){
+            $orderProducts[$key]["files"] = $productFileModel->getFilesByUser($order_product["product_id"]);
+        }
         
         return $orderProducts;
+    }
+
+    public function orderDelivered($id)
+    {
+        $this->setOrderStatus($id, "delivered");
+    }
+
+    public function orderCanceled($id)
+    {
+        $this->setOrderStatus($id, "canceled");
+    }
+
+    private function setOrderStatus($id, $status){
+        $order = $this->find($id);
+        if (!isset($order)){
+            throw new Exception("Invalid order Id");
+        }
+        if (session("id") == $order["user_id"] && $order["status"] == "sent"){
+            $order["status"] = $status;
+            $this->update($order["id"], $order);
+        }
+        else{
+            throw new Exception("Unauthenticated");
+        }
     }
 }

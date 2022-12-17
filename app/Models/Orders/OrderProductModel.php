@@ -14,9 +14,12 @@ class OrderProductModel extends Model
         "id",
         "order_id",
         "product_id",
+        // copy of the product inform
+        "seller_id",
         "quantity",
-        "price_product",    // in case the price will change later on
-        "name_product"      // in case the name will change later on
+        "origin_product",
+        "price_product",
+        "name_product"
     ];
 
     protected $primaryKey = 'id';
@@ -45,7 +48,9 @@ class OrderProductModel extends Model
                     "order_id" => $orderId,
                     "product_id" => $productId,
                     "quantity" => $quantity,
-                    "price_product" => $product["price"], 
+                    "seller_id" => $product["user_id"],
+                    "origin_product" => $product["origin"],
+                    "price_product" => $product["price"],
                     "name_product" => $product["name"]
                 ];
                 $this->save($data);

@@ -13,4 +13,20 @@ class Home extends BaseController
         $productSearchController = new ProductSearchController();
         return $productSearchController->index();
     }
+
+    public function successPage()
+    {
+        $data["title"] = ucfirst("Success");
+        return view("templates/header", $data) .
+            view("templates/feedback/success") .
+            view("templates/footer");
+    }
+
+    public function failurePage()
+    {
+        $data["title"] = ucfirst("Failure");
+        return view("templates/header", $data) .
+            view("templates/feedback/failure") .
+            view("templates/footer");
+    }
 }

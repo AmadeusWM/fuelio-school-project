@@ -37,6 +37,8 @@ $routes->setAutoRoute(false);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
+$routes->get('success', 'Home::successPage');
+$routes->get('failure', 'Home::failurePage');
 
 // groups prepend "account" before every route (https://codeigniter.com/user_guide/incoming/routing.html#redirecting-routes)
 $routes->group('account', static function ($routes) {
@@ -54,10 +56,14 @@ $routes->group('account', static function ($routes) {
     $routes->post('ProductsController/addProduct', 'User\Account\ProductsController::addProduct');
     $routes->post('ProductsController/removeProduct', 'User\Account\ProductsController::removeProduct');
     $routes->post('ProductsController/removeFile', 'User\Account\ProductsController::removeFile');
+
+    $routes->post('OrdersController/orderDelivered/(:num)', 'User\Account\OrdersController::orderDelivered/$1');
+    $routes->post('OrdersController/orderCanceled/(:num)', 'User\Account\OrdersController::orderCanceled/$1');
 });
 
 $routes->group("store", static function ($routes) {
     $routes->get('search', 'Store\ProductSearchController::search');
+    $routes->get('search/(:num)', 'Store\ProductSearchController::search/$1');
     $routes->get('product/(:num)', 'Store\ProductController::index/$1');
     $routes->get('webshop/(:num)', 'Store\WebshopController::index/$1');
 });
@@ -67,7 +73,6 @@ $routes->group("cart", static function ($routes) {
     $routes->get('cart', 'Cart\OrderController::cartPage');
     $routes->get('checkout', 'Cart\OrderController::checkoutPage');
     $routes->get('placeOrder', 'Cart\OrderController::placeOrder');
-    $routes->get('success', 'Cart\OrderController::successPage');
 });
 $routes->get('login', 'User\SignInController::index');
 $routes->get('register', 'User\SignUpController::index');

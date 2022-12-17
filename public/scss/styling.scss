@@ -12,6 +12,7 @@ from [here](https://stackoverflow.com/questions/2336302/single-huge-css-file-vs-
 @import "home/home.scss";
 @import "templates/header.scss";
 @import "templates/footer.scss";
+@import "templates/feedback.scss";
 @import "user/registration.scss";
 @import "user/account/overview.scss";
 @import "user/account/orders.scss";
@@ -20,4 +21,3 @@ from [here](https://stackoverflow.com/questions/2336302/single-huge-css-file-vs-
 @import "product/productForm.scss";
 @import "product/productSearch.scss";
 @import "product/product.scss";
-@import "cart/validation.scss";

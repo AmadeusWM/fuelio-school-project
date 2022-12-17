@@ -8,23 +8,24 @@
             foreach ($products as $product) {
                 if ($totalPrice != 0)  echo "<hr style='margin: 0px' />"; // horizontal line on top, except if first element
                 $totalPriceProduct = $product["price"] * $product["orderQuantity"];
-                $totalPrice += $totalPriceProduct; 
-                ?>
+                $totalPrice += $totalPriceProduct;
+            ?>
                 <div class="product-container">
-                    <a href='<?= base_url("/store/product" . "/" . $product["id"]) ?>'>
+                    <a class="thumbnail-container" href='<?= base_url("/store/product" . "/" . $product["id"]) ?>'>
                         <?php
                         $files = $product["files"];
-                        if (isset($files) && isset($files[0]))
+                        if (isset($files) && isset($files[0])) {
                             $file = $files[0];
-                        if ($file["file_type"] == "image") {
+                            if (isset($file) && $file["file_type"] == "image") {
                         ?>
-                            <img class="thumbnail" src="/UploadedFiles/products/<?= $file["file_name"] ?>">
-                        <?php } else { ?>
-                            <video class="thumbnail">
-                                <source src="/UploadedFiles/products/<?= $file['file_name'] ?>" type="video/mp4">
-                                Your browser does not support the video tag.
-                            </video>
-                        <?php } ?>
+                                <img class="thumbnail" src="/UploadedFiles/products/<?= $file["file_name"] ?>">
+                            <?php } else { ?>
+                                <video class="thumbnail">
+                                    <source src="/UploadedFiles/products/<?= $file['file_name'] ?>" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                        <?php }
+                        } ?>
                     </a>
                     <div class="content">
                         <div class="product-details">
@@ -39,11 +40,7 @@
                             </div>
                         </div>
                         <div class="button-row">
-                            <input type="number" 
-                                name="quantity" 
-                                id="quantity-<?= $product['id'] ?>" 
-                                class="form-control quantity" min="1" max="<?= $product["quantity"] ?>" value="<?= $product["orderQuantity"] ?>" 
-                                onchange="updateCartProduct(<?= $product['id'] ?>,this.value)" />
+                            <input type="number" name="quantity" id="quantity-<?= $product['id'] ?>" class="form-control quantity" min="1" max="<?= $product["quantity"] ?>" value="<?= $product["orderQuantity"] ?>" onchange="updateCartProduct(<?= $product['id'] ?>,this.value)" />
                             <button class="scaling-button" onclick="removeCartProduct(<?= $product['id'] ?>)">
                                 <i class="bi bi-trash icon-button red"></i>
                             </button>
@@ -51,10 +48,10 @@
                     </div>
                 </div>
             <?php } ?>
-            <?php 
-                if (count($products) == 0){
-                    echo "<div class='empty-cart'><h3>Oh no, such empty... 😶‍🌫️<h3></div>";
-                }
+            <?php
+            if (count($products) == 0) {
+                echo "<div class='empty-cart'><h3>Oh no, such empty... 😶‍🌫️<h3></div>";
+            }
             ?>
         </div>
         <div id="container-overview" class="hover-box">
@@ -64,8 +61,7 @@
                 <p id="total">€<?= number_format($totalPrice, 2) ?></p>
             </div>
             <hr />
-            <button class="btn btn-primary order-button" onclick="location.assign('<?= base_url('/cart/checkout') ?>')" 
-                <?= count($products) == 0 ? "disabled" : ""?>>
+            <button class="btn btn-primary order-button" onclick="location.assign('<?= base_url('/cart/checkout') ?>')" <?= count($products) == 0 ? "disabled" : "" ?>>
                 Go to Checkout
             </button>
         </div>

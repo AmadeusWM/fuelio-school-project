@@ -43,3 +43,32 @@
         </div>
     <?php } ?>
 </div>
+<nav aria-label="...">
+    <ul class="pagination">
+        <li class="page-item <?= $page == 0 ? "disabled" : "" ?>">
+            <a class="page-link" href="<?= base_url("/store/search") . "/" . ($page - 1) ?>">Previous</a>
+        </li>
+        <?php if ($page != 0) { ?>
+            <li class="page-item">
+                <a class="page-link" href="<?= base_url("/store/search") . "/" . ($page - 1) ?>">
+                    <?= $page ?>
+                </a>
+            </li>
+        <?php } ?>
+        <li class="page-item active">
+            <span class="page-link">
+                <?= $page + 1 ?>
+            </span>
+        </li>
+        <?php if ($page != $amountPages - 1) { ?>
+            <li class="page-item">
+                <a class="page-link" href="<?= base_url("/store/search") . "/" . ($page + 1) ?>">
+                    <?= $page + 2 ?>
+                </a>
+            </li>
+        <?php } ?>
+        <li class="page-item <?= ($page == $amountPages - 1) ? "disabled" : "" ?>">
+            <a class="page-link" href="<?= base_url("/store/search") . "/" . ($page + 1) ?>">Next</a>
+        </li>
+    </ul>
+</nav>

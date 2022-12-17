@@ -66,4 +66,9 @@ class ProductFileModel extends Model
             throw $e;
         }
     }
+
+    public function getFilesByUser($id){
+        $files = $this->where("product_id", $id)->get()->getResultArray();
+        return array_values($files);
+    }
 }

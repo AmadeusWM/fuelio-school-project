@@ -80,12 +80,13 @@ class OrderController extends BaseController
         $pickup_location_id = $this->request->getVar("pickup_location");
 
         $cart = $this->getCart();
+        $session = session();
 
         $errorMessage = $this->validateOrder();
 
         if (isset($errorMessage)) {
-            $data["errors"] = $errorMessage;
-            return $this->failurePage($data);
+            $session->setFlashdata('errors', $errorMessage);
+            return redirect()->to(base_url("/failure"));
         }
 
         $data = [
@@ -110,11 +111,12 @@ class OrderController extends BaseController
 
             session()->set("cart", []);
 
-            return redirect()->to(base_url("/cart/success"));
+            $session->setFlashdata('message', "Order placed successfully. 🤌🗿");
+            return redirect()->to(base_url("/success"));
         } catch (Exception $e) {
             $errorMessage = "<ul><li>" . $e->getMessage() . "</li></ul>";
-            $data["errors"] = $errorMessage;
-            return $this->failurePage($data);
+            $session->setFlashdata('errors', $errorMessage);
+            return redirect()->to(base_url("/failure"));
         }
     }
 
@@ -153,23 +155,6 @@ class OrderController extends BaseController
             view("templates/footer");
     }
 
-
-    public function successPage()
-    {
-        $data["title"] = ucfirst("Success");
-        return view("templates/header", $data) .
-            view("cart/success") .
-            view("templates/footer");
-    }
-
-    public function failurePage($data = [])
-    {
-        $data["title"] = ucfirst("Failure");
-        return view("templates/header", $data) .
-            view("cart/failure") .
-            view("templates/footer");
-    }
-
     private function getCart()
     {
         $session = session();
@@ -184,6 +169,7 @@ class OrderController extends BaseController
         $pickupLocationModel = new PickupLocationModel();
 
         $cart = $this->getCart();
+        $session = session();
 
         $delivery_option    = $this->request->getVar("delivery_option");
         $pickup_location_id = $this->request->getVar("pickup_location");
