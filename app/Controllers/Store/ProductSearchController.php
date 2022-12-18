@@ -9,7 +9,7 @@ use App\Models\ProductCategoryModel;
 class ProductSearchController extends BaseController
 {
     private $fetch_amount = 20;
-    
+
     public function index($page = 0)
     {
         $productModel = new ProductModel();
@@ -29,10 +29,7 @@ class ProductSearchController extends BaseController
         $productsList = view("product/productsList", $data);
         $data["products_list"] = $productsList;
 
-        return view("templates/header", $data) .
-            view("home/home") .
-            view("product/productSearch") .
-            view("templates/footer");
+        return $this->page(["home/home", "product/productSearch"], $data);
     }
 
     public function search($page = 0)
@@ -56,8 +53,6 @@ class ProductSearchController extends BaseController
         $data["product_categories"] = $productCategories;
         $data["filter"] = $filter;
 
-        return view("templates/header", $data) .
-            view("product/productSearch") .
-            view("templates/footer");
+        return $this->page("product/productSearch", $data);
     }
 }

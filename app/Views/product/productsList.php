@@ -43,10 +43,10 @@
         </div>
     <?php } ?>
 </div>
-<nav aria-label="...">
+<nav aria-label="..." class="pagination-bottom">
     <ul class="pagination">
         <li class="page-item <?= $page == 0 ? "disabled" : "" ?>">
-            <a class="page-link" href="<?= base_url("/store/search") . "/" . ($page - 1) ?>">Previous</a>
+            <a class="page-link" href="<?= base_url("/store/search") . "/" . ($page - 1) ?>">Prev</a>
         </li>
         <?php if ($page != 0) { ?>
             <li class="page-item">

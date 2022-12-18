@@ -13,8 +13,6 @@ class OverviewController extends BaseController
      */
     public function index($data)
     {
-        return view('templates/header', $data) .
-            view('user/account/overview', $data) .
-            view('templates/footer');
+        return $this->page("user/account/overview", $data);
     }
 }

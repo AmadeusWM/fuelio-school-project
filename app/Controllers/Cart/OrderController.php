@@ -130,9 +130,7 @@ class OrderController extends BaseController
 
         $data["products"] = $this->getProductsWithQuantity();
 
-        return view("templates/header", $data) .
-            view("cart/cart") .
-            view("templates/footer");
+        return $this->page("cart/cart", $data);
     }
 
     public function checkoutPage($data = [])
@@ -150,9 +148,7 @@ class OrderController extends BaseController
 
         $data["totalPrice"] = array_sum(array_map($pricesLambda, $products));
 
-        return view("templates/header", $data) .
-            view("cart/checkout") .
-            view("templates/footer");
+        return $this->page("cart/checkout", $data);
     }
 
     private function getCart()

@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use App\Models\MessageModel;
+
 class Pages extends BaseController
 {
     public function index()
@@ -9,17 +11,31 @@ class Pages extends BaseController
         return view('welcome_message');
     }
 
-    public function view($page = 'home')
+    public function initPage($viewPaths, $data)
     {
-        if (! is_file(APPPATH . 'Views/pages/' . $page . '.php')) {
-            // Whoops, we don't have a page for that!
-            throw new \CodeIgniter\Exceptions\PageNotFoundException($page);
+        $messageModel = new MessageModel();
+        $data["notifications"] = $messageModel->where("receiver_id", session("id"))->get()->getResultArray();
+        $data["notifications_amount"] = count($data["notifications"]);
+        
+        $page = view("templates/header", $data);
+
+        foreach ($viewPaths as $path){
+            $page = $page . view($path);
         }
+        $page = $page . view("templates/footer");
 
-        $data['title'] = ucfirst($page); // Capitalize the first letter
+        return $page;
+    }
 
-        return view('templates/header', $data)
-            . view('pages/' . $page)
-            . view('templates/footer');
+    public function successPage()
+    {
+        $data["title"] = ucfirst("Success");
+        return $this->page("templates/feedback/success", $data);
+    }
+
+    public function failurePage()
+    {
+        $data["title"] = ucfirst("Failure");
+        return $this->page("templates/feedback/failure", $data);
     }
 }

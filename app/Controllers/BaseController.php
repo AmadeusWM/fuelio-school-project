@@ -49,4 +49,22 @@ abstract class BaseController extends Controller
 
         // E.g.: $this->session = \Config\Services::session();
     }
+
+    
+    /**
+     * @param [string/array] : path of view, or multiple paths to multiple views
+     * @param array : data to be passed
+     * @return view : page with header and footer attached
+     */
+    public function page($view_p, $data = [])
+    {
+        if (is_array($view_p)){
+            $pages = new Pages();
+            return $pages->initPage($view_p, $data);
+        }
+        else{
+            $pages = new Pages();
+            return $pages->initPage([$view_p], $data);
+        }
+    }
 }

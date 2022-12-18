@@ -1,0 +1,28 @@
+#message-sender-page {
+    padding: 15px;
+
+    .title {
+        color: rgb(var(--b2));
+        margin-bottom: 10px;
+    }
+
+    #message-container {
+        display: flex;
+        flex-direction: column;
+
+        .form-control {
+            margin-bottom: 15px;
+            background-color: rgba(var(--secondary), 0.2);
+            border: none;
+
+            &:focus {
+                border-color: rgba(var(--secondary), 0.2);
+                box-shadow: 0 0 0 .25rem rgba(var(--secondary), .25);
+            }
+        }
+
+        .btn {
+            align-self: flex-end;
+        }
+    }
+}

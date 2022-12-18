@@ -12,10 +12,7 @@ class SignInController extends BaseController
         $data = [
             'title' => ucfirst("Log in")
         ];
-
-        return view('templates/header', $data) .
-            view('user/login') .
-            view('templates/footer');
+        return $this->page("user/login", $data);
     }
      
     /**

@@ -69,9 +69,7 @@ class ProductsController extends BaseController
         $data['product_categories'] = $product_categories;
 
 
-        return view('templates/header', $data) .
-            view('product/productAdd') .
-            view('templates/footer');
+        return $this->page("product/productAdd", $data);
     }
 
     public function editProductPage($productId)
@@ -81,15 +79,14 @@ class ProductsController extends BaseController
         helper(['form']);
 
         $data = $productModel->getProductDataById($productId);
+        $data['title'] = ucfirst("Edit Product");
         
         $product_categories = $productCategoryModel->findAll();
         $data['product_categories'] = $product_categories;
 
         // TODO check if userid of product is id of session
 
-        return view('templates/header', ['title' => ucfirst("Edit Product")]) .
-            view('product/productEdit', $data) .
-            view('templates/footer');
+        return $this->page("product/productEdit", $data);
     }
 
 

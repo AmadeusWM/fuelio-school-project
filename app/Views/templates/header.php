@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="/css/styling.css">
 </head>
 
-<body>
+<body class="d-flex flex-column min-vh-100">
     <nav id="navbar-header">
         <a class="no-link-styling" href="/">
             <h1 id="logo-header"><i class="bi bi-lightbulb"></i>Fuelio</h1>
@@ -35,19 +35,16 @@
                     <a href="/account/overview" class="link">My Account</a>
                     <a href="/SignInController/logout" class="link">Log out</a>
                 </div>
-                <button id="notifications-button">
+                <button id="notifications-button" class="position-relative">
                     <i class="bi bi-envelope header-icon" aria-label="Notifications"></i>
+                    <span class="position-absolute translate-middle badge rounded-pill bg-danger"><?= $notifications_amount ?></span>
                 </button>
                 <ul id="notifications-popup" class="header-popup">
-                    <li>
-                        <p>Later this will</p>
-                    </li>
-                    <li>
-                        <p>be a list of your</p>
-                    </li>
-                    <li>
-                        <p>notifications</p>
-                    </li>
+                    <?php foreach ($notifications as $notification) { ?>
+                        <li>
+                            <span><?= $notification["content"] ?></span>
+                        </li>
+                    <?php } ?>
                 </ul>
                 <!-- code when logged out -->
             <?php

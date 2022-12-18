@@ -37,8 +37,8 @@ $routes->setAutoRoute(false);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
-$routes->get('success', 'Home::successPage');
-$routes->get('failure', 'Home::failurePage');
+$routes->get('success', 'Pages::successPage');
+$routes->get('failure', 'Pages::failurePage');
 
 // groups prepend "account" before every route (https://codeigniter.com/user_guide/incoming/routing.html#redirecting-routes)
 $routes->group('account', static function ($routes) {
@@ -74,6 +74,12 @@ $routes->group("cart", static function ($routes) {
     $routes->get('checkout', 'Cart\OrderController::checkoutPage');
     $routes->get('placeOrder', 'Cart\OrderController::placeOrder');
 });
+
+$routes->group("message", static function ($routes) {
+    $routes->get('(:num)', 'Messaging\MessagingController::messageSenderPage/$1');
+    $routes->post('messageUser/(:num)', 'Messaging\MessagingController::messageUser/$1');
+});
+
 $routes->get('login', 'User\SignInController::index');
 $routes->get('register', 'User\SignUpController::index');
 

@@ -14,9 +14,7 @@ class SignUpController extends BaseController
             'title' => ucfirst("Register")
         ];
 
-        return view('templates/header', $data) .
-            view('user/register') .
-            view('templates/footer');
+        return $this->page("user/register", $data);
     }
 
     /**

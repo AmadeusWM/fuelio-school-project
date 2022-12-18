@@ -15,9 +15,7 @@ class ProductController extends BaseController
         if (isset($product)) {
             $data["product"] = $product;
             $data["title"] = $product["name"];
-            return view("templates/header", $data) .
-                view("product/product") .
-                view("templates/footer");
+            return $this->page("product/product", $data);
         }
         else{
             session()->setFlashdata("errors", "<ul><li>Product cannot be found.</ul></li>");
