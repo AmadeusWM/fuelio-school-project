@@ -40,42 +40,44 @@ class OrderModel extends Model
      *      "city"
      *      "country"
      */
-    public function createOrder($data){
-        try{
+    public function createOrder($data)
+    {
+        try {
             $userModel = new UserModel();
             $userId = session()->get("id");
 
             $user = null;
             if ($userId)
                 $user = $userModel->find($userId);
-            
-            if (isset($user)){
+
+            if (isset($user)) {
                 $data["user_id"] = $userId;
-                
+
                 $orderId = $this->insert($data);
-                
+
                 return $orderId;
-            }
-            else{
+            } else {
                 throw new Exception("Not logged in.");
             }
-        }
-        catch(Exception $e){
+        } catch (Exception $e) {
             throw $e;
         }
     }
 
-    public function getOrdersByUser($userId){
-        
-        $orders = $this->where("user_id", $userId)->get()->getResultArray();
-        foreach ($orders as $key => $order){
+    public function getOrdersByUser($userId)
+    {
+        $orders = $this->where("user_id", $userId)
+            ->orderBy("id", "desc")
+            ->get()->getResultArray();
+        foreach ($orders as $key => $order) {
             $orderProducts = $this->getOrderProducts($order);
             $orders[$key]["order_products"] = $orderProducts;
         }
         return $orders;
     }
 
-    private function getOrderProducts($order){
+    private function getOrderProducts($order)
+    {
         $orderProductModel = new OrderProductModel();
         $productFileModel = new ProductFileModel();
 
@@ -87,10 +89,10 @@ class OrderModel extends Model
 
         $orderProducts = $query->get()->getResultArray();
 
-        foreach ($orderProducts as $key => $order_product){
+        foreach ($orderProducts as $key => $order_product) {
             $orderProducts[$key]["files"] = $productFileModel->getFilesByUser($order_product["product_id"]);
         }
-        
+
         return $orderProducts;
     }
 
@@ -104,16 +106,16 @@ class OrderModel extends Model
         $this->setOrderStatus($id, "canceled");
     }
 
-    private function setOrderStatus($id, $status){
+    private function setOrderStatus($id, $status)
+    {
         $order = $this->find($id);
-        if (!isset($order)){
+        if (!isset($order)) {
             throw new Exception("Invalid order Id");
         }
-        if (session("id") == $order["user_id"] && $order["status"] == "sent"){
+        if (session("id") == $order["user_id"] && $order["status"] == "sent") {
             $order["status"] = $status;
             $this->update($order["id"], $order);
-        }
-        else{
+        } else {
             throw new Exception("Unauthenticated");
         }
     }

@@ -5,6 +5,8 @@ namespace App\Controllers\User\Account;
 use App\Controllers\BaseController;
 use App\Controllers\User\Account\OverviewController;
 use App\Models\AssetModels\ProductFileModel;
+use App\Models\Messaging\MessageModel;
+use App\Models\Messaging\ProductObserverModel;
 use App\Models\UserModel;
 use App\Models\ProductCategoryModel;
 use App\Models\ProductModel;
@@ -80,7 +82,7 @@ class ProductsController extends BaseController
 
         $data = $productModel->getProductDataById($productId);
         $data['title'] = ucfirst("Edit Product");
-        
+
         $product_categories = $productCategoryModel->findAll();
         $data['product_categories'] = $product_categories;
 
@@ -99,7 +101,7 @@ class ProductsController extends BaseController
         $userModel = new UserModel();
         $productModel = new ProductModel();
         $productCategoryModel = new ProductCategoryModel();
-        $ProductFileModel = new ProductFileModel();
+        $productFileModel = new ProductFileModel();
 
         // find current logged in user
         $session = session();
@@ -119,6 +121,7 @@ class ProductsController extends BaseController
         if ($this->validate($rules) && $user) {
             // find category id
             $categoryName = $this->request->getVar('product_category');
+            $quantity = $this->request->getVar('quantity');
             $productCategory = $productCategoryModel->where("name", $categoryName)->first();
             // return error when product category doesn't exist
             if (!$productCategory) { // TODO show proper error
@@ -131,17 +134,20 @@ class ProductsController extends BaseController
                 'price'       => $this->request->getVar('price'),
                 'description'    => $this->request->getVar('description'),
                 'origin'         => $this->request->getVar('origin'),
-                'quantity'            => $this->request->getVar('quantity'),
+                'quantity'            => $quantity,
                 'product_category_id' => $productCategory['id'],
             ];
 
             $productId = 0;
 
+            // edit product
             if ($this->request->getPost('productId')) {
                 $data['id'] = $this->request->getPost('productId');
                 $productModel->save($data);
                 $productId = $data['id'];
-            } else {
+                if ($quantity > 0)
+                    $this->notifyObservers($productId);
+            } else { // add product
                 $productId = $productModel->insert($data, true); // true => returns insert id
             }
 
@@ -149,13 +155,43 @@ class ProductsController extends BaseController
             // add files to database
             if ($files) {
                 foreach ($files as $file) {
-                    $ProductFileModel->saveSystemAndDB($file, $productId);
+                    $productFileModel->saveSystemAndDB($file, $productId);
                 }
             }
 
             return redirect()->to(base_url('/account/overview/products'));
         } else { // something went wrong, send back validation errors
             return $this->addProductPage($data);
+        }
+    }
+
+    /**
+     * Notifies all observers, observing the product with
+     * @param $productid
+     */
+    private function notifyObservers($productId)
+    {
+        $productObserverModel = new ProductObserverModel();
+        $productModel = new ProductModel();
+        $messageModel = new MessageModel();
+
+        $product = $productModel->find($productId);
+        $productName = ucfirst($product["name"]);
+
+        $senderId = session("id");
+        $observers = $productObserverModel->where("product_id", $productId)
+            ->get()->getResultArray();
+
+        foreach ($observers as $observer) {
+            $messageModel->sendMessage(
+                $senderId,
+                $observer["user_id"],
+                "Product Reminder",
+                "$productName is back in stock!",
+                "stock",
+                $productId
+            );
+            $productObserverModel->delete($observer["id"]);
         }
     }
 

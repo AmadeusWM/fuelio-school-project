@@ -6,10 +6,11 @@ $slide-button-size: 40px;
     align-items: center;
     margin: 20px;
 
-    #title{
+    #title {
         margin: 10px;
         margin-bottom: 0px;
     }
+
     #page-content {
         #product-overall {
             display: flex;
@@ -71,10 +72,11 @@ $slide-button-size: 40px;
                 }
 
                 #image-thumbnail {
-                    display:flex;
+                    display: flex;
                     width: 300px;
                     justify-content: center;
                     margin: 10px;
+
                     .product-file-thumbnail {
                         display: none;
                         border-radius: var(--radius1);
@@ -148,6 +150,17 @@ $slide-button-size: 40px;
                         flex: 1;
                     }
 
+                    form {
+                        display: flex;
+                        margin-left: 10px;
+                        height: 100%;
+                        flex: 1;
+
+                        .notify-button {
+                            flex: 1;
+                        }
+                    }
+
                     #quantity {
                         width: 100px;
                     }
@@ -165,9 +178,7 @@ $slide-button-size: 40px;
             }
 
             #reviews {
-                .review{
-
-                }
+                .review {}
             }
         }
     }

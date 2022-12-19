@@ -1,7 +1,7 @@
 <div id="home-page">
     <div class="colored-back">
         <h1 id="home-title">Welcome back!</h1>
-        <p>Please have a look through our catalog.</p>
+        <p id="home-welcome">At Fuelio we profide all sorts of <b>energy products.</b></p>
     </div>
     <div class="waves">
         <div class="custom-shape-divider-top-1671301663">

@@ -78,6 +78,7 @@ $routes->group("cart", static function ($routes) {
 $routes->group("message", static function ($routes) {
     $routes->get('(:num)', 'Messaging\MessagingController::messageSenderPage/$1');
     $routes->post('messageUser/(:num)', 'Messaging\MessagingController::messageUser/$1');
+    $routes->post('notifyLater/(:num)', 'Messaging\MessagingController::notifyLater/$1');
 });
 
 $routes->get('login', 'User\SignInController::index');

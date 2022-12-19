@@ -69,9 +69,16 @@
                     </p>
                 <?php } ?>
                 <div class="info-row">
-                    <?= csrf_field() ?>
                     <input type="number" id="quantity" name="quantity" class="form-control" min="1" max="<?= $product["quantity"] ?>" value="1" onchange="updatePrice(this.value)" />
-                    <button id="add-cart-button" class="btn btn-primary" <?= $product['quantity'] == 0 ? 'disabled' : '' ?>>Add To Shopping Cart</button>
+                    <?php if ($product['quantity']) { ?>
+                        <?= csrf_field() ?>
+                        <button id="add-cart-button" class="btn btn-primary">Add To Shopping Cart</button>
+                    <?php } else { ?>
+                        <form method="post" action="<?= base_url("/message/notifyLater") . "/" . $product["id"] ?>">
+                            <?= csrf_field() ?>
+                            <button class="notify-button btn btn-primary" type="submit"><i class="bi bi-bell-fill"></i> Get Notified</button>
+                        </form>
+                    <?php } ?>
                 </div>
             </div>
         </div>

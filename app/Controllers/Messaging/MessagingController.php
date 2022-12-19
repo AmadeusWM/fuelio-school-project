@@ -3,7 +3,8 @@
 namespace App\Controllers\Messaging;
 
 use App\Controllers\BaseController;
-use App\Models\MessageModel;
+use App\Models\Messaging\MessageModel;
+use App\Models\Messaging\ProductObserverModel;
 use App\Models\UserModel;
 use Exception;
 
@@ -21,10 +22,6 @@ class MessagingController extends BaseController
             session()->setFlashdata("errors", "<ul><li>Invalid Receiver</li></ul>");
             return redirect()->to(base_url("/failure"));
         }
-    }
-
-    public function messagesPage()
-    {
     }
 
     /**
@@ -60,5 +57,12 @@ class MessagingController extends BaseController
             $session->setFlashdata("errors", "<ul><li>Invalid Receiver Or Sender</li></ul>");
             return redirect()->to(base_url("/failure"));
         }
+    }
+
+    public function notifyLater($id){
+        $productObserver = new ProductObserverModel();
+        $productObserver->observe($id);
+        session()->setFlashdata("message", "You will be notified when this product is back in stock.");
+        return redirect()->to(base_url("/success"));
     }
 }

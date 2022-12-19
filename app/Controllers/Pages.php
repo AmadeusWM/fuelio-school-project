@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use App\Models\MessageModel;
+use App\Models\Messaging\MessageModel;
 
 class Pages extends BaseController
 {
@@ -14,12 +14,16 @@ class Pages extends BaseController
     public function initPage($viewPaths, $data)
     {
         $messageModel = new MessageModel();
-        $data["notifications"] = $messageModel->where("receiver_id", session("id"))->get()->getResultArray();
-        $data["notifications_amount"] = count($data["notifications"]);
         
+        $data["notifications"] = $messageModel->getMessagesByUser(session("id"));
+        $data["notifications_amount"] = count($data["notifications"]);
+
+        $notificationsView = view("messaging/messages", $data);
+        $data["notificationsView"] = $notificationsView;
+
         $page = view("templates/header", $data);
 
-        foreach ($viewPaths as $path){
+        foreach ($viewPaths as $path) {
             $page = $page . view($path);
         }
         $page = $page . view("templates/footer");

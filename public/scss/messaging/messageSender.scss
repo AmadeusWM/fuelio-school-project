@@ -1,4 +1,7 @@
 #message-sender-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: 15px;
 
     .title {
@@ -9,6 +12,9 @@
     #message-container {
         display: flex;
         flex-direction: column;
+        width: 100%;
+        max-width: 500px;
+        flex: 1;
 
         .form-control {
             margin-bottom: 15px;
@@ -19,6 +25,9 @@
                 border-color: rgba(var(--secondary), 0.2);
                 box-shadow: 0 0 0 .25rem rgba(var(--secondary), .25);
             }
+        }
+        textarea{
+            min-height: 200px;
         }
 
         .btn {
