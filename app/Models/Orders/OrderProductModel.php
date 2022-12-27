@@ -3,7 +3,7 @@
 namespace App\Models\Orders;
 
 use CodeIgniter\Model;
-use App\Models\ProductModel;
+use App\Models\Products\ProductModel;
 use Exception;
 
 class OrderProductModel extends Model

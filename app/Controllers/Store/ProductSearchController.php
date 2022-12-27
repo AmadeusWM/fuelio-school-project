@@ -3,8 +3,8 @@
 namespace App\Controllers\Store;
 
 use App\Controllers\BaseController;
-use App\Models\ProductModel;
-use App\Models\ProductCategoryModel;
+use App\Models\Products\ProductModel;
+use App\Models\Products\ProductCategoryModel;
 
 class ProductSearchController extends BaseController
 {

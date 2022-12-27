@@ -101,11 +101,10 @@ class AjaxHandler {
      */
     static updateCSRF(data) {
         // get the hidden field to reset the csrf field
-        let hiddenField = document.getElementsByName(data["csrf_token"])[0];
-        if (hiddenField) {
+        document.getElementsByName(data["csrf_token"]).forEach((hiddenField) => {
             hiddenField.setAttribute("name", data["csrf_token"]);
             hiddenField.setAttribute("value", data["csrf_value"]);
-        }
+        });
     }
 
     /**

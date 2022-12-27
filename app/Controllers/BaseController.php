@@ -58,12 +58,11 @@ abstract class BaseController extends Controller
      */
     public function page($view_p, $data = [])
     {
+        $pages = new Pages();
         if (is_array($view_p)){
-            $pages = new Pages();
             return $pages->initPage($view_p, $data);
         }
         else{
-            $pages = new Pages();
             return $pages->initPage([$view_p], $data);
         }
     }

@@ -27,6 +27,8 @@
     --red: 223, 59, 89;
     /* #94d47b */
     --green: 64, 160, 43;
+    /* #FEBD00 */
+    --yellow: 254 189 0;
     /* shades of black */
     --dp0: 3, 3, 3;
     --dp1: 6, 6, 6;
@@ -205,4 +207,10 @@ h3 {
 .failed-button:hover {
     border-color: rgb(var(--red));
     background-color: rgb(var(--red));
+}
+
+.input-label{
+    color: rgb(var(--b2));
+    margin-top: 5px;
+    margin-bottom: 2px;
 }

@@ -33,6 +33,8 @@ from [here](https://stackoverflow.com/questions/2336302/single-huge-css-file-vs-
   --red: 223, 59, 89;
   /* #94d47b */
   --green: 64, 160, 43;
+  /* #FEBD00 */
+  --yellow: 254 189 0;
   /* shades of black */
   --dp0: 3, 3, 3;
   --dp1: 6, 6, 6;
@@ -209,6 +211,12 @@ h3 {
 .failed-button:hover {
   border-color: rgb(var(--red));
   background-color: rgb(var(--red));
+}
+
+.input-label {
+  color: rgb(var(--b2));
+  margin-top: 5px;
+  margin-bottom: 2px;
 }
 
 /*!
@@ -11627,6 +11635,8 @@ table {
   --red: 223, 59, 89;
   /* #94d47b */
   --green: 64, 160, 43;
+  /* #FEBD00 */
+  --yellow: 254 189 0;
   /* shades of black */
   --dp0: 3, 3, 3;
   --dp1: 6, 6, 6;
@@ -11803,6 +11813,12 @@ h3 {
 .failed-button:hover {
   border-color: rgb(var(--red));
   background-color: rgb(var(--red));
+}
+
+.input-label {
+  color: rgb(var(--b2));
+  margin-top: 5px;
+  margin-bottom: 2px;
 }
 
 #home-page {
@@ -12724,10 +12740,83 @@ h3 {
 #product-page #page-content #product-overall #product-right .info-row #quantity {
   width: 100px;
 }
-#product-page #page-content #product-bottom #product-details {
-  margin: 30px;
-  margin-top: 60px;
+#product-page #page-content #product-details {
+  margin-top: 30px;
 }
+#product-page #page-content #reviews {
+  --dir: right;
+  --fill: rgb(var(--yellow));
+  --fillbg: rgba(100, 100, 100, 0.15);
+  --heart: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.328l-1.453-1.313q-2.484-2.25-3.609-3.328t-2.508-2.672-1.898-2.883-0.516-2.648q0-2.297 1.57-3.891t3.914-1.594q2.719 0 4.5 2.109 1.781-2.109 4.5-2.109 2.344 0 3.914 1.594t1.57 3.891q0 1.828-1.219 3.797t-2.648 3.422-4.664 4.359z"/></svg>');
+  --star: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 360"><path d="M358.966 143.652c0-11.38-9.047-20.582-20.183-20.582-.301 0-.602.024-.894.041l-.154-.569H232.323l-30.076-92.544-.268-.016c-.293-12.404-10.234-22.419-22.5-22.419-12.03 0-21.817 9.616-22.459 21.736h-.081l-30.311 93.243H25.247c-1.13-.179-2.276-.301-3.471-.301C9.754 122.242 0 132.175 0 144.449c0 9.673 6.088 17.875 14.55 20.923l79.424 57.697-31.986 98.47.602.447a21.575 21.575 0 0 0-1.26 7.259c0 11.811 9.397 21.386 20.996 21.386 5.064 0 9.714-1.845 13.347-4.91l.236.195 83.562-60.72 84.854 61.655.406-.276c3.56 3.008 8.137 4.828 13.111 4.828 11.372 0 20.582-9.397 20.582-20.972 0-2.122-.309-4.154-.886-6.08l.293-.179-32.839-101.103 83.919-60.981-.171-.553a20.678 20.678 0 0 0 10.226-17.883z"/></svg>');
+  --stars: 5;
+  --starsize: 1.5rem;
+}
+#product-page #page-content #reviews #review-form .rating {
+  --symbol: var(--star);
+  --value: 1;
+  --w: calc(var(--stars) * var(--starsize));
+  --x: calc(100% * (var(--value) / var(--stars)));
+  block-size: var(--starsize);
+  inline-size: var(--w);
+  position: relative;
+  touch-action: manipulation;
+  -webkit-appearance: none;
+}
+#product-page #page-content #reviews #review-form .rating::-moz-range-track {
+  background: linear-gradient(to var(--dir), var(--fill) 0 var(--x), var(--fillbg) 0 var(--x));
+  block-size: 100%;
+  mask: repeat left center/var(--starsize) var(--symbol);
+}
+#product-page #page-content #reviews #review-form .rating::-webkit-slider-runnable-track {
+  background: linear-gradient(to var(--dir), var(--fill) 0 var(--x), var(--fillbg) 0 var(--x));
+  block-size: 100%;
+  mask: repeat left center/var(--starsize) var(--symbol);
+  -webkit-mask: repeat left center/var(--starsize) var(--symbol);
+}
+#product-page #page-content #reviews #review-form .rating::-moz-range-thumb {
+  height: var(--starsize);
+  opacity: 0;
+  width: var(--starsize);
+}
+#product-page #page-content #reviews #review-form .rating::-webkit-slider-thumb {
+  height: var(--starsize);
+  opacity: 0;
+  width: var(--starsize);
+  -webkit-appearance: none;
+}
+#product-page #page-content #reviews #review-form .form-control {
+  margin: 0px;
+  margin-bottom: 10px;
+}
+#product-page #page-content #reviews .review {
+  border: solid rgba(var(--b3), 0.5) 1px;
+  border-radius: var(--radius1);
+  padding: 10px;
+  margin: 20px 0px;
+}
+#product-page #page-content #reviews .review .review-top {
+  display: flex;
+  flex-direction: row;
+}
+#product-page #page-content #reviews .review .review-top .star-icon {
+  margin-right: 5px;
+  height: 20px;
+  width: 20px;
+  mask: var(--star);
+  background: var(--fillbg);
+}
+#product-page #page-content #reviews .review .review-top .star-active {
+  background: var(--fill);
+}
+#product-page #page-content #reviews .review .title {
+  margin-left: 5px;
+}
+#product-page #page-content #reviews .review .content {
+  color: rgb(var(--b1));
+  margin: 10px 0px;
+}
+
 .sub-title {
   font-size: 2.5rem;
   font-weight: bold;

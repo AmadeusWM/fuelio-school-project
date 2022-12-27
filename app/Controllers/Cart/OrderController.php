@@ -3,7 +3,7 @@
 namespace App\Controllers\Cart;
 
 use App\Controllers\BaseController;
-use App\Models\ProductModel;
+use App\Models\Products\ProductModel;
 use App\Models\Orders\PickupLocationModel;
 use App\Models\Orders\OrderModel;
 use App\Models\Orders\OrderProductModel;

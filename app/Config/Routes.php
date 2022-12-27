@@ -64,8 +64,10 @@ $routes->group('account', static function ($routes) {
 $routes->group("store", static function ($routes) {
     $routes->get('search', 'Store\ProductSearchController::search');
     $routes->get('search/(:num)', 'Store\ProductSearchController::search/$1');
-    $routes->get('product/(:num)', 'Store\ProductController::index/$1');
+$routes->get('product/(:num)', 'Store\ProductController::index/$1');
     $routes->get('webshop/(:num)', 'Store\WebshopController::index/$1');
+    $routes->post('product/addReview/(:num)', 'Store\ReviewController::addReview/$1');
+    $routes->post('product/deleteReview/(:num)', 'Store\ReviewController::deleteReview/$1');
 });
 $routes->group("cart", static function ($routes) {
     $routes->post('addProductToCart', 'Cart\OrderController::addProductToCart');

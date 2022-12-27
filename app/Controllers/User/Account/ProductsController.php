@@ -8,8 +8,8 @@ use App\Models\AssetModels\ProductFileModel;
 use App\Models\Messaging\MessageModel;
 use App\Models\Messaging\ProductObserverModel;
 use App\Models\UserModel;
-use App\Models\ProductCategoryModel;
-use App\Models\ProductModel;
+use App\Models\Products\ProductCategoryModel;
+use App\Models\Products\ProductModel;
 
 class ProductsController extends BaseController
 {
