@@ -1,0 +1,35 @@
+#analytics-container {
+    .stat-container {
+        border: 1px rgba(var(--dp24), 0.1) solid;
+        border-radius: var(--radius1);
+        margin: 10px 0px;
+        padding: 10px;
+
+        .product_title{
+            // color:rgba(var(--b1));
+            // text-decoration: none;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .information-container{
+            border-left: 1px rgba(var(--dp24), 0.5) solid;
+            padding-left: 5px;
+            margin: 5px;
+            p{
+                color: rgb(var(--b1));
+                b{
+                    font-weight: 500;
+                }
+            }
+            .total{
+                // color: rgb(var(--primary));
+                font-weight: bold;
+                b{
+                font-weight: bold;
+            }
+            }
+        }
+    }
+}

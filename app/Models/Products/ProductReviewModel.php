@@ -19,7 +19,17 @@ class ProductReviewModel extends Model
 
     protected $primaryKey = 'id';
 
-    public function getByProductId($productId){
-        return $this->where("product_id", $productId)->get()->getResultArray();
+    /**
+     * ge all reviews on a given product,
+     *  with the one's from the logged in user on top.
+     */
+    public function getProductReviews($productId){
+        $userId = session()->get("id");
+        $query = $this->where("product_id", $productId);
+        if (isset($userId)) {
+            $query->orderBy("(user_id=$userId)" ,"desc", true);
+        }
+        
+        return $query->get()->getResultArray();
     }
 }

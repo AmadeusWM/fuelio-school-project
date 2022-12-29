@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?php echo esc($title) ?></title>
 
     <meta name="description" content="An energy product site">
@@ -17,9 +18,9 @@
 <body>
     <nav id="navbar-header">
         <a class="no-link-styling" href="/">
-            <h1 id="logo-header"><i class="bi bi-lightbulb"></i>Fuelio</h1>
+            <h1 id="logo-header"><i class="bi bi-lightbulb logo-icon"></i>Fuelio</h1>
         </a>
-        <form class="form-inline my-2 my-lg-0" action="<?= base_url("/store/search") ?>">
+        <form class="search-bar" action="<?= base_url("/store/search") ?>">
             <input class="form-control m-1" name="search_terms" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-primary m-1" type="submit">Search</button>
         </form>

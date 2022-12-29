@@ -17,7 +17,7 @@
                         </ul>
                         <?php
                         $files = $product["files"];
-                        if (isset($files) && isset($files[0]) && $files[0]["file_type"]=="image") {
+                        if (isset($files) && isset($files[0]) && $files[0]["file_type"] == "image") {
                         ?>
                             <img class="inventory-image" src="/UploadedFiles/products/<?= $files[0]["file_name"] ?>">
                         <?php } ?>

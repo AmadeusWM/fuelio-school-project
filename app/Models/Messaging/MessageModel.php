@@ -20,6 +20,16 @@ class MessageModel extends Model
 
     protected $primaryKey = 'id';
 
+    /**
+     * @param $idSender
+     * @param $idReceiver
+     * @param $title
+     * @param $content
+     * @param $type
+     * @param $pointerId
+     * @pre $type is one of the following "message","stock", "review"
+     * @pre if $type is either "stock" or "review", then the $pointerId must reference a product
+     */
     public function sendMessage($idSender, $idReceiver, $title, $content, $type = "message", $pointerId = null)
     {
         $data = [

@@ -44,6 +44,10 @@
                 width: 150px;
                 object-fit: cover;
                 max-height: 100%;
+                @media only screen and (max-width: 400px) { 
+                    display: none;                    
+                }
+
             }
     
         }

@@ -1,4 +1,4 @@
-<div>
+<div id="profile-container">
     <h2 class="m-2"><?= $title ?></h2>
     <?= form_open_multipart('/account/ProfileController/updateProfile') ?>
     <form method="post" action="<?php echo base_url("/account"); ?>/ProfileController/updateProfile">
@@ -15,7 +15,7 @@
         <?= session()->getFlashdata("errors");?>
         <!-- report validation errors -->
         <?= service('validation')->listErrors() ?>
-        <button type="submit" class="btn btn-primary m-2">Update</button>
+        <button type="submit" class="btn btn-primary">Update</button>
     </form>
     <hr />
     <h2 class="mb-3">Your Account Images</h2>

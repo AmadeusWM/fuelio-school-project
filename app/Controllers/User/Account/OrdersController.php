@@ -5,7 +5,9 @@ namespace App\Controllers\User\Account;
 use App\Controllers\BaseController;
 use App\Controllers\User\Account\OverviewController;
 use App\Models\AssetModels\ProductFileModel;
+use App\Models\Messaging\MessageModel;
 use App\Models\Orders\OrderModel;
+use App\Models\Orders\OrderProductModel;
 use Exception;
 
 class OrdersController extends BaseController
@@ -41,6 +43,8 @@ class OrdersController extends BaseController
             $orderModel = new OrderModel();
             $orderModel->orderDelivered($id);
 
+            $this->sendReviewMessage($id);
+
             $session->setFlashdata('message', "Order set to delived.");
             return redirect()->to(base_url("/success"));
         } catch (Exception $e) {
@@ -63,6 +67,23 @@ class OrdersController extends BaseController
             $message = $e->getMessage();
             $session->setFlashdata('errors', "<ul><li>$message</ul></li>");
             return redirect()->to(base_url("/failure"));
+        }
+    }
+
+    private function sendReviewMessage($orderId){
+        $messageModel = new MessageModel();
+        $orderProductModel = new OrderProductModel();
+
+        $orderProducts = $orderProductModel->where("order_id", $orderId)->get()->getResultArray();
+        
+        foreach($orderProducts as $orderProduct){
+            $messageModel->sendMessage($orderProduct["seller_id"], 
+                                        session()->get("id"),
+                                        "Review",
+                                        $orderProduct["name_product"] . " was delivered, would you like to write a review?",
+                                        "review",
+                                        $orderProduct["product_id"]
+                                    );
         }
     }
 }

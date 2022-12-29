@@ -120,10 +120,6 @@ class OrderController extends BaseController
         }
     }
 
-    public function setDelivered(){
-        
-    }
-
     public function cartPage()
     {
         $data["title"] = "Your Shopping Cart";

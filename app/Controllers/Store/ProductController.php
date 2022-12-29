@@ -14,14 +14,14 @@ class ProductController extends BaseController
         $productModel = new ProductModel();
         $productReviewModel = new ProductReviewModel();
         $product = $productModel->getProductDataById($id);
-        if (isset($product)) {
-            $data["product"] = $product;
-            $data["title"] = $product["name"];
-            $data["reviews"] = $productReviewModel->getByProductId($product["id"]);
-            return $this->page("product/product", $data);
-        } else {
+        if (!isset($product)) {
             session()->setFlashdata("errors", "<ul><li>Product cannot be found.</ul></li>");
             return redirect()->to(base_url("/failure"));
         }
+        $data["product"] = $product;
+        $data["title"] = $product["name"];
+        $data["reviews"] = $productReviewModel->getProductReviews($product["id"]);
+
+        return $this->page("product/product", $data);
     }
 }

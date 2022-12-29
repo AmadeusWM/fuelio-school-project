@@ -1,11 +1,18 @@
 #cart-page {
     h1 {
         margin: 15px 15px 0px 15px;
+
+        @media only screen and (max-width: 768px) {
+        }
     }
 
     #container-page-content {
         display: flex;
         flex-direction: row;
+
+        @media only screen and (max-width: 768px) {
+            flex-direction: column;
+        }
 
         #container-products {
             flex: 1;
@@ -23,6 +30,7 @@
                 .thumbnail-container {
                     width: 120px;
                     height: 120px;
+
                     .thumbnail {
                         object-fit: cover;
                         border-radius: var(--radius1);
@@ -56,8 +64,6 @@
                                 text-decoration: none;
                             }
                         }
-
-                        .right {}
                     }
 
                     .button-row {
@@ -96,6 +102,11 @@
             padding: 15px;
             width: 400px;
             height: fit-content;
+
+            @media only screen and (max-width: 768px) {
+                width: unset;
+                flex-grow: 1;
+            }
 
             #overview-header {
                 margin-bottom: 20px;

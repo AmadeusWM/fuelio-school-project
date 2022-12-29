@@ -91,24 +91,34 @@
             <h2 class="sub-title">Reviews</h2>
             <form id="review-form" method="post" action="<?= base_url("/store/product/addReview") . "/" . $product["id"] ?>">
                 <?= csrf_field() ?>
-                <label for="rating" class="input-label">Rating</label>
+                <!-- <label for="rating" class="input-label">Rating</label> -->
                 <div>
                     <input class="rating" id="rating" name="rating" min="1" max="5" oninput="this.style.setProperty('--value', `${this.valueAsNumber}`)" step="1" style="--value:5" type="range" value="5" required>
                 </div>
-                <label for="title" class="input-label">Review Title</label>
+                <!-- <label for="title" class="input-label">Review Title</label> -->
                 <input type="text" id="title" name="title" min="1" max="128" class="form-control" placeholder="Review Title" required />
-                <label for="content" class="input-label">Review Content</label>
+                <!-- <label for="content" class="input-label">Review Content</label> -->
                 <textarea type="text" id="content" name="content" min="1" max="1024" class="form-control" placeholder="Review Content" required></textarea>
                 <button type="submit" class="btn btn-primary">Add Review</button>
             </form>
             <?php foreach ($reviews as $review) { ?>
                 <div class="review">
                     <div class="review-top">
-                        <?php for ($i = 1; $i <= 5; $i++) {
-                            echo "<div class='star-icon " . ($i <= $review["rating"] ? "star-active" : "") . "'></div>";
-                        }
-                        ?>
-                        <b class="title"><?= $review["title"] ?></b>
+                        <div class="left">
+                            <?php for ($i = 1; $i <= 5; $i++) {
+                                echo "<div class='star-icon " . ($i <= $review["rating"] ? "star-active" : "") . "'></div>";
+                            }
+                            ?>
+                            <b class="title"><?= $review["title"] ?></b>
+                        </div>
+                        <?php if ($review["user_id"] == session()->get("id")) { ?>
+                            <form method="post" action="<?= base_url("/store/product/deleteReview") . "/" . $review["id"] ?>">
+                                <?= csrf_field() ?>
+                                <button type="submit" class="remove-review-button scaling-button">
+                                    <i class="bi bi-trash icon-button red"></i>
+                                </button>
+                            </form>
+                        <?php } ?>
                     </div>
                     <p class="content"><?= $review["content"] ?></p>
                 </div>

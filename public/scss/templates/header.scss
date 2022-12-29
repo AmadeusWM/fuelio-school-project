@@ -24,25 +24,36 @@
         font-size: 3rem;
         color: rgb(var(--primary));
         font-family: 'Zilla Slab', 'Courier New', Courier, monospace;
+
+        @media only screen and (max-width: 768px) {
+            font-size: 2.5rem;
+
+            .logo-icon {
+                display: none;
+            }
+        }
     }
 
-    ul {
+
+    .search-bar {
+
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-    }
 
-    form {
-        display: flex;
-        flex-direction: row;
+        @media only screen and (max-width: 700px) {
+            display: none;
+        }
     }
-
 
     .header-icon {
         font-size: 32px;
         color: rgb(var(--primary));
         margin: 0px 10px;
+
+        @media only screen and (max-width: 768px) {
+            font-size: 28px;
+            margin: 0px 10px;
+        }
     }
 
     .header-popup {
@@ -62,6 +73,12 @@
         background-color: rgb(var(--bg0));
 
         transition: right 0.2s ease-out;
+
+        @media only screen and (max-width: 768px) {
+            width: 100%;
+            right: calc(-1 * 100%);
+        }
+
     }
 
     .header-popup-active {
@@ -73,15 +90,25 @@
     #account-overview-popup {
         width: calc(var(--popup-width) / 2);
         padding: 10px;
+
+        @media only screen and (max-width: 768px) {
+            width: 100%;
+        }
+
         hr {
             width: 100%;
             color: rgb(var(--primary));
         }
-        .link{
+
+        .link {
             align-self: center;
             color: rgb(var(--b2));
             font-size: 1.2rem;
             font-weight: 500;
+
+            @media only screen and (max-width: 768px) {
+                font-size: 1.4rem;
+            }
         }
     }
 }

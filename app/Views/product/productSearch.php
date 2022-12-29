@@ -31,7 +31,6 @@
                 <input type="number" id="max-price-input" step="5" min="0" name="max_price" class="form-control" value="<?= isset($filter["max_price"]) ? $filter["max_price"] : "0" ?>" onchange="updateMaxPrice(this.value, 'max-price-range')" />
                 <input type="range" id="max-price-range" step="5" min="0" max="9999" value="<?= isset($filter["max_price"]) ? $filter["max_price"] : "0" ?>" class="form-range" onchange="updateMaxPrice(this.value, 'max-price-input')">
             </div>
-
         </div>
         <button id="filter-button" class="btn btn-primary">Filter</button>
     </form>

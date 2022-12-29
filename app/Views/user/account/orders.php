@@ -76,7 +76,7 @@
                         <form method="post" action="<?= base_url("account/OrdersController/orderDelivered") . "/" . $order["id"] ?>">
                             <?= csrf_field() ?>
                             <button class="btn btn-outline-success">
-                                Product Delivered
+                                Order Delivered
                             </button>
                         </form>
                         <form method="post" action="<?= base_url("account/OrdersController/orderCanceled") . "/" . $order["id"] ?>">
