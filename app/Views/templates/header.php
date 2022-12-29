@@ -39,10 +39,10 @@
                 </div>
                 <?= $notificationsView ?>
                 <!-- code when logged out -->
-            <?php
+                <?php
             } else {
-            ?>
-                <a href="/login" class="link">Login</a>
+                ?>
+                <a href="/login" class="link" id="login-button" >Login</a>
             <?php } ?>
             <a href="/cart/cart">
                 <i class="bi bi-bag header-icon" aria-label="Account"></i>

@@ -31,9 +31,9 @@ class SignUpController extends BaseController
         $data['fulfilled'] = false;
 
         $rules = [
-            'username'          => 'required|min_length[2]|max_length[50]',
-            'email'             => 'required|min_length[4]|max_length[100]|valid_email|is_unique[user.email]',
-            'password'          => 'required|min_length[4]|max_length[50]',
+            'username'          => 'required|min_length[2]|max_length[64]',
+            'email'             => 'required|min_length[4]|max_length[128]|valid_email|is_unique[user.email]',
+            'password'          => 'required|min_length[4]|max_length[256]',
             'confirmpassword'   => 'matches[password]'
         ];
         

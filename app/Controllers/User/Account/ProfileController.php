@@ -57,14 +57,14 @@ class ProfileController extends BaseController
             return redirect()->to(base_url('/'));
 
         $rules = [
-            'webshop_name'      => 'min_length[0]|max_length[50]',
-            'description'       => 'min_length[0]|max_length[500]',
-            'website'           => 'min_length[0]|max_length[50]',
-            'other'             => 'min_length[0]|max_length[500]',
+            'webshop_name'      => 'min_length[0]|max_length[128]',
+            'description'       => 'min_length[0]|max_length[2048]',
+            'website'           => 'min_length[0]|max_length[256]',
+            'other'             => 'min_length[0]|max_length[512]',
         ];
 
         if ($this->request->getPost('business_email')) {
-            $rules['business_email'] = 'min_length[0]|max_length[50]|valid_email';
+            $rules['business_email'] = 'min_length[0]|max_length[128]|valid_email';
         }
         if ($this->request->getPost('telephone')) {
             $rules['telephone'] = 'numeric|min_length[0]|max_length[15]';

@@ -38,8 +38,8 @@ class MessagingController extends BaseController
         $receiver = $userModel->find($id);
         if (isset($sender) && isset($receiver)) {
             $rules = [
-                "title" => "required|min_length[1]|max_length[128]",
-                "content" => "required|min_length[1]|max_length[1024]",
+                "title" => "required|min_length[1]|max_length[256]",
+                "content" => "required|min_length[1]|max_length[2048]",
             ];
             if (!$this->validate($rules)) {
                 $session->setFlashdata("errors", $this->validator->listErrors());

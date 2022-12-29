@@ -4,10 +4,10 @@
         <form id="registration-form-container">
             <!-- hidden csrf field to protect against common attacks (https://www.codeigniter.com/user_guide/tutorial/create_news_items.html)-->
             <?= csrf_field() ?>
-            <input id="input-email" type="email" name="email" class="form-control registration-input" placeholder="name@example.com">
-            <input id="input-username" type="text" name="username" class="form-control registration-input" placeholder="Username">
-            <input id="input-password" type="password" name="password" class="form-control registration-input" placeholder="Password">
-            <input id="input-confirmpassword" type="password" name="confirmpassword" class="form-control registration-input" placeholder="Confirm Password">
+            <input id="input-email" type="email" name="email" min="1" max="128" class="form-control registration-input" placeholder="name@example.com" required>
+            <input id="input-username" type="text" name="username" min="4" max="128" class="form-control registration-input" placeholder="Username" required>
+            <input id="input-password" type="password" name="password" min="4" max="256" class="form-control registration-input" placeholder="Password" required>
+            <input id="input-confirmpassword" type="password" name="confirmpassword" min="4" max="256" class="form-control registration-input" placeholder="Confirm Password" required>
         </form>
         <ul id="errors-validation" class="errors-validation"></ul>
         <div class="registration-buttons">

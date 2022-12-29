@@ -85,7 +85,7 @@ class ReviewController extends BaseController
 
         $rules = [
             "title" => "required|min_length[1]|max_length[128]",
-            "content" => "required|min_length[1]|max_length[1024]",
+            "content" => "required|min_length[1]|max_length[2048]",
             "rating" => "required|numeric|greater_than_equal_to[1]|less_than_equal_to[5]"
         ];
 

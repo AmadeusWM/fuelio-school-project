@@ -45,6 +45,10 @@
         }
     }
 
+    #login-button {
+        color: rgb(var(--primary)) !important;
+    }
+
     .header-icon {
         font-size: 32px;
         color: rgb(var(--primary));
@@ -86,7 +90,6 @@
         right: 0px;
         transform: translateX(0px);
     }
-
     #account-overview-popup {
         width: calc(var(--popup-width) / 2);
         padding: 10px;
@@ -97,7 +100,7 @@
 
         hr {
             width: 100%;
-            color: rgb(var(--primary));
+            color: rgb(var(--primary)) !important;
         }
 
         .link {

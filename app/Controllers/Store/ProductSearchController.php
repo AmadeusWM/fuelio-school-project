@@ -8,7 +8,7 @@ use App\Models\Products\ProductCategoryModel;
 
 class ProductSearchController extends BaseController
 {
-    private $fetch_amount = 20;
+    private $fetch_amount = 8;
 
     public function index($page = 0)
     {

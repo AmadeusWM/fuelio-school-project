@@ -98,7 +98,7 @@
                 <!-- <label for="title" class="input-label">Review Title</label> -->
                 <input type="text" id="title" name="title" min="1" max="128" class="form-control" placeholder="Review Title" required />
                 <!-- <label for="content" class="input-label">Review Content</label> -->
-                <textarea type="text" id="content" name="content" min="1" max="1024" class="form-control" placeholder="Review Content" required></textarea>
+                <textarea type="text" id="content" name="content" min="1" max="2048" class="form-control" placeholder="Review Content" required></textarea>
                 <button type="submit" class="btn btn-primary">Add Review</button>
             </form>
             <?php foreach ($reviews as $review) { ?>

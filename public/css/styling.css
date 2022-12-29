@@ -121,7 +121,7 @@ h3 {
   text-decoration: none;
   /* margin: 0px 15px; */
   padding: 5px 0px;
-  color: var(--b2);
+  color: rgb(var(--b1));
   overflow: hidden;
   font-size: 1.4rem;
   background: linear-gradient(to left, rgb(var(--primary)), rgb(var(--tertiary)));
@@ -11734,7 +11734,7 @@ h3 {
   text-decoration: none;
   /* margin: 0px 15px; */
   padding: 5px 0px;
-  color: var(--b2);
+  color: rgb(var(--b1));
   overflow: hidden;
   font-size: 1.4rem;
   background: linear-gradient(to left, rgb(var(--primary)), rgb(var(--tertiary)));
@@ -11925,6 +11925,9 @@ h3 {
     display: none;
   }
 }
+#navbar-header #login-button {
+  color: rgb(var(--primary)) !important;
+}
 #navbar-header .header-icon {
   font-size: 32px;
   color: rgb(var(--primary));
@@ -11971,7 +11974,7 @@ h3 {
 }
 #navbar-header #account-overview-popup hr {
   width: 100%;
-  color: rgb(var(--primary));
+  color: rgb(var(--primary)) !important;
 }
 #navbar-header #account-overview-popup .link {
   align-self: center;
@@ -12074,6 +12077,11 @@ h3 {
 
 .registration-button {
   margin: 0px 20px;
+}
+@media only screen and (max-width: 768px) {
+  .registration-button {
+    margin: 0px 5px;
+  }
 }
 
 #webshop-page {
@@ -12784,7 +12792,7 @@ h3 {
   display: flex;
   align-items: center;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 950px) {
   #product-page #page-content #product-overall {
     align-items: flex-start;
     flex-direction: column;
@@ -12843,7 +12851,7 @@ h3 {
   justify-content: center;
   margin: 10px;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 950px) {
   #product-page #page-content #product-overall #product-left #image-thumbnail {
     max-width: 300px;
     width: 100%;
@@ -12869,7 +12877,7 @@ h3 {
   margin-left: 20px;
   width: 500px;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 950px) {
   #product-page #page-content #product-overall #product-right {
     width: 100%;
     margin-left: 0px;
@@ -12881,7 +12889,7 @@ h3 {
   font-weight: bold;
   word-break: break-all;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 950px) {
   #product-page #page-content #product-overall #product-right .product-title {
     width: 100%;
   }
@@ -12936,7 +12944,7 @@ h3 {
 #product-page #page-content #product-overall #product-right .info-row #quantity {
   width: 100px;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 950px) {
   #product-page #page-content #product-overall #product-right .info-row {
     flex-direction: column;
     width: 100%;
@@ -12961,7 +12969,6 @@ h3 {
   --dir: right;
   --fill: rgb(var(--yellow));
   --fillbg: rgba(100, 100, 100, 0.15);
-  --heart: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21.328l-1.453-1.313q-2.484-2.25-3.609-3.328t-2.508-2.672-1.898-2.883-0.516-2.648q0-2.297 1.57-3.891t3.914-1.594q2.719 0 4.5 2.109 1.781-2.109 4.5-2.109 2.344 0 3.914 1.594t1.57 3.891q0 1.828-1.219 3.797t-2.648 3.422-4.664 4.359z"/></svg>');
   --star: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 360"><path d="M358.966 143.652c0-11.38-9.047-20.582-20.183-20.582-.301 0-.602.024-.894.041l-.154-.569H232.323l-30.076-92.544-.268-.016c-.293-12.404-10.234-22.419-22.5-22.419-12.03 0-21.817 9.616-22.459 21.736h-.081l-30.311 93.243H25.247c-1.13-.179-2.276-.301-3.471-.301C9.754 122.242 0 132.175 0 144.449c0 9.673 6.088 17.875 14.55 20.923l79.424 57.697-31.986 98.47.602.447a21.575 21.575 0 0 0-1.26 7.259c0 11.811 9.397 21.386 20.996 21.386 5.064 0 9.714-1.845 13.347-4.91l.236.195 83.562-60.72 84.854 61.655.406-.276c3.56 3.008 8.137 4.828 13.111 4.828 11.372 0 20.582-9.397 20.582-20.972 0-2.122-.309-4.154-.886-6.08l.293-.179-32.839-101.103 83.919-60.981-.171-.553a20.678 20.678 0 0 0 10.226-17.883z"/></svg>');
   --stars: 5;
   --starsize: 1.5rem;

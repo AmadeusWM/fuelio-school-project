@@ -16,11 +16,11 @@ class ProductsController extends BaseController
     private function productInputRules()
     {
         return [
-            'name'                  => 'required|min_length[1]|max_length[50]',
-            'price'                 => 'required|numeric|min_length[1]|max_length[50]',
-            'description'           => 'required|min_length[1]|max_length[500]',
-            'origin'                => 'required|min_length[1]|max_length[50]',
-            'quantity'              => 'required|numeric|min_length[1]|max_length[50]',
+            'name'                  => 'required|min_length[1]|max_length[256]',
+            'price'                 => 'required|numeric|min_length[1]|max_length[12]',
+            'description'           => 'required|min_length[1]|max_length[2048]',
+            'origin'                => 'required|min_length[1]|max_length[128]',
+            'quantity'              => 'required|numeric|min_length[1]|max_length[12]',
             'product_category'      => 'required|min_length[1]|max_length[50]',
         ];
     }

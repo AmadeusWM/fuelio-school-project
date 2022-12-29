@@ -3,14 +3,14 @@
     <?= form_open_multipart('/account/ProfileController/updateProfile') ?>
     <form method="post" action="<?php echo base_url("/account"); ?>/ProfileController/updateProfile">
         <?= csrf_field() ?>
-        <input id="input-webshop-name" type="text" name="webshop_name" value="<?= $webshop_name ?>" class="form-control profile-information-input" placeholder="Webshop Name">
-        <textarea id="input-description" type="textarea" name="description" class="form-control profile-information-input" placeholder="Your Description"><?= $description ?></textarea>
-        <input id="input-business-email" type="text" name="business_email" value="<?= $business_email ?>" class="form-control profile-information-input" placeholder="Business Email">
-        <input id="input-telephone" type="text" name="telephone" value="<?= $telephone ?>" class="form-control profile-information-input" placeholder="Telephone">
-        <input id="input-mobile" type="text" name="mobile" value="<?= $mobile ?>" class="form-control profile-information-input" placeholder="Mobile">
-        <input id="input-website" type="text" name="website" value="<?= $website ?>" class="form-control profile-information-input" placeholder="Your Website">
-        <textarea id="input-other" type="text" name="other" class="form-control profile-information-input" placeholder="Other Information"><?= $other ?></textarea>
-        <input multiple type="file" name="img_files[]" size="20" class="form-control profile-information-input" />
+        <input id="input-webshop-name" min="0" max="128" type="text" name="webshop_name" value="<?= $webshop_name ?>" class="form-control profile-information-input" placeholder="Webshop Name">
+        <textarea id="input-description" min="0" max="2048" type="textarea" name="description" class="form-control profile-information-input" placeholder="Your Description"><?= $description ?></textarea>
+        <input id="input-business-email" min="0" max="128" type="text" name="business_email" value="<?= $business_email ?>" class="form-control profile-information-input" placeholder="Business Email">
+        <input id="input-telephone" min="0" max="15" type="text" name="telephone" value="<?= $telephone ?>" class="form-control profile-information-input" placeholder="Telephone">
+        <input id="input-mobile" min="0" max="15" type="text" name="mobile" value="<?= $mobile ?>" class="form-control profile-information-input" placeholder="Mobile">
+        <input id="input-website" min="0" max="256" type="text" name="website" value="<?= $website ?>" class="form-control profile-information-input" placeholder="Your Website">
+        <textarea id="input-other" min="0" max="512" type="text" name="other" class="form-control profile-information-input" placeholder="Other Information"><?= $other ?></textarea>
+        <input multiple type="file" name="img_files[]" size="10" class="form-control profile-information-input" />
         <!-- report csrf protection errors -->
         <?= session()->getFlashdata("errors");?>
         <!-- report validation errors -->

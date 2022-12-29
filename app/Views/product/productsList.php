@@ -45,10 +45,10 @@
 </div>
 <nav aria-label="..." class="pagination-bottom">
     <ul class="pagination">
-        <li class="page-item <?= $page == 0 ? "disabled" : "" ?>">
+        <li class="page-item <?= $page <= 0  || $amountPages == 0 ? "disabled" : "" ?>">
             <a class="page-link" href="<?= base_url("/store/search") . "/" . ($page - 1) ?>">Prev</a>
         </li>
-        <?php if ($page != 0) { ?>
+        <?php if ($page != 0 && $amountPages != 0) { ?>
             <li class="page-item">
                 <a class="page-link" href="<?= base_url("/store/search") . "/" . ($page - 1) ?>">
                     <?= $page ?>
@@ -60,14 +60,14 @@
                 <?= $page + 1 ?>
             </span>
         </li>
-        <?php if ($page != $amountPages - 1) { ?>
+        <?php if ($page != $amountPages - 1 && $amountPages != 0) { ?>
             <li class="page-item">
                 <a class="page-link" href="<?= base_url("/store/search") . "/" . ($page + 1) ?>">
                     <?= $page + 2 ?>
                 </a>
             </li>
         <?php } ?>
-        <li class="page-item <?= ($page == $amountPages - 1) ? "disabled" : "" ?>">
+        <li class="page-item <?= ($page >= $amountPages - 1 || $amountPages == 0) ? "disabled" : "" ?>">
             <a class="page-link" href="<?= base_url("/store/search") . "/" . ($page + 1) ?>">Next</a>
         </li>
     </ul>
