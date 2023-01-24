@@ -1,6 +1,6 @@
 <div id="cart-page">
     <?= csrf_field() ?>
-    <h1 id="title"><?= $title ?></h1>
+    <h1 id="title"><?= esc($title) ?></h1>
     <div id="container-page-content">
         <div id="container-products" class="hover-box">
             <?php
@@ -18,10 +18,10 @@
                             $file = $files[0];
                             if (isset($file) && $file["file_type"] == "image") {
                         ?>
-                                <img class="thumbnail" src="/UploadedFiles/products/<?= $file["file_name"] ?>">
+                                <img class="thumbnail" src="/UploadedFiles/products/<?= esc($file["file_name"]) ?>">
                             <?php } else { ?>
                                 <video class="thumbnail">
-                                    <source src="/UploadedFiles/products/<?= $file['file_name'] ?>" type="video/mp4">
+                                    <source src="/UploadedFiles/products/<?= esc($file['file_name']) ?>" type="video/mp4">
                                     Your browser does not support the video tag.
                                 </video>
                         <?php }

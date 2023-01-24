@@ -27,14 +27,14 @@ class AjaxHandler {
                 callback(data);
             }).catch(error => {
                 alert(error, "Refresh the page");
-            })
+            });
     }
 
     /**
      * do an ajax post
      * @param {string} url  
      */
-    static ajaxPost(url) {
+    static ajaxPostUrl(url) {
         fetch(url, {
             method: "post",
             headers: {

@@ -63,7 +63,7 @@
             let buttonNotifications = document.getElementById("notifications-button");
             buttonNotifications.addEventListener('click', () => {
                 togglePopup("notifications-popup")
-                AjaxHandler.ajaxPost("<?= base_url('/message/allMessagesRead') ?>");
+                AjaxHandler.ajaxPostUrl("<?= base_url('/message/allMessagesRead') ?>");
             })
         <?php } ?>
 
