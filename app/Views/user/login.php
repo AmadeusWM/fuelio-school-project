@@ -14,7 +14,6 @@
         </div>
     </div>
 </div>
-<script src="/javascript/AjaxHandler.js"></script>
 <script>
     AjaxHandler.setToken("<?= csrf_token() ?>");
     

@@ -39,7 +39,6 @@
         } ?>
     </div>
 </div>
-<script src="/javascript/AjaxHandler.js"></script>
 <script>
     // == csrf properties ==
     AjaxHandler.setToken("<?= csrf_token() ?>");

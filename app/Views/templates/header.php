@@ -16,6 +16,7 @@
 </head>
 
 <body>
+    <?= csrf_field() ?>
     <nav id="navbar-header">
         <a class="no-link-styling" href="/">
             <h1 id="logo-header"><i class="bi bi-lightbulb logo-icon"></i>Fuelio</h1>
@@ -62,9 +63,8 @@
             let buttonNotifications = document.getElementById("notifications-button");
             buttonNotifications.addEventListener('click', () => {
                 togglePopup("notifications-popup")
-                AjaxHandler.ajaxPost("<?= base_url('/message/allMessagesRead') ?>", {},
-                    (data) => {});
-            }, false);
+                AjaxHandler.ajaxPost("<?= base_url('/message/allMessagesRead') ?>");
+            })
         <?php } ?>
 
         function togglePopup(id) {

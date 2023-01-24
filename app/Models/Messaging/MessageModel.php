@@ -58,8 +58,11 @@ class MessageModel extends Model
     public function setReadByUser($userId)
     {
         $data = [
-            "read" => true
+            [
+                "receiver_id" => $userId,
+                "read" => true
+            ]
         ];
-        $this->updateBatch($data, "receiver_id=" . $userId);
+        $this->updateBatch($data, "receiver_id");
     }
 }

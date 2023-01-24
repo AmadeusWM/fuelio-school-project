@@ -31,6 +31,25 @@ class AjaxHandler {
     }
 
     /**
+     * do an ajax post
+     * @param {string} url  
+     */
+    static ajaxPost(url) {
+        fetch(url, {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json",
+                "X-Requested-With": "XMLHttpRequest",
+            },
+            body: JSON.stringify({...this.getCSRFHiddenFieldValue()}),
+        })
+        .then(response => response.json())
+        .then(data => {
+            this.updateCSRF(data);
+        });
+    }
+
+    /**
      * 
      * @param {string} url 
      * @param {function handleResponse(data)} callback 

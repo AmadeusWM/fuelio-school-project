@@ -70,5 +70,9 @@ class MessagingController extends BaseController
         $userId = session("id");
         $messageModel = new MessageModel();
         $messageModel->setReadByUser($userId);
+        // csrf token for ajax
+        $data['csrf_value'] = csrf_hash();
+        $data['csrf_token'] = csrf_token();
+        return $this->response->setJSON($data);
     }
 }

@@ -38,7 +38,6 @@
         <?php echo $products_list ?>
     </div>
 </div>
-<script src="/javascript/AjaxHandler.js"></script>
 <script>
     // init ajaxhandler
     AjaxHandler.setToken("<?= csrf_token() ?>");
