@@ -62,4 +62,9 @@ class OrderProductModel extends Model
             throw $e;
         }
     }
+
+    public function getOrderProducts($orderId){
+        $orderProducts = $this->where("order_id", $orderId)->get()->getResultArray();
+        return $orderProducts;
+    }
 }

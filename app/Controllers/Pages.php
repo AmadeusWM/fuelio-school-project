@@ -16,7 +16,9 @@ class Pages extends BaseController
         $messageModel = new MessageModel();
         
         $data["notifications"] = $messageModel->getMessagesByUser(session("id"));
-        $data["notifications_amount"] = count($data["notifications"]);
+        $lambda = function ($e){return $e["read"] == false;};
+        $unreadMessages = array_filter($data["notifications"], $lambda);
+        $data["notifications_amount"] = count($unreadMessages);
 
         $notificationsView = view("messaging/messages", $data);
         $data["notificationsView"] = $notificationsView;

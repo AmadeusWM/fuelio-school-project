@@ -12796,6 +12796,7 @@ h3 {
   #product-page #page-content #product-overall {
     align-items: flex-start;
     flex-direction: column;
+    width: 300px;
   }
 }
 #product-page #page-content #product-overall #product-left {

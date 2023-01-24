@@ -84,8 +84,6 @@ class OrderModel extends Model
         $query = $orderProductModel->where("order_id", $order["id"])
             ->select("order_product.*, user.webshop_name")
             ->join("user", "order_product.seller_id = user.id", "left");
-        // $query = $query->select("order_product.*, product.*, order_product.quantity AS order_quantity")
-        // $orderProducts = $query->get()->getResultArray();
 
         $orderProducts = $query->get()->getResultArray();
 

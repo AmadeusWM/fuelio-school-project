@@ -15,6 +15,7 @@ class MessageModel extends Model
         "title",
         "content",
         "type",
+        "read",
         "pointer_id"
     ];
 
@@ -47,10 +48,18 @@ class MessageModel extends Model
     public function getMessagesByUser($id)
     {
         return $this->where("receiver_id", $id)
-        ->limit(100)
-        ->select("message.*, user.username AS sender_username, user.webshop_name AS sender_webshop")
-        ->join("user", "message.sender_id = user.id", "left")
-        ->orderBy("message.id", "desc")
-        ->get()->getResultArray();
+            ->limit(100)
+            ->select("message.*, user.username AS sender_username, user.webshop_name AS sender_webshop")
+            ->join("user", "message.sender_id = user.id", "left")
+            ->orderBy("message.id", "desc")
+            ->get()->getResultArray();
+    }
+
+    public function setReadByUser($userId)
+    {
+        $data = [
+            "read" => true
+        ];
+        $this->updateBatch($data, "receiver_id=" . $userId);
     }
 }

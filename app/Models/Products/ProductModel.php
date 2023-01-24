@@ -128,6 +128,14 @@ class ProductModel extends Model
     }
 
     /**
+     * Decrements the quantity of a product
+     */
+    public function incrementQuantity($id, $quantity)
+    {
+        $this->decrementQuantity($id, $quantity*(-1));
+    }
+
+    /**
      * @param $products the list of products which will be filled with all products information available
      * @return array a list of products with all attributes set (files, product_category)
      */

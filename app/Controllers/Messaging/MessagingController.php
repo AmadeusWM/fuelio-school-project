@@ -65,4 +65,10 @@ class MessagingController extends BaseController
         session()->setFlashdata("message", "You will be notified when this product is back in stock.");
         return redirect()->to(base_url("/success"));
     }
+
+    public function allMessagesRead(){
+        $userId = session("id");
+        $messageModel = new MessageModel();
+        $messageModel->setReadByUser($userId);
+    }
 }

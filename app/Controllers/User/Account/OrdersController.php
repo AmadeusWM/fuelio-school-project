@@ -8,6 +8,7 @@ use App\Models\AssetModels\ProductFileModel;
 use App\Models\Messaging\MessageModel;
 use App\Models\Orders\OrderModel;
 use App\Models\Orders\OrderProductModel;
+use App\Models\Products\ProductModel;
 use Exception;
 
 class OrdersController extends BaseController
@@ -42,7 +43,6 @@ class OrdersController extends BaseController
         try {
             $orderModel = new OrderModel();
             $orderModel->orderDelivered($id);
-
             $this->sendReviewMessage($id);
 
             $session->setFlashdata('message', "Order set to delived.");
@@ -53,12 +53,14 @@ class OrdersController extends BaseController
             return redirect()->to(base_url("/failure"));
         }
     }
-
     public function orderCanceled($id)
     {
         $session = session();
         try {
             $orderModel = new OrderModel();
+            $orderProductModel = new OrderProductModel();
+            $orderProducts = $orderProductModel->getOrderProducts($id);
+            $this->resetQuantityProducts($orderProducts);
             $orderModel->orderCanceled($id);
 
             $session->setFlashdata('message', "Order canceled successfully.");
@@ -67,6 +69,19 @@ class OrdersController extends BaseController
             $message = $e->getMessage();
             $session->setFlashdata('errors', "<ul><li>$message</ul></li>");
             return redirect()->to(base_url("/failure"));
+        }
+    }
+
+    private function resetQuantityProducts($orderProducts){
+        $productModel = new ProductModel();
+        foreach($orderProducts as $orderProduct){
+            try{
+                $idProduct = $orderProduct["product_id"];
+                $quantity = $orderProduct["quantity"];
+                $productModel->incrementQuantity($idProduct, $quantity);
+            }catch(Exception $e){
+                // when product was not found
+            }
         }
     }
 

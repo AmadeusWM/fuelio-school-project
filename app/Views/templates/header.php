@@ -34,22 +34,25 @@
                 </button>
                 <div id="account-overview-popup" class="header-popup">
                     <a href="/account/overview" class="link">My Account</a>
-                    <hr/>
+                    <hr />
                     <a href="/SignInController/logout" class="link">Log out</a>
                 </div>
                 <?= $notificationsView ?>
                 <!-- code when logged out -->
-                <?php
+            <?php
             } else {
-                ?>
-                <a href="/login" class="link" id="login-button" >Login</a>
+            ?>
+                <a href="/login" class="link" id="login-button">Login</a>
             <?php } ?>
             <a href="/cart/cart">
                 <i class="bi bi-bag header-icon" aria-label="Account"></i>
             </a>
         </div>
     </nav>
+    <script src="/javascript/AjaxHandler.js"></script>
     <script>
+        AjaxHandler.setToken("<?= csrf_token() ?>");
+
         <?php
         if (session("isLoggedIn") == true) {
         ?>
@@ -57,7 +60,11 @@
             buttonOverview.addEventListener('click', () => togglePopup("account-overview-popup"), false);
 
             let buttonNotifications = document.getElementById("notifications-button");
-            buttonNotifications.addEventListener('click', () => togglePopup("notifications-popup"), false);
+            buttonNotifications.addEventListener('click', () => {
+                togglePopup("notifications-popup")
+                AjaxHandler.ajaxPost("<?= base_url('/message/allMessagesRead') ?>", {},
+                    (data) => {});
+            }, false);
         <?php } ?>
 
         function togglePopup(id) {
