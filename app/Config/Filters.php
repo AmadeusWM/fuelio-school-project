@@ -2,6 +2,8 @@
 
 namespace Config;
 
+use App\Filters\AuthenticationFilter;
+use App\Filters\EmptyCartFilter;
 use CodeIgniter\Config\BaseConfig;
 use CodeIgniter\Filters\CSRF;
 use CodeIgniter\Filters\DebugToolbar;
@@ -24,6 +26,8 @@ class Filters extends BaseConfig
         'invalidchars'  => InvalidChars::class,
         'secureheaders' => SecureHeaders::class,
 		'authGuard' => AuthGuard::class, // from [here](https://www.positronx.io/codeigniter-authentication-login-and-registration-tutorial/)
+        'AuthenticationFilter' => AuthenticationFilter::class,
+        'EmptyCartFilter' => EmptyCartFilter::class
     ];
 
     /**

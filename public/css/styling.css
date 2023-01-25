@@ -11977,10 +11977,11 @@ h3 {
   color: rgb(var(--primary)) !important;
 }
 #navbar-header #account-overview-popup .link {
-  align-self: center;
+  align-self: left;
   color: rgb(var(--b2));
   font-size: 1.2rem;
   font-weight: 500;
+  margin: 5px;
 }
 @media only screen and (max-width: 768px) {
   #navbar-header #account-overview-popup .link {
@@ -12677,7 +12678,7 @@ h3 {
 }
 #search-page #filter-container .input-wrapper .max-price-input-wrapper #max-price-input {
   margin-left: 0px;
-  width: 100px;
+  width: 125px;
 }
 #search-page #filter-container #filter-button {
   margin: 5px;

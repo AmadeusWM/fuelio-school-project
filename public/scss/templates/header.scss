@@ -104,10 +104,11 @@
         }
 
         .link {
-            align-self: center;
+            align-self: left;
             color: rgb(var(--b2));
             font-size: 1.2rem;
             font-weight: 500;
+            margin: 5px;
 
             @media only screen and (max-width: 768px) {
                 font-size: 1.4rem;

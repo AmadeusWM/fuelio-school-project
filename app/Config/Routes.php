@@ -41,7 +41,7 @@ $routes->get('success', 'Pages::successPage');
 $routes->get('failure', 'Pages::failurePage');
 
 // groups prepend "account" before every route (https://codeigniter.com/user_guide/incoming/routing.html#redirecting-routes)
-$routes->group('account', static function ($routes) {
+$routes->group('account', ["filter" => "AuthenticationFilter"], static function ($routes) {
     $routes->get('overview/profile', 'User\Account\ProfileController::index');
     $routes->addRedirect('overview', 'account/overview/profile');
     $routes->get('overview/orders', 'User\Account\OrdersController::index');
@@ -64,20 +64,20 @@ $routes->group('account', static function ($routes) {
 $routes->group("store", static function ($routes) {
     $routes->get('search', 'Store\ProductSearchController::search');
     $routes->get('search/(:num)', 'Store\ProductSearchController::search/$1');
-$routes->get('product/(:num)', 'Store\ProductController::index/$1');
+    $routes->get('product/(:num)', 'Store\ProductController::index/$1');
     $routes->get('webshop/(:num)', 'Store\WebshopController::index/$1');
     $routes->post('product/addReview/(:num)', 'Store\ReviewController::addReview/$1');
     $routes->post('product/deleteReview/(:num)', 'Store\ReviewController::deleteReview/$1');
 });
-$routes->group("cart", static function ($routes) {
+$routes->group("cart", ["filter" => "AuthenticationFilter"], static function ($routes) {
     $routes->post('addProductToCart', 'Cart\OrderController::addProductToCart');
     $routes->post('removeProductFromCart', 'Cart\OrderController::removeProductFromCart');
     $routes->get('cart', 'Cart\OrderController::cartPage');
-    $routes->get('checkout', 'Cart\OrderController::checkoutPage');
-    $routes->get('placeOrder', 'Cart\OrderController::placeOrder');
+    $routes->get('checkout', 'Cart\OrderController::checkoutPage', ["filter" => "EmptyCartFilter"]);
+    $routes->get('placeOrder', 'Cart\OrderController::placeOrder', ["filter" => "EmptyCartFilter"]);
 });
 
-$routes->group("message", static function ($routes) {
+$routes->group("message", ["filter" => "AuthenticationFilter"], static function ($routes) {
     $routes->get('(:num)', 'Messaging\MessagingController::messageSenderPage/$1');
     $routes->post('messageUser/(:num)', 'Messaging\MessagingController::messageUser/$1');
     $routes->post('notifyLater/(:num)', 'Messaging\MessagingController::notifyLater/$1');
