@@ -75,10 +75,10 @@
         button.classList.remove("failed-button");
         if (data["success"] == true) {
             button.classList.add("activated-button");
-            button.innerHTML = "<i class='bi bi-cart-check'></i>";
+            button.innerHTML = "<i class='bi bi-cart-check' aria-label='Added to Cart'></i>";
         } else {
             button.classList.add("failed-button");
-            button.innerHTML = "<i class='bi bi-x'></i>";
+            button.innerHTML = "<i class='bi bi-x' aria-label='Something went wrong'></i>";
         }
     }
 </script>

@@ -14,16 +14,16 @@
             <!-- Section: Social media -->
             <section class="mb-2">
                 <!-- Facebook -->
-                <a class="btn btn-outline-dark rounded-circle btn-floating m-1 footer-icon" href="#!" role="button"><i class="bi bi-facebook"></i></a>
+                <a class="btn btn-outline-dark rounded-circle btn-floating m-1 footer-icon" href="#!" role="button"><i class="bi bi-facebook" aria-label="facebook"></i></a>
 
                 <!-- Twitter -->
-                <a class="btn btn-outline-dark rounded-circle btn-floating m-1 footer-icon" href="#!" role="button"><i class="bi bi-twitter"></i></a>
+                <a class="btn btn-outline-dark rounded-circle btn-floating m-1 footer-icon" href="#!" role="button"><i class="bi bi-twitter" aria-label="twitter"></i></a>
 
                 <!-- Google -->
-                <a class="btn btn-outline-dark rounded-circle btn-floating m-1 footer-icon" href="#!" role="button"><i class="bi bi-google"></i></a>
+                <a class="btn btn-outline-dark rounded-circle btn-floating m-1 footer-icon" href="#!" role="button"><i class="bi bi-google" aria-label="google"></i></a>
 
                 <!-- Instagram -->
-                <a class="btn btn-outline-dark rounded-circle btn-floating m-1 footer-icon" href="#!" role="button"><i class="bi bi-instagram"></i></a>
+                <a class="btn btn-outline-dark rounded-circle btn-floating m-1 footer-icon" href="#!" role="button"><i class="bi bi-instagram" aria-label="instagram"></i></a>
             </section>
         </div>
         <div class="text-center">

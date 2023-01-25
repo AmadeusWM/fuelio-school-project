@@ -49,7 +49,7 @@
                                 value="<?= esc($product["orderQuantity"]) ?>" 
                                 onchange="updateCartProduct(<?= esc($product['id']) ?>,this.value)" />
                             <button class="scaling-button" onclick="removeCartProduct(<?= esc($product['id']) ?>)">
-                                <i class="bi bi-trash icon-button red"></i>
+                                <i class="bi bi-trash icon-button red" aria-label="Remove from cart"></i>
                             </button>
                         </div>
                     </div>
@@ -74,7 +74,6 @@
         </div>
     </div>
 </div>
-<script src="/javascript/AjaxHandler.js"></script>
 <script>
     AjaxHandler.setToken("<?= csrf_token() ?>");
 

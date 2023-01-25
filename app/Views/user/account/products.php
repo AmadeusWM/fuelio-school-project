@@ -11,9 +11,9 @@
                     <div class="inventory-product-content">
                         <ul>
                             <h3><?= esc($product["name"]) ?></h3>
-                            <li><i class="bi bi-currency-dollar inventory-icon"></i><?= esc($product["price"]) ?></li>
-                            <li><i class="bi bi-123 inventory-icon"></i><?= esc($product["quantity"]) ?></li>
-                            <li><i class="bi bi-tag inventory-icon"></i><?= esc($product["product_category"]) ?></li>
+                            <li><i class="bi bi-currency-dollar inventory-icon" aria-label="Price"></i><?= esc($product["price"]) ?></li>
+                            <li><i class="bi bi-123 inventory-icon" aria-label="Amount"></i><?= esc($product["quantity"]) ?></li>
+                            <li><i class="bi bi-tag inventory-icon" aria-label="Category"></i><?= esc($product["product_category"]) ?></li>
                         </ul>
                         <?php
                         $files = $product["files"];
@@ -25,12 +25,12 @@
                     <ul class="inventory-product-buttons">
                         <li class="inventory-product-button">
                             <button name="product-remove-button" id="<?= esc($product["id"]) ?>" class="scaling-button">
-                                <i class="bi bi-trash icon-button red"></i>
+                                <i class="bi bi-trash icon-button red" aria-label="Remove Product"></i>
                             </button>
                         </li>
                         <li class="inventory-product-button scaling-button">
                             <a class="href-button" href="<?= base_url("account/overview/products/editProduct") . "/" . esc($product["id"]) ?>" class="scaling-button">
-                                <i class="bi bi-pencil icon-button"></i>
+                                <i class="bi bi-pencil icon-button" aria-label="Edit Product"></i>
                             </a>
                         </li>
                     </ul>

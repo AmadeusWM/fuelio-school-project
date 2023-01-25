@@ -5,14 +5,20 @@
                 <?php
                 $files = $product["files"];
                 $file = null;
-                if ($files)
-                    $file = $product["files"][0];
-                if ($file && $file["file_type"] == "image") {
+                if ($files){ // find the first image (thumbnail)
+                    foreach ($files as $f) {
+                        if($f["file_type"] == "image"){
+                            $file = $f;
+                            break;
+                        }
+                    }
+                }
+                if (isset($file)) {
                 ?>
                     <img class="product-entry-image" src="/UploadedFiles/products/<?= esc($file["file_name"]) ?>">
                 <?php } else { ?>
                     <div class="image-placeholder">
-                        <i class="bi-card-image gray tx-xl"></i>
+                        <i class="bi-card-image gray tx-xl" aria-label="No image"></i>
                         <p class="gray tx-l">No image available</p>
                     </div>
                 <?php } ?>
@@ -27,17 +33,17 @@
             <div class="product-content-container">
                 <?php if ($product["quantity"] > 0) { ?>
                     <p class="product-availability green">
-                        <i class="bi bi-check-circle-fill"></i>
+                        <i class="bi bi-check-circle-fill" aria-label="Available"></i>
                         Available
                     </p>
                 <?php } else { ?>
                     <p class="product-availability red">
-                        <i class="bi bi-x-circle-fill"></i>
+                        <i class="bi bi-x-circle-fill" aria-label="Not available"></i>
                         Unavailable
                     </p>
                 <?php } ?>
                 <button data-product-id="<?= esc($product["id"]) ?>" class="btn btn-primary add-product-button" <?= $product['quantity'] == 0 ? 'disabled' : '' ?>>
-                    <i class="bi bi-cart-plus"></i>
+                    <i class="bi bi-cart-plus" aria-label="Add to cart"></i>
                 </button>
             </div>
         </div>

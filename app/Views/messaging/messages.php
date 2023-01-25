@@ -22,7 +22,7 @@
                 <?php if ($notification["type"] == "message"){ ?>
                     <a class="btn btn-primary" href="<?= base_url("/message") . "/" . esc($notification["sender_id"]) ?>"><i class="bi bi-envelope" aria-label="Send Response"></i></a>
                 <?php } else{ ?>
-                    <a class="btn btn-primary" href="<?= base_url("/store/product") . "/" . esc($notification["pointer_id"]) ?>"><i class="bi bi-arrow-return-right" aria-label="Visit"></i></a>
+                    <a class="btn btn-primary" href="<?= base_url("/store/product") . "/" . esc($notification["pointer_id"]) ?>"><i class="bi bi-arrow-return-right" aria-label="Visit Product"></i></a>
                 <?php } ?>
                 <hr />
             </li>

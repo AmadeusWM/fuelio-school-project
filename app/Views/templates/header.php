@@ -46,7 +46,7 @@
                 <a href="/login" class="link" id="login-button">Login</a>
             <?php } ?>
             <a href="/cart/cart">
-                <i class="bi bi-bag header-icon" aria-label="Account"></i>
+                <i class="bi bi-bag header-icon" aria-label="Cart"></i>
             </a>
         </div>
     </nav>

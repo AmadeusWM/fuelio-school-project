@@ -8,7 +8,7 @@
                     // only show if there are images/videos to show
                     if (isset($files) && sizeof($files) > 0) {
                     ?>
-                        <i id="image-up-arrow" class="bi bi-caret-up-fill" onclick="plusSlides(-1)"></i>
+                        <i id="image-up-arrow" class="bi bi-caret-up-fill" onclick="plusSlides(-1)" aria-label="Previous Image"></i>
                         <!-- images in the slider -->
                         <div id="image-slider-content">
                             <?php
@@ -27,7 +27,7 @@
                                     $index++;
                                 } ?>
                         </div>
-                        <i id="image-down-arrow" class="bi bi-caret-down-fill" onclick="plusSlides(1)"></i>
+                        <i id="image-down-arrow" class="bi bi-caret-down-fill" onclick="plusSlides(1)" aria-label="Next Image"></i>
                     <?php } ?>
                 </div>
                 <div id="image-thumbnail">
@@ -59,12 +59,12 @@
                 </p>
                 <?php if ($product["quantity"] > 0) { ?>
                     <p class="product-availability green">
-                        <i class="bi bi-check-circle-fill"></i>
+                        <i class="bi bi-check-circle-fill" aria-label="Available"></i>
                         <?= esc($product["quantity"]) ?> Available
                     </p>
                 <?php } else { ?>
                     <p class="product-availability red">
-                        <i class="bi bi-x-circle-fill"></i>
+                        <i class="bi bi-x-circle-fill" aria-label="Not Available"></i>
                         Unavailable
                     </p>
                 <?php } ?>
@@ -112,7 +112,7 @@
                             <form method="post" action="<?= base_url("/store/product/deleteReview") . "/" . esc($review["id"]) ?>">
                                 <?= csrf_field() ?>
                                 <button type="submit" class="remove-review-button scaling-button">
-                                    <i class="bi bi-trash icon-button red"></i>
+                                    <i class="bi bi-trash icon-button red" aria-label="Remove Review"></i>
                                 </button>
                             </form>
                         <?php } ?>
@@ -128,7 +128,9 @@
 
     // handle adding to cart
     let button = document.getElementById("add-cart-button");
-    button.addEventListener('click', () => addToCart("<?= esc($product["id"]) ?>"), false);
+    if (button){
+        button.addEventListener('click', () => addToCart("<?= esc($product["id"]) ?>"), false);
+    }
 
     function addToCart(productId) {
         let quantity = document.getElementById("quantity")
