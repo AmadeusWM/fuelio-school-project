@@ -19,7 +19,7 @@
                         $files = $product["files"];
                         if (isset($files) && isset($files[0]) && $files[0]["file_type"] == "image") {
                         ?>
-                            <img class="inventory-image" src="/UploadedFiles/products/<?= esc($files[0]["file_name"]) ?>">
+                            <img class="inventory-image" src="/UploadedFiles/products/<?= esc($files[0]["file_name"]) ?>" alt="Product thumbnail">
                         <?php } ?>
                     </div>
                     <ul class="inventory-product-buttons">

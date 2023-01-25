@@ -18,9 +18,9 @@
                             $file = $files[0];
                             if (isset($file) && $file["file_type"] == "image") {
                         ?>
-                                <img class="thumbnail" src="/UploadedFiles/products/<?= esc($file["file_name"]) ?>">
+                                <img class="thumbnail" src="/UploadedFiles/products/<?= esc($file["file_name"]) ?>" alt="Product thumbnail">
                             <?php } else { ?>
-                                <video class="thumbnail">
+                                <video class="thumbnail" alt="Product video">
                                     <source src="/UploadedFiles/products/<?= esc($file['file_name']) ?>" type="video/mp4">
                                     Your browser does not support the video tag.
                                 </video>

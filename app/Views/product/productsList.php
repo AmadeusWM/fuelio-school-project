@@ -15,7 +15,7 @@
                 }
                 if (isset($file)) {
                 ?>
-                    <img class="product-entry-image" src="/UploadedFiles/products/<?= esc($file["file_name"]) ?>">
+                    <img class="product-entry-image" src="/UploadedFiles/products/<?= esc($file["file_name"]) ?>" alt="Product thumbnail">
                 <?php } else { ?>
                     <div class="image-placeholder">
                         <i class="bi-card-image gray tx-xl" aria-label="No image"></i>

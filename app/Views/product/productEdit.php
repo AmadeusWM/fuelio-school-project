@@ -36,9 +36,9 @@
                             <i class="bi bi-trash files-trash-icon" aria-label="Remove File"></i>
                         </button>
                         <?php if ($file['file_type'] == 'image') { ?>
-                            <img src="/UploadedFiles/products/<?= esc($file['file_name']) ?>" class="product-file" />
+                            <img src="/UploadedFiles/products/<?= esc($file['file_name']) ?>" class="product-file" alt="Product image"/>
                         <?php } else { ?>
-                            <video class="product-file" controls>
+                            <video class="product-file" controls alt="Product video">
                                 <source src="/UploadedFiles/products/<?= esc($file['file_name']) ?>" type="video/mp4">
                                 Your browser does not support the video tag.
                             </video>

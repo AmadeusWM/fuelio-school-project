@@ -3,7 +3,7 @@
         <div id="images-container">
             <?php foreach ($webshop["images"] as $image) { ?>
                 <div class="image-container">
-                    <img src="/UploadedFiles/userImages/<?= esc($image["image_name"]) ?>">
+                    <img src="/UploadedFiles/userImages/<?= esc($image["image_name"]) ?>" alt="Webshop image">
                 </div>
             <?php } ?>
         </div>

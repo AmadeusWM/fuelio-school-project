@@ -17,9 +17,9 @@
                                 foreach ($files as $file) {
                                     if ($file["file_type"] == "image") {
                             ?>
-                                    <img onclick="currentSlide(<?= esc($index) ?>)" class="product-file-slider" src="/UploadedFiles/products/<?= esc($file["file_name"]) ?>">
+                                    <img onclick="currentSlide(<?= esc($index) ?>)" class="product-file-slider" src="/UploadedFiles/products/<?= esc($file["file_name"]) ?>" alt="Product image">
                                 <?php } else { ?>
-                                    <video onclick="currentSlide(<?= esc($index) ?>)" class="product-file-slider">
+                                    <video onclick="currentSlide(<?= esc($index) ?>)" class="product-file-slider" alt="Product video">
                                         <source src="/UploadedFiles/products/<?= esc($file['file_name']) ?>" type="video/mp4">
                                         Your browser does not support the video tag.
                                     </video>
@@ -39,9 +39,9 @@
                         foreach ($files as $file) {
                             if ($file["file_type"] == "image") {
                     ?>
-                            <img onclick="currentSlide(<?= esc($index) ?>)" class="product-file-thumbnail" src="/UploadedFiles/products/<?= esc($file["file_name"]) ?>">
+                            <img onclick="currentSlide(<?= esc($index) ?>)" class="product-file-thumbnail" src="/UploadedFiles/products/<?= esc($file["file_name"]) ?>" alt="Product thumbnail">
                         <?php } else { ?>
-                            <video class="product-file-thumbnail" controls>
+                            <video class="product-file-thumbnail" controls alt="Product video">
                                 <source src="/UploadedFiles/products/<?= esc($file['file_name']) ?>" type="video/mp4">
                                 Your browser does not support the video tag.
                             </video>

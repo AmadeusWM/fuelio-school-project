@@ -27,7 +27,7 @@
                     <button name="image-remove-button" id="<?= esc($image['id']) ?>" class="profile-trash-button">
                         <i class="bi bi-trash files-trash-icon" aria-label="Remove Image"></i>
                     </button>
-                    <img src="/UploadedFiles/userImages/<?= esc($image['image_name']) ?>" class="profile-image" />
+                    <img src="/UploadedFiles/userImages/<?= esc($image['image_name']) ?>" class="profile-image" alt="Profile image"/>
                 </div>
         <?php }
         } ?>
