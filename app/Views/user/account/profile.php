@@ -1,15 +1,15 @@
 <div id="profile-container">
-    <h2 class="m-2"><?= $title ?></h2>
+    <h2 class="m-2"><?= esc($title) ?></h2>
     <?= form_open_multipart('/account/ProfileController/updateProfile') ?>
     <form method="post" action="<?php echo base_url("/account"); ?>/ProfileController/updateProfile">
         <?= csrf_field() ?>
-        <input id="input-webshop-name" min="0" max="128" type="text" name="webshop_name" value="<?= $webshop_name ?>" class="form-control profile-information-input" placeholder="Webshop Name">
-        <textarea id="input-description" min="0" max="2048" type="textarea" name="description" class="form-control profile-information-input" placeholder="Your Description"><?= $description ?></textarea>
-        <input id="input-business-email" min="0" max="128" type="text" name="business_email" value="<?= $business_email ?>" class="form-control profile-information-input" placeholder="Business Email">
-        <input id="input-telephone" min="0" max="15" type="text" name="telephone" value="<?= $telephone ?>" class="form-control profile-information-input" placeholder="Telephone">
-        <input id="input-mobile" min="0" max="15" type="text" name="mobile" value="<?= $mobile ?>" class="form-control profile-information-input" placeholder="Mobile">
-        <input id="input-website" min="0" max="256" type="text" name="website" value="<?= $website ?>" class="form-control profile-information-input" placeholder="Your Website">
-        <textarea id="input-other" min="0" max="512" type="text" name="other" class="form-control profile-information-input" placeholder="Other Information"><?= $other ?></textarea>
+        <input id="input-webshop-name" min="0" max="128" type="text" name="webshop_name" value="<?= esc($webshop_name) ?>" class="form-control profile-information-input" placeholder="Webshop Name">
+        <textarea id="input-description" min="0" max="2048" type="textarea" name="description" class="form-control profile-information-input" placeholder="Your Description"><?= esc($description) ?></textarea>
+        <input id="input-business-email" min="0" max="128" type="text" name="business_email" value="<?= esc($business_email) ?>" class="form-control profile-information-input" placeholder="Business Email">
+        <input id="input-telephone" min="0" max="15" type="text" name="telephone" value="<?= esc($telephone) ?>" class="form-control profile-information-input" placeholder="Telephone">
+        <input id="input-mobile" min="0" max="15" type="text" name="mobile" value="<?= esc($mobile) ?>" class="form-control profile-information-input" placeholder="Mobile">
+        <input id="input-website" min="0" max="256" type="text" name="website" value="<?= esc($website) ?>" class="form-control profile-information-input" placeholder="Your Website">
+        <textarea id="input-other" min="0" max="512" type="text" name="other" class="form-control profile-information-input" placeholder="Other Information"><?= esc($other) ?></textarea>
         <input multiple type="file" name="img_files[]" size="10" class="form-control profile-information-input" />
         <!-- report csrf protection errors -->
         <?= session()->getFlashdata("errors");?>
@@ -23,11 +23,11 @@
         <?php
         if ($images) {
             foreach ($images as $image) { ?>
-                <div id="container-<?= $image['id'] ?>" class="profile-image-container">
-                    <button name="image-remove-button" id="<?= $image['id'] ?>" class="profile-trash-button">
+                <div id="container-<?= esc($image['id']) ?>" class="profile-image-container">
+                    <button name="image-remove-button" id="<?= esc($image['id']) ?>" class="profile-trash-button">
                         <i class="bi bi-trash files-trash-icon" aria-label="Remove Image"></i>
                     </button>
-                    <img src="/UploadedFiles/userImages/<?= $image['image_name'] ?>" class="profile-image" />
+                    <img src="/UploadedFiles/userImages/<?= esc($image['image_name']) ?>" class="profile-image" />
                 </div>
         <?php }
         } ?>

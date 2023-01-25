@@ -17,10 +17,10 @@
                                 foreach ($files as $file) {
                                     if ($file["file_type"] == "image") {
                             ?>
-                                    <img onclick="currentSlide(<?= $index ?>)" class="product-file-slider" src="/UploadedFiles/products/<?= $file["file_name"] ?>">
+                                    <img onclick="currentSlide(<?= esc($index) ?>)" class="product-file-slider" src="/UploadedFiles/products/<?= esc($file["file_name"]) ?>">
                                 <?php } else { ?>
-                                    <video onclick="currentSlide(<?= $index ?>)" class="product-file-slider">
-                                        <source src="/UploadedFiles/products/<?= $file['file_name'] ?>" type="video/mp4">
+                                    <video onclick="currentSlide(<?= esc($index) ?>)" class="product-file-slider">
+                                        <source src="/UploadedFiles/products/<?= esc($file['file_name']) ?>" type="video/mp4">
                                         Your browser does not support the video tag.
                                     </video>
                             <?php }
@@ -39,10 +39,10 @@
                         foreach ($files as $file) {
                             if ($file["file_type"] == "image") {
                     ?>
-                            <img onclick="currentSlide(<?= $index ?>)" class="product-file-thumbnail" src="/UploadedFiles/products/<?= $file["file_name"] ?>">
+                            <img onclick="currentSlide(<?= esc($index) ?>)" class="product-file-thumbnail" src="/UploadedFiles/products/<?= esc($file["file_name"]) ?>">
                         <?php } else { ?>
                             <video class="product-file-thumbnail" controls>
-                                <source src="/UploadedFiles/products/<?= $file['file_name'] ?>" type="video/mp4">
+                                <source src="/UploadedFiles/products/<?= esc($file['file_name']) ?>" type="video/mp4">
                                 Your browser does not support the video tag.
                             </video>
                     <?php }
@@ -51,16 +51,16 @@
                 </div>
             </div>
             <div id="product-right">
-                <a id="webshop_name" href="<?= base_url("/store/webshop") . "/" . $product["webshop_id"] ?>"><?= $product["webshop_name"] ?></a>
-                <p id="origin">Origin: <?= $product["origin"] ?></p>
-                <h1 class="product-title"><?= $title ?></h1>
+                <a id="webshop_name" href="<?= base_url("/store/webshop") . "/" . esc($product["webshop_id"]) ?>"><?= esc($product["webshop_name"]) ?></a>
+                <p id="origin">Origin: <?= esc($product["origin"]) ?></p>
+                <h1 class="product-title"><?= esc($title) ?></h1>
                 <hr />
                 <p id="price" class="red">
                 </p>
                 <?php if ($product["quantity"] > 0) { ?>
                     <p class="product-availability green">
                         <i class="bi bi-check-circle-fill"></i>
-                        <?= $product["quantity"] ?> Available
+                        <?= esc($product["quantity"]) ?> Available
                     </p>
                 <?php } else { ?>
                     <p class="product-availability red">
@@ -69,12 +69,12 @@
                     </p>
                 <?php } ?>
                 <div class="info-row">
-                    <input type="number" id="quantity" name="quantity" class="form-control" min="1" max="<?= $product["quantity"] ?>" value="1" onchange="updatePrice(this.value)" />
+                    <input type="number" id="quantity" name="quantity" class="form-control" min="1" max="<?= esc($product["quantity"]) ?>" value="1" onchange="updatePrice(this.value)" />
                     <?php if ($product['quantity']) { ?>
                         <?= csrf_field() ?>
                         <button id="add-cart-button" class="btn btn-primary">Add To Shopping Cart</button>
                     <?php } else { ?>
-                        <form method="post" action="<?= base_url("/message/notifyLater") . "/" . $product["id"] ?>">
+                        <form method="post" action="<?= base_url("/message/notifyLater") . "/" . esc($product["id"]) ?>">
                             <?= csrf_field() ?>
                             <button class="notify-button btn btn-primary" type="submit"><i class="bi bi-bell-fill"></i> Get Notified</button>
                         </form>
@@ -84,20 +84,17 @@
         </div>
         <div id="product-details">
             <h2 class="sub-title">Details</h2>
-            <p id="description"><?= $product["description"] ?></p>
+            <p id="description"><?= esc($product["description"]) ?></p>
         </div>
         <hr />
         <div id="reviews">
             <h2 class="sub-title">Reviews</h2>
-            <form id="review-form" method="post" action="<?= base_url("/store/product/addReview") . "/" . $product["id"] ?>">
+            <form id="review-form" method="post" action="<?= base_url("/store/product/addReview") . "/" . esc($product["id"]) ?>">
                 <?= csrf_field() ?>
-                <!-- <label for="rating" class="input-label">Rating</label> -->
                 <div>
                     <input class="rating" id="rating" name="rating" min="1" max="5" oninput="this.style.setProperty('--value', `${this.valueAsNumber}`)" step="1" style="--value:5" type="range" value="5" required>
                 </div>
-                <!-- <label for="title" class="input-label">Review Title</label> -->
                 <input type="text" id="title" name="title" min="1" max="128" class="form-control" placeholder="Review Title" required />
-                <!-- <label for="content" class="input-label">Review Content</label> -->
                 <textarea type="text" id="content" name="content" min="1" max="2048" class="form-control" placeholder="Review Content" required></textarea>
                 <button type="submit" class="btn btn-primary">Add Review</button>
             </form>
@@ -109,10 +106,10 @@
                                 echo "<div class='star-icon " . ($i <= $review["rating"] ? "star-active" : "") . "'></div>";
                             }
                             ?>
-                            <b class="title"><?= $review["title"] ?></b>
+                            <b class="title"><?= esc($review["title"]) ?></b>
                         </div>
                         <?php if ($review["user_id"] == session()->get("id")) { ?>
-                            <form method="post" action="<?= base_url("/store/product/deleteReview") . "/" . $review["id"] ?>">
+                            <form method="post" action="<?= base_url("/store/product/deleteReview") . "/" . esc($review["id"]) ?>">
                                 <?= csrf_field() ?>
                                 <button type="submit" class="remove-review-button scaling-button">
                                     <i class="bi bi-trash icon-button red"></i>
@@ -120,7 +117,7 @@
                             </form>
                         <?php } ?>
                     </div>
-                    <p class="content"><?= $review["content"] ?></p>
+                    <p class="content"><?= esc($review["content"]) ?></p>
                 </div>
             <?php } ?>
         </div>
@@ -131,7 +128,7 @@
 
     // handle adding to cart
     let button = document.getElementById("add-cart-button");
-    button.addEventListener('click', () => addToCart("<?= $product["id"] ?>"), false);
+    button.addEventListener('click', () => addToCart("<?= esc($product["id"]) ?>"), false);
 
     function addToCart(productId) {
         let quantity = document.getElementById("quantity")
@@ -165,7 +162,7 @@
     updatePrice(1);
 
     function updatePrice(value) {
-        price = "" + (<?= $product["price"] ?> * value).toFixed(2);
+        price = "" + (<?= esc($product["price"]) ?> * value).toFixed(2);
         priceSplit = price.split(".");
         priceBase = priceSplit[0];
         priceCents = priceSplit[1];

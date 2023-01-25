@@ -30,18 +30,25 @@
                     <div class="content">
                         <div class="product-details">
                             <div class="left">
-                                <a class="webshop" href="<?= base_url("/store/webshop") . "/" . $product["webshop_id"] ?>"><?= $product["webshop_name"] ?></a>
+                                <a class="webshop" href="<?= base_url("/store/webshop") . "/" . $product["webshop_id"] ?>"><?= esc($product["webshop_name"]) ?></a>
                                 <a class="product-name" href='<?= base_url("/store/product" . "/" . $product["id"]) ?>'>
-                                    <?= $product["name"] ?>
+                                    <?= esc($product["name"]) ?>
                                 </a>
                             </div>
                             <div class="right">
-                                <p>€<?= number_format($totalPriceProduct, 2) ?></p>
+                                <p>€<?= number_format(esc($totalPriceProduct), 2) ?></p>
                             </div>
                         </div>
                         <div class="button-row">
-                            <input type="number" name="quantity" id="quantity-<?= $product['id'] ?>" class="form-control quantity" min="1" max="<?= $product["quantity"] ?>" value="<?= $product["orderQuantity"] ?>" onchange="updateCartProduct(<?= $product['id'] ?>,this.value)" />
-                            <button class="scaling-button" onclick="removeCartProduct(<?= $product['id'] ?>)">
+                            <input type="number" 
+                                name="quantity" 
+                                id="quantity-<?= esc($product['id']) ?>" 
+                                class="form-control quantity" 
+                                min="1" 
+                                max="<?= esc($product["quantity"]) ?>" 
+                                value="<?= esc($product["orderQuantity"]) ?>" 
+                                onchange="updateCartProduct(<?= esc($product['id']) ?>,this.value)" />
+                            <button class="scaling-button" onclick="removeCartProduct(<?= esc($product['id']) ?>)">
                                 <i class="bi bi-trash icon-button red"></i>
                             </button>
                         </div>
@@ -58,10 +65,10 @@
             <h2 id="overview-header">Overview</h2>
             <div class="overview-row">
                 <p>Total:</p>
-                <p id="total">€<?= number_format($totalPrice, 2) ?></p>
+                <p id="total">€<?= number_format(esc($totalPrice), 2) ?></p>
             </div>
             <hr />
-            <button class="btn btn-primary order-button" onclick="location.assign('<?= base_url('/cart/checkout') ?>')" <?= count($products) == 0 ? "disabled" : "" ?>>
+            <button class="btn btn-primary order-button" onclick="location.assign('<?= base_url('/cart/checkout') ?>')" <?= count(esc($products)) == 0 ? "disabled" : "" ?>>
                 Go to Checkout
             </button>
         </div>

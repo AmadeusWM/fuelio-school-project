@@ -1,6 +1,6 @@
 <div class="d-flex justify-content-center">
     <div id="product-form-container" class="hover-box">
-        <h2 class="m-2"><?= $title ?></h2>
+        <h2 class="m-2"><?= esc($title) ?></h2>
         <?= form_open_multipart("/account/ProductsController/addProduct") ?>
         <form method="post" action="<?php echo base_url("/account/ProductsController"); ?>/addProduct">
             <?= csrf_field() ?>
@@ -12,7 +12,7 @@
             <select name="product_category" class="form-select mb-2" required>
                 <?php foreach ($product_categories as $product_category) { ?>
                     <option>
-                        <?= $product_category["name"] ?>
+                        <?= esc($product_category["name"]) ?>
                     </option>
                 <?php } ?>
             </select>

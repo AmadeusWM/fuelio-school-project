@@ -1,5 +1,5 @@
 <div id="checkout-page">
-    <h1 id="title"><?= $title ?></h1>
+    <h1 id="title"><?= esc($title) ?></h1>
     <form id="page-content" action="<?= base_url("/cart/placeOrder") ?>">
         <?= csrf_field() ?>
         <div id="left" class="hover-box">
@@ -12,8 +12,8 @@
                 <label for="pickup-location"></label>
                 <select id="pickup-location" name="pickup_location" type="select" class="form-select" >
                     <?php foreach($pickup_locations as $location){?>
-                        <option value="<?=$location["id"]?>">
-                            <?= $location["name"] ?>
+                        <option value="<?= esc($location["id"])?>">
+                            <?= esc($location["name"]) ?>
                         </option>
                     <?php }?>
 
@@ -39,7 +39,7 @@
             <h2>Overview</h2>
             <div class="overview-row">
                 <p>Total:</p>
-                <p id="total">€<?= number_format($totalPrice, 2) ?></p>
+                <p id="total">€<?= number_format(esc($totalPrice), 2) ?></p>
             </div>
             <hr />
             <button class="btn btn-primary" type="submit">Place Order</button>
@@ -54,13 +54,11 @@
     hidePickup();
 
     function showPickup() {
-        console.log("adding active")
         pickup_location_container.classList.remove("inactive");
         pickup_location.setAttribute("required", "");
     }
 
     function hidePickup() {
-        console.log("removing active")
         pickup_location_container.classList.add("inactive");
         pickup_location.removeAttribute("required");
     }

@@ -12,7 +12,7 @@
     </div>
 </div>
 <script>
-    activeTab = document.getElementById("<?=strtolower($title)?>");
+    activeTab = document.getElementById("<?=strtolower(esc($title))?>");
     if (activeTab){
         activeTab.classList.toggle("active");
     }

@@ -19,7 +19,7 @@
                     <option <?= isset($filter["category"])
                                 && $filter["category"] == $product_category["name"]
                                 ? "selected" : "" ?>>
-                        <?= $product_category["name"] ?>
+                        <?= esc($product_category["name"]) ?>
                     </option>
                 <?php } ?>
             </select>
@@ -28,8 +28,8 @@
         <div class="input-wrapper">
             <!-- <label for="max_price" class="form-label">Max Price</label> -->
             <div class="max-price-input-wrapper">
-                <input type="number" id="max-price-input" step="5" min="0" name="max_price" class="form-control" value="<?= isset($filter["max_price"]) ? $filter["max_price"] : "0" ?>" onchange="updateMaxPrice(this.value, 'max-price-range')" />
-                <input type="range" id="max-price-range" step="5" min="0" max="9999" value="<?= isset($filter["max_price"]) ? $filter["max_price"] : "0" ?>" class="form-range" onchange="updateMaxPrice(this.value, 'max-price-input')">
+                <input type="number" id="max-price-input" step="5" min="0" name="max_price" class="form-control" value="<?= isset($filter["max_price"]) ? esc($filter["max_price"]) : "0" ?>" onchange="updateMaxPrice(this.value, 'max-price-range')"  placeholder="Max Price"/>
+                <input type="range" id="max-price-range" step="5" min="0" max="9999" value="<?= isset($filter["max_price"]) ? esc($filter["max_price"]) : "" ?>" class="form-range" onchange="updateMaxPrice(this.value, 'max-price-input')">
             </div>
         </div>
         <button id="filter-button" class="btn btn-primary">Filter</button>
