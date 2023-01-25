@@ -27,7 +27,7 @@ $bgColor: rgba(var(--secondary), 0.2);
 }
 .footer-content{
     margin-top: auto;
-    padding: 60px;
+    padding: 60px 60px 30px;
     background-color: $bgColor;
     display: flex;
     flex-direction: column;
@@ -36,5 +36,9 @@ $bgColor: rgba(var(--secondary), 0.2);
     
     .copyright {
         font-size: 1.1rem;
+    }
+    .footer-icon{
+        padding: 5px 10px;
+        border-width: 2px;
     }
 }

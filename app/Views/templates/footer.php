@@ -7,7 +7,29 @@
     </div>
 </div>
 <div class="footer-content">
-    <span class="copyright">&copy; 2022 by ACHOOWELÉ</span>
+    <!-- source: https://mdbootstrap.com/docs/standard/navigation/footer/-->
+    <footer class="text-center">
+        <!-- Grid container -->
+        <div class="container p-4 pb-0">
+            <!-- Section: Social media -->
+            <section class="mb-2">
+                <!-- Facebook -->
+                <a class="btn btn-outline-dark rounded-circle btn-floating m-1 footer-icon" href="#!" role="button"><i class="bi bi-facebook"></i></a>
+
+                <!-- Twitter -->
+                <a class="btn btn-outline-dark rounded-circle btn-floating m-1 footer-icon" href="#!" role="button"><i class="bi bi-twitter"></i></a>
+
+                <!-- Google -->
+                <a class="btn btn-outline-dark rounded-circle btn-floating m-1 footer-icon" href="#!" role="button"><i class="bi bi-google"></i></a>
+
+                <!-- Instagram -->
+                <a class="btn btn-outline-dark rounded-circle btn-floating m-1 footer-icon" href="#!" role="button"><i class="bi bi-instagram"></i></a>
+            </section>
+        </div>
+        <div class="text-center">
+            © 2022 Fuelio, by ACHOOWELÉ
+        </div>
+    </footer>
 </div>
 </body>
 
