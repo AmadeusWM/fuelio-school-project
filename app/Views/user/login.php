@@ -9,7 +9,7 @@
         </form>
         <ul id="errors-validation" class="errors-validation"></ul>
         <div class="registration-buttons">
-            <button onclick="location.href='/register'" class="btn btn-outline-primary w-100 registration-button">Sign Up</button>
+            <button onclick="location.href='<?=base_url('/register')?>'" class="btn btn-outline-primary w-100 registration-button">Sign Up</button>
             <button type="submit" id="sign-in-button" class="btn btn-primary w-100 registration-button" type="submit">Log In</button>
         </div>
     </div>

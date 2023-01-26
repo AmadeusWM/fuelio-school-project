@@ -15,6 +15,7 @@ from [here](https://stackoverflow.com/questions/2336302/single-huge-css-file-vs-
 }
 
 :root {
+  overflow-x: hidden;
   /* Catpuccin color scheme (https://github.com/catppuccin/catppuccin#-palettes) */
   /* #FF6148 */
   --primary: 248, 58, 84;
@@ -11628,6 +11629,7 @@ table {
 }
 
 :root {
+  overflow-x: hidden;
   /* Catpuccin color scheme (https://github.com/catppuccin/catppuccin#-palettes) */
   /* #FF6148 */
   --primary: 248, 58, 84;
@@ -11892,13 +11894,12 @@ h3 {
 }
 
 #navbar-header {
+  position: relative;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  overflow: hidden;
   padding: 5px;
-  width: 100%;
   height: var(--header-height);
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
   z-index: 9999;
@@ -11944,8 +11945,9 @@ h3 {
   flex-direction: column;
   align-items: flex-start;
   position: absolute;
+  z-index: 3;
   top: var(--header-height);
-  right: calc(-1 * var(--popup-width));
+  right: calc(-1 * var(--popup-width) - 10px);
   width: var(--popup-width);
   border-radius: 0px 0px 0px var(--radius1) !important;
   box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
@@ -11954,8 +11956,9 @@ h3 {
 }
 @media only screen and (max-width: 768px) {
   #navbar-header .header-popup {
+    align-items: center;
     width: 100%;
-    right: -100%;
+    right: calc(-100% - 10px);
   }
 }
 #navbar-header .header-popup-active {
@@ -12115,6 +12118,12 @@ h3 {
   border-radius: var(--radius1);
   height: 100%;
 }
+@media only screen and (max-width: 768px) {
+  #webshop-page #webshop-display #images-container .image-container img {
+    width: 90vw;
+    height: auto;
+  }
+}
 #webshop-page .webshop-title {
   color: rgb(var(--b2));
   margin: 20px 40px;
@@ -12151,6 +12160,10 @@ h3 {
   word-break: break-all;
   width: 200px;
   margin-left: 10px;
+}
+#webshop-page .bottom-page-container .extra-information li span a {
+  color: rgb(var(--primary));
+  text-decoration: underline;
 }
 #profile-container {
   padding: 8px;

@@ -16,7 +16,6 @@
                     </option>
                 <?php } ?>
             </select>
-            <!-- TODO: https://mdbootstrap.com/docs/b4/jquery/forms/multiselect/ -->
             <input multiple type="file" name="files[]" size="10" class="form-control mb-2" />
             <ul class="errors-validation">
                 <!-- report csrf protection errors -->

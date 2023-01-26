@@ -25,6 +25,11 @@
                 img {
                     border-radius: var(--radius1);
                     height: 100%;
+                    @media only screen and (max-width: 768px) {
+                        width: 90vw;
+                        height: auto;
+                    }
+            
                 }
             }
         }
@@ -68,6 +73,11 @@
                     word-break: break-all;
                     width: 200px;
                     margin-left: 10px;
+
+                    a {
+                        color: rgb(var(--primary));
+                        text-decoration: underline;
+                    }
                 }
             }
         }

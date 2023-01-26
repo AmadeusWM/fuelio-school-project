@@ -34,9 +34,9 @@
                     <i class="bi bi-person header-icon" aria-label="Account"></i>
                 </button>
                 <div id="account-overview-popup" class="header-popup">
-                    <a href="/account/overview" class="link">My Account</a>
+                    <a href="/account/overview" class="link" tabindex="-1">My Account</a>
                     <hr />
-                    <a href="/SignInController/logout" class="link">Log out</a>
+                    <a href="/SignInController/logout" class="link" tabindex="-1">Log out</a>
                 </div>
                 <?= $notificationsView ?>
                 <!-- code when logged out -->

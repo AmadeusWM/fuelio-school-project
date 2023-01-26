@@ -28,7 +28,7 @@
         <div class="input-wrapper">
             <!-- <label for="max_price" class="form-label">Max Price</label> -->
             <div class="max-price-input-wrapper">
-                <input type="number" id="max-price-input" step="5" min="0" name="max_price" class="form-control" value="<?= isset($filter["max_price"]) ? esc($filter["max_price"]) : "0" ?>" onchange="updateMaxPrice(this.value, 'max-price-range')"  placeholder="Max Price"/>
+                <input type="number" id="max-price-input" step="5" min="0" name="max_price" class="form-control" value="<?= isset($filter["max_price"]) ? esc($filter["max_price"]) : "" ?>" onchange="updateMaxPrice(this.value, 'max-price-range')"  placeholder="Max Price"/>
                 <input type="range" id="max-price-range" step="5" min="0" max="9999" value="<?= isset($filter["max_price"]) ? esc($filter["max_price"]) : "" ?>" class="form-range" onchange="updateMaxPrice(this.value, 'max-price-input')">
             </div>
         </div>

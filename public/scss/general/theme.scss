@@ -6,6 +6,7 @@
 }
 
 :root {
+    overflow-x: hidden;
     /* Catpuccin color scheme (https://github.com/catppuccin/catppuccin#-palettes) */
     /* #FF6148 */
     // --primary: 255, 97, 72;
@@ -60,7 +61,6 @@ body{
     display: flex;
     flex-direction: column;
     min-height: 100vh; 
-    // hide the sidebar that goes out of the screen to the right
     overflow-x: hidden;
 }
 

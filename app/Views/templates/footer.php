@@ -29,6 +29,9 @@
         <div class="text-center">
             © 2022 Fuelio, by ACHOOWELÉ
         </div>
+        <div>
+            <a href="<?=base_url("/accessibility")?>">Accessibility Statement</a>
+        </div>
     </footer>
 </div>
 </body>

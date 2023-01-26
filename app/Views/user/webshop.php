@@ -33,7 +33,7 @@
             <?php } ?>
             <?php if ($webshop["website"]) { ?>
                 <li>
-                    <b>Website: </b><span><?= esc($webshop["website"]) ?></span>
+                    <b>Website: </b><span><a href="<?= esc($webshop["website"]) ?>"><?= esc($webshop["website"]) ?></a></span>
                 </li>
             <?php } ?>
             <?php if ($webshop["other"]) { ?>

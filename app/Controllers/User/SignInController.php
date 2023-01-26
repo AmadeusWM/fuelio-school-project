@@ -27,10 +27,10 @@ class SignInController extends BaseController
         
         $user = $userModel->where('email', $email)->first();
         
-        if($user){
+        if(isset($user)){
             $pass = $user['password'];
             $authenticatePassword = password_verify($password, $pass);
-            if($authenticatePassword){
+            if(isset($authenticatePassword)){
                 $ses_data = [
                     'id' => $user['id'],
                     'username' => $user['username'],

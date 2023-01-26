@@ -86,6 +86,7 @@ $routes->group("message", ["filter" => "AuthenticationFilter"], static function 
 
 $routes->get('login', 'User\SignInController::index');
 $routes->get('register', 'User\SignUpController::index');
+$routes->get('accessibility', 'Pages::AccessibilityPage');
 
 $routes->group('SignInController', static function ($routes) {
     $routes->post('login', 'User\SignInController::login');

@@ -11,7 +11,7 @@
         </form>
         <ul id="errors-validation" class="errors-validation"></ul>
         <div class="registration-buttons">
-            <button onclick="location.href='/login'" class="btn btn-outline-primary w-100 registration-button">Log In</button>
+            <button onclick="location.href='<?=base_url('/login')?>'" class="btn btn-outline-primary w-100 registration-button">Log In</button>
             <button id="sign-up-button" class="btn btn-primary w-100 registration-button" type="submit">Sign Up</button>
         </div>
     </div>

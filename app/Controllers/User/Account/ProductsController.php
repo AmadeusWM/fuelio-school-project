@@ -86,7 +86,10 @@ class ProductsController extends BaseController
         $product_categories = $productCategoryModel->findAll();
         $data['product_categories'] = $product_categories;
 
-        // TODO check if userid of product is id of session
+        if (session("id") != $data["user_id"]){
+            session()->setFlashdata("errors", "<ul><li>You don't own this product</li></ul>");
+            return redirect()->to(base_url("/failure"));
+        }
 
         return $this->page("product/productEdit", $data);
     }
@@ -94,8 +97,6 @@ class ProductsController extends BaseController
 
     public function addProduct()
     {
-        // TODO: if productId parameter set: check if 
-        // the session user has the same id as the product
         $data = [];
 
         $userModel = new UserModel();
@@ -117,14 +118,13 @@ class ProductsController extends BaseController
             $rules['files'] = $this->fileInputRules();
         }
 
-
         if ($this->validate($rules) && $user) {
             // find category id
             $categoryName = $this->request->getVar('product_category');
             $quantity = $this->request->getVar('quantity');
             $productCategory = $productCategoryModel->where("name", $categoryName)->first();
             // return error when product category doesn't exist
-            if (!$productCategory) { // TODO show proper error
+            if (!isset($productCategory)) {
                 $data['validation'] = $this->validator;
                 return $this->addProductPage($data);
             }
@@ -142,7 +142,13 @@ class ProductsController extends BaseController
 
             // edit product
             if ($this->request->getPost('productId')) {
-                $data['id'] = $this->request->getPost('productId');
+                $productId = $this->request->getPost('productId');
+                $product = $productModel->find($productId);
+                if (session("id") != $product["user_id"]){
+                    session()->setFlashdata("errors", "<ul><li>You don't own this product</li></ul>");
+                    return redirect()->to(base_url("/failure"));
+                }
+                $data['id'] = $productId;
                 $productModel->save($data);
                 $productId = $data['id'];
                 if ($quantity > 0)

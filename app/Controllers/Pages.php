@@ -44,4 +44,9 @@ class Pages extends BaseController
         $data["title"] = ucfirst("Failure");
         return $this->page("templates/feedback/failure", $data);
     }
+
+    public function AccessibilityPage(){
+        $data["title"] = ucfirst("Accessibility");
+        return $this->page("additional/Accessibility", $data);
+    }
 }
